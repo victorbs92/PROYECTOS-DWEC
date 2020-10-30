@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let miArray = [7, 4, 1, 0, 2, 5, 8, 9, 6, 3];
+
+      console.log(mayorMenor(miArray));
+
+      function mayorMenor(miArray) {
+        let arrayMayorMenor = [];
+        arrayMayorMenor.push(Math.max.apply(null, miArray));
+        arrayMayorMenor.push(Math.min.apply(null, miArray));
+        return arrayMayorMenor;
+      }
+    </script>
+  </body>
+</html>

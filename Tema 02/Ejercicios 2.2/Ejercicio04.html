@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+      var numero = prompt("Introduce tu número de DNI (sin la letra)");
+      const reg = /^[0-9]{8,8}$/;
+
+      if (reg.test(numero)) {
+        console.log("Número válido");
+        console.log(numero + letraDni(numero));
+      } else {
+        console.log("ERROR");
+      }
+
+      function letraDni(numero) {
+        return letras[numero % 23];
+      }
+    </script>
+</body>
+</html>

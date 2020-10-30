@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let num = prompt("¿De cuantos elementos quieres crear el array?");
+
+      crearArray(num);
+
+      function crearArray(num) {
+        let cont = 1;
+        let miArray = [];
+        let x;
+        do {
+          x = prompt("Introduce el " + cont + "º número");
+
+          if (!isNaN(x) && x != null) {
+            miArray.push(x);
+            cont++;
+          }
+
+          console.log(miArray);
+        } while (cont <= num);
+
+        return miArray;
+      }
+    </script>
+  </body>
+</html>

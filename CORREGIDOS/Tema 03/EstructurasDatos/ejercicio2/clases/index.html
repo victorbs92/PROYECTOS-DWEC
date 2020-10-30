@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejercicio 2 - Clases</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script src="./scripts/publicacion.js"></script>
+    <script src="./scripts/libro.js"></script>
+    <script src="./scripts/comic.js"></script>
+    <script>
+      let rustBook = new Publicacion(
+        630,
+        'no starch press',
+        'The Rust Programming Language',
+        20
+      );
+      
+      let endvBook = new Libro(
+        'Fantasía',
+        'Patrick Rothfuss',
+        820,
+        'DAW Books',
+        'El nombre del viento',
+        11
+      );
+      
+      let mortadeloYFilemon = new Comic(
+        '023',
+        'Mortadelo y Filemon',
+        'F.Ibañez',
+        'F.Ibañez',
+        45,
+        'Colección Olé',
+        'Mortadelo y Filemon - Lo que el Viento se dejó',
+        5
+      );
+
+      console.log('Publicación', rustBook);
+      console.log('Libro', endvBook);
+      console.log('Comic', mortadeloYFilemon);
+    </script>
+  </body>
+</html>

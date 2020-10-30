@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejercicio 1</title>
+    <meta charset="utf-8" />
+    <link href="https://pagecdn.io/lib/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <style>
+      .row {
+        display: flex;
+      }
+      fieldset {
+        margin: 10px !important;
+        padding: 20px;
+        border: 1px solid #CCC;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+
+      <div class="row">
+        <fieldset class="four columns">
+          <legend>Empresa</legend>
+          <label for="nombre_empresa">Nombre: </label><input id="nombre_empresa" type="text" name="enombre"/><br>
+          <label for="direccion_empresa">Direccion: </label><input id="direccion_empresa" type="text" name="edireccion"/><br>
+          <label for="telefono_empresa">Telefono: </label><input id="telefono_empresa" type="number" name="etelefono"/><br>
+          <label for="nif_empresa">NIF: </label><input id="nif_empresa" type="text" name="enif"/><br>
+        </fieldset>
+
+        <fieldset class="four columns">
+          <legend>Cliente</legend>
+          <label for="nombre_cliente">Nombre: </label><input id="nombre_cliente" type="text" name="cnombre"/><br>
+          <label for="direccion_cliente">Direccion: </label><input id="direccion_cliente" type="text" name="cdireccion"/><br>
+          <label for="telefono_cliente">Telefono: </label><input  id="telefono_cliente"type="number" name="ctelefono"/><br>
+          <label for="nif_cliente">NIF: </label><input id="nif_cliente" type="text" name="cnif"/><br>
+        </fieldset>
+
+        <fieldset class="four columns">
+          <legend>Artículos</legend>
+          <label for="descripcion">Descripcion: </label><input id="descripcion" type="text" name="descripcion"/><br>
+          <label for="precio">Precio: </label><input  id="precio"type="number" name="precio"/><br>
+          <label for="cantidad">Cantidad: </label><input id="cantidad" type="number" name="cantidad"/><br>
+          <input type="submit" id="btn_aniadir_articulo" value="Agregar articulo"/>
+        </fieldset>
+      </div>
+      
+      <fieldset>
+        <legend>Pago</legend>        
+        <label for="iva">Tipo IVA: </label><input id="iva" type="number" name="iva"/><br>
+        <label for="pago">Forma de pago: </label><input id="pago" type="text" name="pago"/><br>
+        <input class="button-primary" type="submit" id="btn_procesar_datos" value="Procesar datos"/>
+      </fieldset>
+      
+    </form>
+
+    <pre id="detalle_factura"></pre>
+    
+    <script src="./scripts/factura.js"></script>
+    <script src="./scripts/controles.js"></script>
+  </body>
+</html>

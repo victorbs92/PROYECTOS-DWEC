@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css" />
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css" />
+    <title>Document</title>
+    <style>
+        .conbordes{
+           border-style: solid;
+           border-color: black;
+           border-width: 2pt;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container conbordes">
+        <form>
+      <div class="row">
+        <div class="three columns">
+          <label for="cif">CIF</label>
+          <input type="text" id="cif"  />
+        </div>
+        <div class="three columns">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa"  />
+        </div>
+      </div>
+      <div class="row">
+        <div class="three columns">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" />
+        </div>
+        <div class="three columns">
+          <label for="cantidad">Cantidad</label>
+          <input type="number" id="cantidad" />
+        </div>
+        <div class="three columns">
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" />
+        </div>
+      </div>
+      <br />
+      <input class="button-primary" type="button" id="agregaproducto" value="agregar producto" />
+      <label for="fpago">Forma de Pago</label>
+      <select id="fpago">
+        <option value="contado">contado</option>
+        <option value="tarjeta">tarjeta</option>
+      </select>
+      <label for="iva">IVA</label>
+      <input type="text" id="iva"  /><br />
+      <input class="button-primary" type="button" id="obtienefactura" value="obtener factura" />
+    </form>
+    </div>
+    <div class="container" id="visor"></div>
+
+    <script src="factura.js"></script>
+  </body>
+</html>

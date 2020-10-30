@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//funcion que suma todos sus argumentos
+			/*
+			function sumaArgumentosVariables() {
+				let suma = 0;
+				for (let argumento of arguments) {
+					suma += argumento;
+				}
+				return suma;
+			}
+			*/
+			//debugger;
+			function sumaArgumentosVariables(...datos) {
+				let suma = 0;
+				for (let argumento of datos) {
+					suma += argumento;
+				}
+				return suma;
+			}
+			console.log(sumaArgumentosVariables(1, 2, 3, 4, 5, 6));
+			console.log(sumaArgumentosVariables(6, 96, 4, 34));
+		</script>
+	</body>
+</html>

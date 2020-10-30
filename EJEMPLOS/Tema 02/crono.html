@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p>0</p>
+    <button>parar</button>
+    <script>
+      let parrafo = document.querySelector("p");
+      let boton = document.querySelector("button");
+      let crono = setInterval(function () {
+        //capturar contenido parrafo
+        let valor = Number(parrafo.innerHTML);
+        //incrementamos valor
+        parrafo.innerText = ++valor;
+        //devolvemos valor a parrafo
+      }, 1000);
+
+      boton.onclick = function () {
+        clearInterval(crono);
+      };
+    </script>
+  </body>
+</html>

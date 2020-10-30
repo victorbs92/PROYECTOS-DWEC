@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let fila1 = [1, 2, 3];
+      let fila2 = [4, 5, 6];
+      let fila3 = [7, 8, 9];
+      let tabla = [fila1, fila2, fila3];
+
+      /*
+      console.time();
+      for (let fila = 0; fila < tabla.length; fila++) {
+        for (let columna = 0; columna < fila1.length; columna++)
+          if (tabla[fila][columna] % 2 != 0) {
+            console.log(tabla[fila][columna]);
+          }
+      }
+      console.timeEnd();
+      */
+      let fila = 0;
+      let columna = 0;
+      console.time();
+      while (fila < tabla.length) {
+        while (columna < fila1.length) {
+          if (tabla[fila][columna] % 2 != 0) {
+            console.log(tabla[fila][columna]);
+          }
+          columna++;
+        }
+        columna = 0;
+        fila++;
+      }
+      console.timeEnd();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factura</title>
+  </head>
+  <!-- 
+    1.-Crear un objeto nativo que almacena una factura. Las facturas están formadas por la información de la
+    propia empresa (nombre de la empresa, dirección, teléfono, NIF), la información del cliente (similar a la de la
+    empresa), una lista de elementos (cada uno de los cuales dispone de descripción, precio, cantidad) y otra
+    información básica de la factura (importe total, tipo de iva, forma de pago).
+    Definir un interface de tipo formulario que permita la creación de dicho objeto. Dispondrá de todos los
+    controles necesarios para agregar los datos correspondientes a cada propiedad del objeto.
+    Crear un método que calcule el importe total de la factura y actualice el valor de la propiedad correspondiente.
+    Crear un método que escriba debajo del formulario los detalles de los items de la factura y el importe total.
+    Este método se activará cuando se pulse un botón que se agregará al formulario.
+  -->
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Factura</legend>
+        <fieldset>
+          <legend>Información de la empresa</legend>
+          <form id="formularioEmpresa">
+            <label for="nombreEmpresa">Nombre: </label>
+            <input type="text" id="nombreEmpresa" required />
+            <label for="tlfEmpresa">Tlf: </label>
+            <input type="number" id="tlfEmpresa" required />
+            <label for="nifEmpresa">NIF: </label>
+            <input type="text" id="nifEmpresa" required />
+            <br /><br />
+            <label for="provinciaEmpresa">Provincia: </label>
+            <input id="provinciaEmpresa" type="text" required />
+            <label for="poblacionEmpresa">Población: </label>
+            <input id="poblacionEmpresa" type="text" required />
+            <label for="calleEmpresa">Calle: </label>
+            <input id="calleEmpresa" type="text" required />
+            <label for="numeroEmpresa">Número: </label>
+            <input id="numeroEmpresa" type="number" required />
+            <label for="pisoEmpresa">Piso: </label>
+            <input id="pisoEmpresa" type="text" />
+            <label for="cpEmpresa">CP: </label>
+            <input id="cpEmpresa" type="number" required />
+          </form>
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Información del cliente</legend>
+          <form id="formularioCliente">
+            <label for="nombreCliente">Nombre: </label>
+            <input type="text" id="nombreCliente" required />
+            <label for="apellidosCliente">Apellidos: </label>
+            <input type="text" id="apellidosCliente" required />
+            <label for="tlfCliente">Tlf: </label>
+            <input type="number" id="tlfCliente" required />
+            <label for="dniCliente">DNI: </label>
+            <input type="text" id="dniCliente" required />
+            <br /><br />
+            <label for="provinciaCliente">Provincia: </label>
+            <input id="provinciaCliente" type="text" required />
+            <label for="poblacionCliente">Población: </label>
+            <input id="poblacionCliente" type="text" required />
+            <label for="calleCliente">Calle: </label>
+            <input id="calleCliente" type="text" required />
+            <label for="numeroCliente">Número: </label>
+            <input id="numeroCliente" type="number" required />
+            <label for="pisoCliente">Piso: </label>
+            <input id="pisoCliente" type="text" />
+            <label for="cpCliente">CP: </label>
+            <input id="cpCliente" type="number" required />
+          </form>
+        </fieldset>
+        <br />
+        <fieldset id="listadoElementos">
+          <legend>Listado de elementos</legend>
+          <form>
+            <label for="descripcionElemento">Descripción: </label>
+            <input
+              id="descripcionElemento"
+              type="text"
+              class="validarCamposLista"
+            />
+            <label for="precioElemento">Precio: </label>
+            <input
+              id="precioElemento"
+              type="number"
+              class="validarCamposLista"
+            />
+            <label for="cantidadElemento">Cantidad: </label>
+            <input
+              id="cantidadElemento"
+              type="number"
+              class="validarCamposLista"
+            />
+            <input type="button" value="Añadir" id="btnAddElemento" disabled />
+            <br />
+            <br />
+            <fieldset>
+              <ul></ul>
+            </fieldset>
+          </form>
+        </fieldset>
+        <br />
+        <fieldset id="infBasica">
+          <form>
+            <label>Tipo de IVA:</label>
+            <input type="radio" name="iva" id="iva4" value="4" />
+            <label for="iva4">4%</label>
+            <input type="radio" name="iva" id="iva10" value="10" />
+            <label for="iva10">10%</label>
+            <input type="radio" name="iva" id="iva21" value="21" checked />
+            <label for="iva21">21%</label>
+            <label for="formaPago">Forma de pago:</label>
+            <select id="formaPago" name="formaPago">
+              <option value="efectivo" selected>Efectivo</option>
+              <option value="tarjetaCredito">Tarjeta de crédito</option>
+              <option value="transBancaria">Transferencia Bancaria</option>
+            </select>
+            <label for="total">Total: </label>
+            <output id="total">0€</output>
+          </form>
+        </fieldset>
+        <br />
+        <input type="button" value="Aceptar" id="btnAceptar" />
+        <br />
+      </fieldset>
+    </form>
+
+    <p></p>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

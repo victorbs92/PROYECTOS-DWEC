@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numeros = [1, 2, 3, 4, 5];
+      numeros.forEach(function (numero, indice, array) {
+        console.log(`${numero}
+                     ${indice}
+                     ${array.toString()}
+                     `);
+      });
+      console.log(
+        "La suma de todos los numeros es " +
+          numeros.reduce((suma = 0, dato) => suma + dato)
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let flag1 = true;
+      let flag2 = true;
+      let altura;
+      let peso;
+      const regAltura = /^([0-9]{1,1})\.([0-9]{2,2})$/;
+      const regPeso = /^[0-9]{1,3}$/;
+
+      do {
+        altura = prompt("Introduce tu altura (por ej: 1.70 o 0.95)");
+
+        if (regAltura.test(altura) && altura != null) {
+          flag1 = false;
+        } else {
+          console.log("Introduce un dato válido");
+        }
+      } while (flag1);
+
+      do {
+        peso = prompt("Introduce tu peso (en kg)");
+
+        if (regPeso.test(peso) && peso != null) {
+          flag2 = false;
+        } else {
+          console.log("Introduce un dato válido");
+        }
+      } while (flag2);
+
+      let x = imc(altura, peso);
+
+      function imc(altura, peso) {
+        return peso / (altura * altura);
+      }
+
+      switch (x != "undefined") {
+        case x < 18.5:
+          console.log(x + " Peso insuficiente");
+          break;
+        case x >= 18.5 && x < 25:
+          console.log(x + " Normal");
+          break;
+        case x >= 25 && x < 27:
+          console.log(x + " Sobrepeso grado I");
+          break;
+        case x >= 27 && x < 30:
+          console.log(x + " Sobrepeso grado II");
+          break;
+        case x >= 30 && x < 35:
+          console.log(x + " Obesidad I");
+          break;
+        case x >= 35 && x < 40:
+          console.log(x + " Obesidad II");
+          break;
+        case x >= 40 && x < 50:
+          console.log(x + " Obesidad III (mórbida)");
+          break;
+        case x >= 50:
+          console.log(x + " Obesidad III (extrema)");
+          break;
+        default:
+          console.log("ERROR");
+          break;
+      }
+    </script>
+  </body>
+</html>

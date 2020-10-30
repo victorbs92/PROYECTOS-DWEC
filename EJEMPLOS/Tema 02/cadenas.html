@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="txt1">cadena1</label>
+      <input type="text" id="txt1" /><br />
+      <label for="txt2">cadena2</label>
+      <input id="txt2" type="text" /> <br />
+      <input type="button" value="crear" id="btn" />
+    </form>
+    <p></p>
+    <script>
+      //declaracion de variables
+      console.time();
+      let texto1 = document.getElementById("txt1");
+      let texto2 = document.getElementById("txt2");
+      let boton = document.getElementById("btn");
+      let parrafo = document.querySelector("p");
+
+      //declaracion de funciones
+      function concatenar() {
+        //parrafo.textContent = `${texto1.value} ${texto2.value}`;//opcion1
+        parrafo.innerHTML = texto1.value + " " + texto2.value; //opcion2
+        //tanto el textContent como el innerHtml funcionan con la interpolacion y la concatenacion
+      }
+
+      //Principal
+      boton.onclick = concatenar;
+      console.timeEnd();
+    </script>
+  </body>
+</html>
