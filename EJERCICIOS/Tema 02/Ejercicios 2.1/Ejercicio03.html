@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let x = prompt(
+        "Introduce (en MAYÚSCULAS) una talla válida (XXXL, XXL, XL, L, M, S y XS)"
+      );
+      /*
+      console.time();
+      if (x == "XXXL" || x == "XXL" || x == "XL") {
+        console.log("Extragrande");
+      } else if (x == "L") {
+        console.log("Grande");
+      } else if (x == "M") {
+        console.log("Mediana");
+      } else if (x == "S") {
+        console.log("Pequeña");
+      } else if (x == "XS") {
+        console.log("Extrapequeña");
+      }
+      console.timeEnd();
+      */
+      console.time();
+      switch (x != "undefined") {
+        case x == "XXXL" || x == "XXL" || x == "XL":
+          console.log("Extragrande");
+          break;
+        case x == "L":
+          console.log("Grande");
+          break;
+        case x == "M":
+          console.log("Mediana");
+          break;
+        case x == "S":
+          console.log("Pequeña");
+          break;
+        case x == "XS":
+          console.log("Extrapequeña");
+          break;
+        default:
+          console.log("Error");
+          break;
+      }
+      console.timeEnd();
+    </script>
+  </body>
+</html>

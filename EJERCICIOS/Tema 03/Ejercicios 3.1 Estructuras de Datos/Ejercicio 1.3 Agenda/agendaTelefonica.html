@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>AGENDA TELEFÓNICA</p>
+    <form>
+        <p>Contacto:<input type="text" id="contacto"></p>
+        <p>Telefono Movil:<input type="number" id="movil"></p>
+        <p>Telefono de Casa:<input type="number" id="casa"></p>
+        <p>Telefono del trabajo:<input type="number" id="trabajo"></p>
+        <p><input type="button" value="Agregar Contacto" onclick="crearContacto()"></p>
+        <p><input type="button" value="Ver contactos" onclick="verContactos()"></p>
+    </form>
+    <script>
+        let agenda = new Map();
+        function crearContacto() {
+            let movil = document.getElementById("movil").value;
+            let casa = document.getElementById("casa").value;
+            let trabajo = document.getElementById("trabajo").value;
+            agenda.set(document.getElementById("contacto").value, [movil, casa, trabajo]);
+        }
+
+        function verContactos() {
+            for (let [clave, valor] of agenda) {
+                console.log(`Contacto: ${clave}, numeros: ${valor}`);
+            }
+        }
+    </script>
+</body>
+
+</html>
