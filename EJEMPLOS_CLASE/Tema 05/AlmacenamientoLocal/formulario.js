@@ -41,3 +41,10 @@ if (localStorage.getItem("usuarios") === null) {
   localStorage.setItem("usuarios", JSON.stringify(["Juan", "Pedro", "Luis"]));
 } else {
 }*/
+
+localStorage.setItem("usuariox", JSON.stringify({
+  direccion: {
+    calle: "XXXXXXX",
+    localidad: "YYYYYY"
+  }
+}));
