@@ -1,3 +1,10 @@
+class Persona {
+  constructor(calle, localidad) {
+    this.calle = calle,
+      this.localidad = localidad
+  }
+}
+
 //Capturar controles del formulario
 //Eventos del formulario
 //let formulario = [txtBuscar, btnBuscar];
@@ -41,3 +48,20 @@ if (localStorage.getItem("usuarios") === null) {
   localStorage.setItem("usuarios", JSON.stringify(["Juan", "Pedro", "Luis"]));
 } else {
 }*/
+
+localStorage.setItem("usuarioX", JSON.stringify({
+  direccion: {
+    calle: "XXXXXXX",
+    localidad: "YYYYYY"
+  }
+}));
+
+localStorage.setItem("usuarioY", JSON.stringify(
+  new Persona("ZZZZZZZZZ", "Valladolid")
+));
+
+if (localStorage.getItem("usuarioY") !== null) {
+  let objetoUsuario = JSON.parse(localStorage.getItem("usuarioY"));
+  objetoUsuario.localidad = "Burgos";
+  localStorage.setItem("usuarioY", JSON.stringify(objetoUsuario));
+}
