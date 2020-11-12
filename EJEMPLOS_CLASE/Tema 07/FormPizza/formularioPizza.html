@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Pedido de pizza</h3>
+
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>La pizza</legend>
+
+                        <p>Ingredientes extra</p>
+                        <input type="checkbox" name="queso" /> <label>Queso</label><br />
+                        <input type="checkbox" name="pimiento" /> <label>Pimiento</label><br />
+                        <input type="checkbox" name="cebolla" /><label> Cebolla</label><br>
+                        <input type="checkbox" name="champiñones" /><label> Champiñones</label>
+
+                        <p>Tamaño</p>
+                        <input type="radio" name="tamano" /><label> Pequeña</label><br />
+                        <input type="radio" name="tamano" /><label> Mediana </label><br />
+                        <input type="radio" name="tamano" /><label>Grande</label>
+                    </fieldset>
+                </td>
+                <td valign="top">
+                    <fieldset>
+                        <legend>Tipos de pizza</legend>
+                        <select name="tipos" id="tipos" size="14" multiple>
+                            <option value="margarita">Margarita</option>
+                            <option value="barbacoa">Barbacoa</option>
+                            <option value="cuatro">Cuatro Estaciones</option>
+                            <option value="quesos">Cuatro quesos</option>
+                            <option value="carbonara">Carbonara</option>
+                        </select>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+
+        <fieldset>
+            <legend>Datos de entrega</legend>
+            <label>Nombre</label><input type="text" name="nombre" /><br />
+            <label>Dirección</label><input type="text" name="direccion" /><br />
+            <label>Teléfono</label><input type="text" name="telefono" /><br />
+            <label>Instrucciones especiales</label><br /><textarea cols="40" rows="15"></textarea>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Método de pago</legend>
+            <select>
+                <option>Efectivo</option>
+                <option>VISA</option>
+                <option>Bizum</option>
+            </select>
+        </fieldset>
+
+
+        <button type="submit" id="ok">PEDIDO</button>
+        <div id="resumen"></div>
+        <script src="formularioPizza.js"></script>
+
+    </form>
+</body>
+
+</html>
