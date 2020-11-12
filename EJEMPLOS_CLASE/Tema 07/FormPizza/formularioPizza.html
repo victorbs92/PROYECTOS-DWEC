@@ -18,10 +18,12 @@
                         <legend>La pizza</legend>
 
                         <p>Ingredientes extra</p>
-                        <input type="checkbox" name="queso" value="queso" /> <label>Queso</label><br />
-                        <input type="checkbox" name="pimiento" value="pimiento" /> <label>Pimiento</label><br />
-                        <input type="checkbox" name="cebolla" value="cebolla" /><label> Cebolla</label><br>
-                        <input type="checkbox" name="champiñones" value="champiñones" /><label> Champiñones</label>
+                        <input type="checkbox" id="queso" name="queso" value="queso" /> <label>Queso</label><br />
+                        <input type="checkbox" id="pimiento" name="pimiento" value="pimiento" />
+                        <label>Pimiento</label><br />
+                        <input type="checkbox" id="cebolla" name="cebolla" value="cebolla" /><label> Cebolla</label><br>
+                        <input type="checkbox" id="champiñones" name="champiñones" value="champiñones" /><label>
+                            Champiñones</label>
 
                         <p>Tamaño</p>
                         <input type="radio" name="tamano" value="pequeña" /><label> Pequeña</label><br />
@@ -46,24 +48,25 @@
 
         <fieldset>
             <legend>Datos de entrega</legend>
-            <label>Nombre</label><input type="text" name="nombre" /><br />
-            <label>Dirección</label><input type="text" name="direccion" /><br />
-            <label>Teléfono</label><input type="text" name="telefono" /><br />
+            <label>Nombre</label><input type="text" name="nombre" id="nombre" /><br />
+            <label>Dirección</label><input type="text" name="direccion" id="direccion" /><br />
+            <label>Teléfono</label><input type="text" name="telefono" id="telefono" /><br />
             <label>Instrucciones especiales</label><br /><textarea cols="40" rows="15"></textarea>
 
         </fieldset>
 
         <fieldset>
             <legend>Método de pago</legend>
-            <select>
-                <option>Efectivo</option>
-                <option>VISA</option>
-                <option>Bizum</option>
+            <select id="pago" name="pago">
+                <option value="0">---Seleccione una opcion---</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="visa">VISA</option>
+                <option value="bizum">Bizum</option>
             </select>
         </fieldset>
 
-
         <button type="submit" id="ok">PEDIDO</button>
+
         <div id="resumen"></div>
         <script src="formularioPizza.js"></script>
 
