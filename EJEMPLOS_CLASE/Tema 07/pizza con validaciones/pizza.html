@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h3>Pedido de pizza</h3>
+
+    <form action="destino.html" target="_blank">
+      <table>
+        <tr>
+          <td>
+            <fieldset>
+              <legend>La pizza</legend>
+
+              <p>Ingredientes extra</p>
+              <input type="checkbox" id="queso" name="queso" value="queso" />
+              <label>Queso</label><br />
+              <input
+                type="checkbox"
+                id="pimiento"
+                name="pimiento"
+                value="pimiento"
+              />
+              <label>Pimiento</label><br />
+              <input
+                type="checkbox"
+                id="cebolla"
+                name="cebolla"
+                value="cebolla"
+              /><label> Cebolla</label><br />
+              <input
+                type="checkbox"
+                name="champinones"
+                id="champinones"
+                value="champinones"
+              /><label> Champiñones</label>
+
+              <p>Tamaño</p>
+              <input type="radio" name="tamano" value="pequena" /><label>
+                Pequeña</label
+              ><br />
+              <input type="radio" name="tamano" value="mediana" /><label>
+                Mediana </label
+              ><br />
+              <input type="radio" name="tamano" value="grande" /><label
+                >Grande</label
+              >
+            </fieldset>
+          </td>
+          <td valign="top">
+            <fieldset>
+              <legend>Tipos de pizza</legend>
+              <select name="tipos" id="tipos" size="14" multiple>
+                <option value="0">---seleccione una opcion---</option>
+                <option value="margarita">Margarita</option>
+                <option value="barbacoa">Barbacoa</option>
+                <option value="cuatro">Cuatro Estaciones</option>
+                <option value="quesos">Cuatro quesos</option>
+                <option value="carbonara">Carbonara</option>
+              </select>
+            </fieldset>
+          </td>
+        </tr>
+      </table>
+
+      <fieldset>
+        <legend>Datos de entrega</legend>
+        <label>Nombre</label
+        ><input type="text" id="nombre" name="nombre" /><br />
+        <label>Dirección</label
+        ><input type="text" id="direccion" name="direccion" /><br />
+        <label>Teléfono</label
+        ><input
+          type="text"
+          id="telefono"
+          name="telefono"
+          required
+          pattern="^[0-9]{9}$"
+        /><br />
+        <!--
+          required funciona como siempre
+
+          el pattern contiene una expresion regular, la cual singifica que el contenido para ser valido debe tener el patron de 
+          \d numeros decimales lo mismo que el [0-9]
+          {numero} el numero de los mismos
+          es decir \d{9} o  [0-9] {9} quiere decir que el contenido debe seguir el patron de nueve numeros decimales  o de cero a nueve en el caso de
+          usar el rango en vez de la \d
+          tambien se pueden hacer patrones mas complejos que mezclen numeros simbolos, caracteres...
+        -->
+        <label>Instrucciones especiales</label><br /><textarea
+          id="instrucciones"
+          name="instrucciones"
+          cols="40"
+          rows="15"
+        ></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Método de pago</legend>
+        <select id="pago" name="pago">
+          <option value="0">---seleccione una opcion---</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="visa">VISA</option>
+          <option value="bizum">Bizum</option>
+        </select>
+      </fieldset>
+
+      <button type="submit" id="ok">PEDIDO</button>
+    </form>
+
+    <div>
+      <div id="resumen" style="float: left"></div>
+    </div>
+
+    <script src="formularioPizza.js"></script>
+  </body>
+</html>
