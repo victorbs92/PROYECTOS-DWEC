@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>Pedido de pizza</h3>
+  <div style="float: left">
+    <form target="_blank" action="envio.html">
+      <table>
+        <tr>
+          <td>
+            <fieldset>
+              <legend>La pizza</legend>
+
+              <p>Ingredientes extra</p>
+              <input type="checkbox" id="queso" name="queso" value="queso" />
+              <label>Queso</label><br />
+              <input type="checkbox" id="pimiento" name="pimiento" value="pimiento" />
+              <label>Pimiento</label><br />
+              <input type="checkbox" id="cebolla" name="cebolla" value="cebolla" /><label> Cebolla</label><br />
+              <input type="checkbox" id="champi" name="champi" value="champiñones" /><label> Champiñones</label>
+              <p>Tamaño</p>
+              <input type="radio" name="tamano" value="pequeña" />
+              <label>Pequeña</label><br />
+              <input type="radio" name="tamano" value="mediana" />
+              <label>Mediana </label><br />
+              <input type="radio" name="tamano" value="grande" checked />
+              <label>Grande</label>
+            </fieldset>
+          </td>
+          <td>
+            <fieldset>
+              <legend>Tipos de pizza</legend>
+              <select name="tipos" id="tipos" size="14" multiple required>
+                <option value="margarita">Margarita</option>
+                <option value="barbacoa">Barbacoa</option>
+                <option value="cuatro">Cuatro Estaciones</option>
+                <option value="quesos">Cuatro quesos</option>
+                <option value="carbonara">Carbonara</option>
+              </select>
+            </fieldset>
+          </td>
+        </tr>
+      </table>
+
+      <fieldset>
+        <legend>Datos de entrega</legend>
+        <label>Nombre</label><input type="text" name="nombre" id="nombre" required
+          pattern="(\s*[a-zA-ZñÑ]+\s*)+" /><br />
+        <label>Dirección</label><input type="text" name="direccion" id="direccion" required
+          pattern="(\s*[a-zA-ZñÑ]+\s*)+" /><br />
+        <label>Teléfono</label><input type="text" name="telefono" id="telefono" pattern="^\d{9}$" required /><br />
+        <label>Instrucciones especiales</label><br /><textarea cols="40" rows="15" name="instrucciones"
+          id="instrucciones"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Método de pago</legend>
+        <select id="pago" name="pago" required>
+          <option value="">---Seleccione una opcion---</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="visa">VISA</option>
+          <option value="bizum">Bizum</option>
+        </select>
+      </fieldset>
+
+      <button type="submit" id="ok">PEDIDO</button>
+    </form>
+  </div>
+  <div>
+    <div id="resumen" style="float: left"></div>
+  </div>
+
+  <script src="formularioPizzaRefact.js"></script>
+</body>
+
+</html>
