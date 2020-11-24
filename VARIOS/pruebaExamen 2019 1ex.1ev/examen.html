@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input id=nombre type="text" name="nombre" required><label>nombre</label>
+        <input id=apellido1 type="text" name="apellido1" required><label>apellido1</label>
+        <input id=apellido2 type="text" name="apellido2" required><label>apellido2</label>
+        <input id=fechaNac type="date" name="fechaNac" required><label>fecha nacimiento:</label>
+        <input id=curso type="text" name="curso" required><label>curso</label>
+
+        <input id=btn type="button" name="btn" value="Agregar alumno">
+        <input id=btnBaja type="button" name="btnBaja" value="Baja alumno">
+        <input id=btnMostrar type="button" name="btnMostrar" value="Mostrar alumnos">
+
+        <p>
+
+        </p>
+
+    </form>
+    <script>
+        //SE RECOGEN TODOS LOS VALORES DEL FORMULARIO
+        let nombreForm = document.getElementById("nombre");
+        let apellido1Form = document.getElementById("apellido1");
+        let apellido2Form = document.getElementById("apellido2");
+        let fechaNacForm = document.getElementById("fechaNac");
+        let cursoForm = document.getElementById("curso");
+        let btn = document.getElementById("btn");
+        let btnBaja = document.getElementById("btnBaja");
+        let btnMostrar = document.getElementById("btnMostrar");
+        let parrafo = document.querySelector("p");
+
+        let alumnos = []; //CREAMOS EL ARRAY DE ALUMNOS
+
+        btn.onclick = agregar; //AGREGAMOS EL ONCLICK AL BOTON PARA QUE CADA VEZ QUE SE PULSE LLAME A LA FUNCION AGREGAR
+        btnBaja.onclick = baja; //AGREGAMOS EL ONCLICK AL BOTON PARA QUE CADA VEZ QUE SE PULSE LLAME A LA FUNCION BAJA
+        btnMostrar.onclick = listar;
+
+        function agregar() {
+
+            let mensajeError = "";
+
+            if (!validar()) { //SI LA FUNCION VALIDAR DEVUELVE FALSE IMPRIMIMOS EL ALERT CON LOS ERRORES
+                alert(mensajeError);
+
+            } else { // SI LA FUNCION VALIDAR DEVUELVE TRUE
+
+                //CREA UN ALUMNO CON LOS VALORES DEL FORMULARIO
+                let alumno = {
+                    nombre: nombreForm.value,
+                    apellido1: apellido1Form.value,
+                    apellido2: apellido2Form.value,
+                    fechaNac: fechaNacForm.value,
+                    curso: cursoForm.value.toUpperCase(),
+                    matricula: obtenerMatricula() //EL VALOR DE LA MATRICULA SE OBTIENE DE LA FUNCION OBTENERMATRICULA
+                }
+
+                function obtenerMatricula() {
+                    let fecha = fechaNacForm.value.split("-");
+                    let matricula = "";
+                    matricula += nombreForm.value[0];
+                    matricula += apellido1Form.value[0];
+                    matricula += apellido2Form.value[0];
+                    matricula += fecha[2];
+                    matricula += fecha[1];
+                    matricula += fecha[0];
+                    return matricula;
+                }
+
+                alumnos.push(alumno); //AÑADE EL ALUMNO AL ARRAY DE ALUMNOS
+
+                resetDatos(); //LLAMA A LA FUNCION QUE RESETEA TODOS LOS DATOS
+
+                function resetDatos() {
+                    nombreForm.value = "";
+                    apellido1Form.value = "";
+                    apellido2Form.value = "";
+                    fechaNacForm.value = "";
+                    cursoForm.value = "";
+                }
+
+                console.table(alumnos); //MOSTRAMOS LOS DATOS EN LA CONSOLA
+            }
+
+            function validar() {
+                let flag = true;
+                let reFecha = /^\d{4}-\d{1,2}-\d{1,2}/;
+                let reCurso = /^DAW[1-2]$/i;
+
+                if (nombreForm.value == "" || apellido1Form.value == "" || apellido2Form.value == "" || fechaNacForm
+                    .value == "") {
+                    flag = false;
+                    mensajeError += "-Alguno de los campos esta en blanco \n";
+                }
+
+                if (!reFecha.test(fechaNacForm.value)) {
+                    flag = false;
+                    mensajeError += "-La fecha no tiene un formato válido \n";
+                }
+
+                if (!reCurso.test(cursoForm.value)) {
+                    flag = false;
+                    mensajeError += "-El Curso tiene que ser una de estas opciones (DAW1, DAW2, daw1, daw2) \n";
+                }
+
+                return flag;
+            }
+
+        }
+
+        function baja() {
+            let entrada = prompt("Introduce un Nº de matricula");
+            let indice = alumnos.findIndex(alumno => alumno.matricula == entrada);
+            if (indice != -1) {
+                alumnos.splice(indice, 1);
+                console.table(alumnos); //MOSTRAMOS LOS DATOS EN LA CONSOLA
+            } else {
+                alert("ERROR")
+            }
+        }
+
+        function listar() {
+            let cadena = " <table border='2'>";
+            for (let i = 0; i < alumnos.length; i++) {
+                cadena += "<tr>" +
+                    "<td>" + `${alumnos[i].nombre}` + "</td>" +
+                    "<td>" + `${alumnos[i].apellido1}` + "</td>" +
+                    "<td>" + `${alumnos[i].apellido2}` + "</td>" +
+                    "<td>" + `${alumnos[i].curso}` + "</td>" +
+                    "<td>" + `${alumnos[i].matricula}` + "</td>" +
+                    "</tr>";
+
+            }
+            cadena += "</table>";
+            parrafo.innerHTML = cadena;
+        }
+    </script>
+</body>
+
+</html>
