@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedido de pizza</title>
+  </head>
+
+  <body>
+    <h3>Pedido de pizza</h3>
+
+    <main>
+      <form action="destino.html" target="_blank">
+        <table>
+          <tr>
+            <td>
+              <fieldset>
+                <legend>La pizza</legend>
+
+                <p>Ingredientes extra</p>
+                <input type="checkbox" name="queso" id="queso" value="queso" />
+                <label>Queso</label><br />
+                <input type="checkbox" name="pimiento" id="pimiento" value="pimiento" />
+                <label>Pimiento</label><br />
+                <input type="checkbox" name="cebolla" id="cebolla" value="cebolla" />
+                <label> Cebolla</label><br />
+                <input type="checkbox" name="champiñones" id="champiñones" value="champiñones" />
+
+                <label> Champiñones</label>
+                <p>Tamaño</p>
+                <input type="radio" name="tamano" value="pequeña" required /><label>Pequeña</label><br />
+                <input type="radio" name="tamano" value="mediana" required /><label>Mediana</label><br />
+                <input type="radio" name="tamano" value="grande" required /><label>Grande</label>
+              </fieldset>
+            </td>
+            <td>
+              <fieldset>
+                <legend>Tipos de pizza</legend>
+                <select name="tipos" id="tipos" size="14" multiple required>
+                  <option value="0">--Seleccione una opción--</option>
+                  <option value="margarita">Margarita</option>
+                  <option value="barbacoa">Barbacoa</option>
+                  <option value="cuatro">Cuatro Estaciones</option>
+                  <option value="quesos">Cuatro quesos</option>
+                  <option value="carbonara">Carbonara</option>
+                </select>
+              </fieldset>
+            </td>
+          </tr>
+        </table>
+
+        <fieldset>
+          <legend>Datos de entrega</legend>
+          <label>Nombre</label>
+          <input type="text" name="nombre" id="nombre" pattern="^([A-Z]?[a-z]+ ?)+$"required /><br />
+          <label>Dirección</label>
+          <input type="text" name="direccion" id="direccion" pattern="^[\w/ºª]+$" required /><br />
+          <label>Teléfono</label>
+          <input type="text" name="telefono" id="telefono" pattern="^\d{9}$" required /><br />
+          <label>Instrucciones especiales</label><br />
+          <textarea name="instrucciones" id="instrucciones" cols="40" rows="15"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Método de pago</legend>
+          <select name="forma-pago" id="forma-pago">
+            <option value="0">--Seleccione una opción--</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="VISA">VISA</option>
+            <option value="bizum">Bizum</option>
+          </select>
+        </fieldset>
+
+        <button type="submit" id="ok">PEDIDO</button>
+      </form>
+      <div id="resumen"></div>
+    </main>
+
+    <script src="./scripts/validacion.js"></script>
+  </body>
+</html>
