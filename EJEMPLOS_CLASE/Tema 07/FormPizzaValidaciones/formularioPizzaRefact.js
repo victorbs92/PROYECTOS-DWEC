@@ -1,6 +1,12 @@
 //importar si es un modulo
 //Declaración de funciones
-function resumen({ ingredientes, tipos, tamanno, entrega, pago }) {
+function resumen({
+  ingredientes,
+  tipos,
+  tamanno,
+  entrega,
+  pago
+}) {
   let strPedido = "";
   strPedido += capturaIngredientes(ingredientes);
   //recoger tipos
@@ -82,10 +88,16 @@ function validarControl(control, validacion, mensaje) {
 
 //Función de Validación
 
-function validacion({ ingredientes, tipos, tamanno, entrega, pago }) {
+function validacion({
+  ingredientes,
+  tipos,
+  tamanno,
+  entrega,
+  pago
+}) {
   let objValidacion = {
     strErrores: "", //devuelve los mensajes de error que se mostrarán en caso de validación incorrecta
-    valido: true    //devuelve si la validación es correcta-true o incorrecta-false
+    valido: true //devuelve si la validación es correcta-true o incorrecta-false
   }
   let [nombre, direccion, telefono] = Object.values(entrega) //desestrutura el objeto entrega en tres variables, las instrucciones no las carga
 
@@ -104,10 +116,13 @@ function validarEnviar() {
 
   const objValidacion = validacion(pedido) //Se obtiene el estado de validación y los mensajes de error
   const mensajes = document.getElementById("resumen");
+  console.log(pedido);
   if (objValidacion.valido) {
     mensajes.innerHTML = resumen(pedido);
     this.form.submit()
     this.form.reset();
+
+
   } else {
     mensajes.innerHTML = objValidacion.strErrores;
   }
@@ -135,8 +150,9 @@ const pedido = {
   pago: document.getElementById("pago")
 }
 
+
+
 //Tratamientos globales
 
 //Eventos
 document.getElementById("ok").addEventListener("click", validarEnviar);
-
