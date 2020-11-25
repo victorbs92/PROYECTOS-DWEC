@@ -1,28 +1,24 @@
-/** Ejercicio 2
- * Al desplazarnos con el puntero del ratón por encima de la lista,
- * el color de las letras de los items cambiará.
- *
- * Al entrar estilo A al salir estilo B. Al cargarse la página el
- * estilo predeterminado de la letra de los items será el B.
- *
- * Utilizar la delegación de eventos para realizar el ejercicio.
- */
-const lista = document.querySelector("ul");
+//capturar elementos del html
+let [ul] = document.getElementsByTagName("ul");
 
-function coloreaLi({ type, target }) {
-  if (target.tagName === "A") {
-    switch (type) {
-      case "mouseover": {
-        target.classList.replace("B", "A");
-        break;
-      }
-      case "mouseout": {
-        target.classList.replace("A", "B");
-        break;
-      }
-    }
+
+//eventos
+
+//cuando puerde el foco
+ul.addEventListener("mouseout", eventType);
+//cuando tiene el foco
+ul.addEventListener("mouseover", eventType);
+
+
+//funcion
+function eventType(event) {
+  switch (event.type) {
+    case "mouseout":
+      event.target.style.color = "green";
+      break;
+    case "mouseover":
+      event.target.style.color = "blue";
+      break;
+
   }
 }
-
-lista.addEventListener("mouseover", coloreaLi);
-lista.addEventListener("mouseout", coloreaLi);

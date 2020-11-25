@@ -1,27 +1,44 @@
-/** Ejercicio 3
- * Variante del anterior.
- * Al hacer click sobre un elemento de la lista, se aplicará el estilo A.
- * Para desplazarnos por los elementos de la lista, utilizar las teclas flecha arriba y abajo.
- */
-const lista = document.querySelector("ul");
+ //capturar elementos del html
+ let [lista] = document.getElementsByTagName("ul");
+ let li = document.getElementsByTagName("li");
+ //variables
+ let posicion = 0;
 
-lista.addEventListener("click", function ({ target }) {
-  target.classList.replace("B", "A");
-  const nHijos = this.children.length;
-  let index = [...this.children].indexOf(target.parentElement);
+ //metodos
+ let clickLista = function (evento) {
+     if (evento.target.tagName === "A") {
+         evento.target.style.color = "red";
+     }
+ };
+ let recorerLista = function (evento) {
+     switch (evento.keyCode) {
+         //si sube
+         case 38:
+             if (posicion === 0) {
+                 li[posicion].focus();
+             } else {
+                 posicion--;
+                 li[posicion].focus();
+             }
+             break;
+             //si baja
+         case 40:
+             if (posicion === li.length - 1) {
+                 li[posicion.length - 1].focus();
+             } else {
+                 posicion++;
+                 li[posicion].focus();
+             }
 
-  this.addEventListener("keydown", function ({ keyCode }) {
-    this.children[index].children[0].classList.replace("A", "B");
+             break;
 
-    switch (keyCode) {
-      case 38:
-        index = index <= 0 ? nHijos - 1 : --index;
-        break;
-      case 40:
-        index = (index + 1) % nHijos;
-        break;
-    }
+     }
 
-    this.children[index].children[0].classList.replace("B", "A");
-  });
-});
+ }
+
+ //capturar los controladores
+ lista.addEventListener("click", clickLista);
+ document.addEventListener("keydown", recorerLista);
+ window.addEventListener("load", function () {
+     li[0].focus();
+ });
