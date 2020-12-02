@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 300px;
+        width: 300px;
+        overflow: auto;
+        border-width: 2;
+        border-style: solid;
+      }
+
+      td {
+        border-style: solid;
+        border-width: 2px;
+        padding: 4px;
+        color: yellow;
+        background-color: red;
+      }
+
+      table {
+        border-style: solid;
+        border-width: 2px;
+        padding: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="mytab">
+      <tr>
+        <td>boton1</td>
+      </tr>
+      <tr>
+        <td>boton2</td>
+      </tr>
+      <tr>
+        <td>boton3</td>
+      </tr>
+    </table>
+    <script>
+      //EJERCICIO DE EJEMPLO PARA HACER EN CLASE SOBRE EVENTOS DE RATON
+      //PRIMERO SE MUESTRA EL USO DE EVENTOS SEMANTICOS SIMULANDO BOTONES CON CELDAS DE UNA TABLA
+      //PROBAR LA DIFERENCIA ENTRE MOUSEENTER(NO BUBBLE), MOUSEMOVE (SE QUEDA EN LA TABLA NO PASA A LA CELDA) Y MOUSEOVER
+      //CON LISTENERS
+      //DELEGACIÓN DE EVENTOS, PROPIEDADES DE OBJETO EVENT
+      let [boton1, boton2, boton3] = document.getElementsByTagName("td");
+      let [tabla] = document.getElementsByTagName("table");
+      // let tabla = document.getElementById("mytab");
+      tabla.addEventListener("mouseover", delegacion);
+      tabla.addEventListener("mousedown", delegacion);
+      tabla.addEventListener("mouseout", delegacion);
+      tabla.addEventListener("mouseup", delegacion);
+
+      function delegacion(evento) {
+        // debugger;
+        //console.log(this.tagName);
+        if (evento.target.tagName === "TD") {
+          //debugger;
+          switch (evento.type) {
+            case "mouseout":
+            case "mouseup":
+              evento.target.style.color = "yellow";
+              evento.target.style.background = "red";
+              break;
+            case "mousedown":
+              evento.target.style.background = "black";
+              break;
+            case "mouseover":
+              evento.target.style.color = "red";
+              evento.target.style.background = "yellow";
+              break;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

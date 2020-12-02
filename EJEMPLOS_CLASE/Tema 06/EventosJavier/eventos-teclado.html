@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        border-style: solid;
+        padding: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <script>
+      //EVENTOS DE TECLADO PARA HACER EN CLASE
+      //CAJA QUE SE MUEVE ANTE PULSACIONES DE LAS TECLAS FLECHA
+      //TECLAS CON CARACTER VISIBLE (KEY O KEYCODE) O INVISIBLE(FLECHAS)--> NO KEY (NO SE VE) USAR KEYCODE
+      //KEYPRESS NO ESCUCHA LAS TECLAS FLECHA,TAB,SHIFT,CTRL,ENTER, KEYDOWN SI
+      let caja = document.querySelector("div");
+      caja.innerHTML = `${caja.offsetLeft},${caja.offsetTop}`;
+      document.addEventListener("keydown", function (evento) {
+        let x = caja.offsetLeft;
+        let y = caja.offsetTop;
+        switch (evento.keyCode) {
+          case 37:
+            x -= 5;
+            break;
+          case 38:
+            y -= 5;
+            break;
+          case 39:
+            x += 5;
+            break;
+          case 40:
+            y += 5;
+            break;
+
+          default:
+            break;
+        }
+        mover(caja, x, y);
+      });
+
+      function mover(elemento, l, t) {
+        elemento.style.left = `${l}px`;
+        elemento.style.top = `${t}px`;
+        elemento.innerHTML = `${l},${t}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title><script>
+        window.onload=function(){
+        var mibola=document.getElementById("bola");
+        var micapa=document.getElementById("capa");
+        micapa.style.width=mibola.width;
+        micapa.style.height=mibola.height;
+        document.onkeydown=function(ev){
+            switch (ev.keyCode) {
+                case 37:
+                     izda=parseInt(micapa.style.left.slice(0,-2));
+                     micapa.style.left=izda-10+"px";
+                    break;
+                case 38:
+                     arriba=parseInt(micapa.style.top.slice(0,-2));
+                     micapa.style.top=arriba-10+"px";
+                    break;
+                case 39:
+                     arriba=parseInt(micapa.style.left.slice(0,-2));
+                     micapa.style.left=arriba+10+"px";
+                    break;
+                case 40:
+                     arriba=parseInt(micapa.style.top.slice(0,-2));
+                     micapa.style.top=arriba+10+"px";
+                    break;
+               
+                default:
+                    break;
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="capa" style="position:absolute;left:100px;top:200px"><img id="bola" src="bolarosa2.png"></div>
+</body>
+</html>
