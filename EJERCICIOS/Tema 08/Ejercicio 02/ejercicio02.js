@@ -1,4 +1,3 @@
-
 tabla = document.querySelector("table");
 
 tabla.addEventListener("click",  function (event) {
@@ -17,9 +16,9 @@ tabla.addEventListener("click",  function (event) {
 function resetearDiana(tabla) {
     
     let celdas = tabla.querySelectorAll("td");
-    for (let index = 0; index < celdas.length; index++) {
-        
-        celdas[index].style.backgroundColor = "white"; 
-    }
-    
+   
+    celdas.forEach(element => {
+        element.style.backgroundColor = "white"; 
+    });
+  
 }
