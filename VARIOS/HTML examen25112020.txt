@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 25 de Noviembre de 2020</title>
+    <style>
+        fieldset {
+            float: left
+        }
+
+        label {
+            display: block;
+            margin-top: 3px;
+        }
+
+        input[type=text] {
+            width: 300px;
+        }
+
+        button {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <form id="CV">
+        <fieldset id="fs1">
+            <legend>DATOS PERSONALES</legend>
+            <label for="iden">Nombre y Apellidos</label>
+            <input type="text" id="iden">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion">
+            <label for="fechanac">Fecha de nacimiento</label>
+            <input type="date" id="fechanac">
+            <label for="correo">Email</label>
+            <input type="email" id="correo">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono">
+            <button type="button" id="btnPersonal">Agregar datos</button>
+        </fieldset>
+        <fieldset id="fs2" disabled>
+            <legend>FORMACIÓN ACADÉMICA</legend>
+            <label for="fechatit">Fecha de titulación</label>
+            <input type="date" id="fechatit">
+            <label for="titulo">Titulación</label>
+            <select id="titulo">
+                <option value="">--Seleccione una titulación--</option>
+                <option value="Licenciado">Licenciado</option>
+                <option value="Ingeniero">Ingeniero</option>
+                <option value="Grado">Grado</option>
+                <option value="TecnicoSuperior">Técnico Superior</option>
+                <option value="Tecnico">Técnico</option>
+                <option value="Bachiller">Bachiller</option>
+                <option value="ESO">ESO</option>
+            </select>
+            <select id="estudios">
+                <option value="">--seleccione sus estudios--</option>
+            </select>
+            <label for="lugar">Entidad Académica</label>
+            <input type="text" id="lugar">
+            <button type="button" id="btnEstudios">Agregar estudios</button>
+        </fieldset>
+        <fieldset id="fs3" disabled>
+            <legend>CURSOS</legend>
+            <label for="fechacurso">Fecha de curso</label>
+            <input type="date" id="fechacurso">
+            <label for="curso">Denominación del curso</label>
+            <input type="text" id="curso">
+            <label for="horas">Horas</label>
+            <input type="number" id="horas">
+            <button type="button" id="btnCursos">Agregar curso</button>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
