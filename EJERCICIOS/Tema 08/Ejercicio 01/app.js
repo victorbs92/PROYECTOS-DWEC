@@ -35,7 +35,7 @@ function recorrerNodo(nodo) {
         if (nodo.hasAttributes()) {
 
             for (const iterator of nodo.attributes) {
-                console.log(iterator.nodeName + " = " + iterator.nodeValue);
+                console.log(iterator.name + " = " + iterator.value);
 
             }
 
