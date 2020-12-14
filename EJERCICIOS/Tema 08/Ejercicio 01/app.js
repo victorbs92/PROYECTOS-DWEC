@@ -24,13 +24,13 @@ recorrerNodo(document.body)
 
 function recorrerNodo(nodo) {
 
-    if (nodo.nodeType == 3) {
+    if (nodo.nodeType === 3) {
         console.log(nodo.nodeValue);
 
     }
 
-    if (nodo.nodeType == 1) {
-        console.log(nodo.nodeName);
+    if (nodo.nodeType === 1) {
+        console.log(nodo.nodeName);//nodeName equivalente a tagName
 
         if (nodo.hasAttributes()) {
 
