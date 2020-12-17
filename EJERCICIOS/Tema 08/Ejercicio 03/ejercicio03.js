@@ -31,6 +31,8 @@ document.addEventListener("keydown", function (event) { //ArrowUp -- ArrowDown
     lista.children[indice].textContent = arriba;
     lista.children[indice - 1].textContent = seleccionado;
     indice--;
+    reset(lista);
+    pintar(lista.children[indice])
     lista.children[indice].style.background = "blue";
     lista.children[indice].style.color = "white";
     lista.children[indice + 1].style = "";
@@ -41,9 +43,8 @@ document.addEventListener("keydown", function (event) { //ArrowUp -- ArrowDown
     lista.children[indice].textContent = abajo;
     lista.children[indice + 1].textContent = seleccionado;
     indice++;
-    lista.children[indice].style.background = "blue";
-    lista.children[indice].style.color = "white";
-    lista.children[indice - 1].style = "";
+    reset(lista);
+    pintar(lista.children[indice]);
 
   } else if (event.key === "r") { //borrar elemento seleccionado de la lista
     borrarElemento(lista.children[indice]);
