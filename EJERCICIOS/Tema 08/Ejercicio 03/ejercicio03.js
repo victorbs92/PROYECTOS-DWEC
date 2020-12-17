@@ -36,9 +36,9 @@ document.addEventListener("keydown", function (event) { //ArrowUp -- ArrowDown
     lista.children[indice + 1].style = "";
 
   } else if (event.key === "ArrowDown" && indice < lista.children.length - 1) { //bajar una posicion
-    let bajae = lista.children[indice + 1].textContent;
+    let abajo = lista.children[indice + 1].textContent;
     let seleccionado = lista.children[indice].textContent;
-    lista.children[indice].textContent = bajae;
+    lista.children[indice].textContent = abajo;
     lista.children[indice + 1].textContent = seleccionado;
     indice++;
     lista.children[indice].style.background = "blue";
