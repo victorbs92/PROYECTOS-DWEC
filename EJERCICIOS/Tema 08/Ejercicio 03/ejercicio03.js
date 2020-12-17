@@ -1,15 +1,11 @@
 let indice; //se declara la variable como global para poder usarla en distintos metodos
-
 let lista = document.querySelector("ul"); //guarda el elemento ul en una variable
-
 let boton = document.getElementById("boton");
 
 document.addEventListener("click", function (event) {
 
   if (event.target.nodeName === "LI") { //si pinchamos en un elemento LI
-
     reset(lista);
-
     pintar(event.target);
 
     //se guarda aqui el indice del elemento al que pinchamos (que sera el que tenga el target)
@@ -18,46 +14,50 @@ document.addEventListener("click", function (event) {
     indice = [...event.target.parentNode.children].indexOf(event.target);
 
   } else { //si pinchamos en cualquier sitio que no sea un LI
-
-    indice = 0;
-
+    indice = undefined;
     reset(lista);
-
   }
 
   if (event.target === boton) { //si pulsamos el boton
-    console.log("AAAAAAAA");
+    agregarElemento(lista);
   }
-
 });
 
 document.addEventListener("keydown", function (event) { //ArrowUp -- ArrowDown
 
-  //let seleccionado = lista.children[indice].textContent;
-
   if (event.key === "ArrowUp" && indice > 0) { //subir una posicion
+    let arriba = lista.children[indice - 1].textContent;
+    let seleccionado = lista.children[indice].textContent;
+    lista.children[indice].textContent = arriba;
+    lista.children[indice - 1].textContent = seleccionado;
     indice--;
-    console.log(indice);
+    lista.children[indice].style.background = "blue";
+    lista.children[indice].style.color = "white";
+    lista.children[indice + 1].style = "";
 
   } else if (event.key === "ArrowDown" && indice < lista.children.length - 1) { //bajar una posicion
+    let bajae = lista.children[indice + 1].textContent;
+    let seleccionado = lista.children[indice].textContent;
+    lista.children[indice].textContent = bajae;
+    lista.children[indice + 1].textContent = seleccionado;
     indice++;
-    console.log(indice);
+    lista.children[indice].style.background = "blue";
+    lista.children[indice].style.color = "white";
+    lista.children[indice - 1].style = "";
 
   } else if (event.key === "r") { //borrar elemento seleccionado de la lista
-    console.log("BBBBBBBBBBB");
+    borrarElemento(lista.children[indice]);
   }
 
 });
 
 function reset(lista) {
-
   let elementosLista = lista.querySelectorAll("LI");
 
   elementosLista.forEach(element => {
     element.style.backgroundColor = "white";
     element.style.color = "black";
   });
-
 }
 
 function pintar(element) {
@@ -65,37 +65,14 @@ function pintar(element) {
   element.style.color = "white";
 }
 
+function agregarElemento(lista) {
+  let nodoLI = document.createElement("LI"); //creamos el nodo element LI
+  lista.appendChild(nodoLI); //lo añadimos al final de la lista
+  let texto = document.getElementById("e").value; //obtenemos el valor del input Text
+  let nodoText = document.createTextNode(texto); //creamos el nodo texto
+  nodoLI.appendChild(nodoText) //lo añadimos dentro del nodo LI anterior
+}
 
-
-
-
-
-
-
-
-function ascensor(ev) {
-  console.log(ev.keyCode);
-  if (ev.keyCode == "40") {
-    if (indice < 3) {
-      let bajae = lista.children[indice + 1].textContent;
-      let seleccionado = lista.children[indice].textContent;
-      lista.children[indice].textContent = bajae;
-      lista.children[indice + 1].textContent = seleccionado;
-      indice = indice + 1;
-      lista.children[indice].style.background = "blue";
-      lista.children[indice].style.color = "white";
-      lista.children[indice - 1].style = "";
-    }
-  } else if (ev.keyCode == "38") {
-    if (indice != 0) {
-      let arribae = lista.children[indice - 1].textContent;
-      let seleccionado = lista.children[indice].textContent;
-      lista.children[indice].textContent = arribae;
-      lista.children[indice - 1].textContent = seleccionado;
-      indice = indice - 1;
-      lista.children[indice].style.background = "blue";
-      lista.children[indice].style.color = "white";
-      lista.children[indice + 1].style = "";
-    }
-  }
+function borrarElemento(element) {
+  element.remove();
 }
