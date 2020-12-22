@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORNEO DE LOS 011 MAGOS</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+        //PARTE 1  =  1477701225000000
+        let x = 1;
+
+        for (let i = 100; i <= 200; i++) {
+
+            if (i % 3 == 0 && i % 5 == 0) {
+                x *= i;
+            }
+
+        }
+        console.log(x);
+        */
+        /*
+        //PARTE 2  =  3674995
+        let y = [1];
+        let iterador = 2;
+        let cont = 0;
+
+        do {
+
+            cont = 0;
+
+            for (let i = 1; i <= iterador; i++) {
+
+                if (iterador % i === 0) {
+
+                    cont++;
+
+                }
+
+                if (cont >= 3) {
+
+                    break;
+
+                }
+
+            }
+
+            if (cont === 2) {
+
+                y.push(iterador);
+
+            }
+
+            iterador++;
+
+        } while (y.length < 1000);
+        
+        let resultado = 0;
+
+        for (let i = 0; i < y.length; i++) {
+
+            resultado += y[i];
+
+        }
+
+        console.log(resultado);
+        */
+
+        //PARTE 3  =  base => 1061  exponente => 6  resultado => 1426567426713180400
+        let cont = 0;
+        let base = 1;
+
+        for (let i = 2; i < 100; i++) {
+
+            for (let j = 1; j <= i; j++) {
+
+                if (i % j === 0) {
+
+                    cont++;
+
+                }
+
+                if (cont >= 3) {
+
+                    break;
+
+                }
+
+            }
+
+            if (cont === 2) {
+
+                base += i;
+
+            }
+
+            cont = 0;
+
+        }
+
+        //console.log(base);  
+
+        let exponente = 0;
+
+        for (let k = 1; k <= 1322382; k++) {
+
+            if (1322382 % k === 0 && 739878 % k === 0) {
+                
+                exponente = k;
+
+            }
+
+        }
+
+        //console.log(exponente);
+
+        let resultado = base ** exponente;
+
+        console.log(resultado);
+       
+    </script>
+
+</body>
+
+</html>
