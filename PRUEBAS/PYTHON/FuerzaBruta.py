@@ -36,192 +36,153 @@ matriz = [[0, 14, 46, 15, 42, 2, 34, 43, 9, 1, 5, 24, 34, 42, 2],
           [42, 50, 19, 40, 44, 1, 30, 0, 46, 12, 27, 40, 0, 0, 32],
           [2, 49, 33, 42, 31, 34, 21, 14, 38, 32, 46, 3, 5, 32, 0]]
 
-# PROCESO EXPLICADO PARA 4 CIUDADES, EMPEZAR POR LA CIUDAD 0 E IR AVANZANDO -> EXTRAPOLAR PARA APLICARLO CON 2 HILOS
 
-# OBTENER LA SUMA DE LA DISTANCIAS ENTRE CIUDADES EMPEZANDO POR LA 0 Y AVANZANDO DE MANERA ORDENADA Y VOLVER A LA PRIMERA (0, 1, 2, 3, 0)
+ciudades = ["a", "b", "c", "d", "e"] # original
+ciudadesAlgoritmo = [[]]
+ciudadesAlgoritConInversos = []
 
-# GUARDAR EL VALOR DE LA SEGUNDA CIUDAD (EN ESTE CASO: 1)
-
-# PERMUTAR LAS CIUDADES DE LA SIGUIENTE FORMA:
-
-# EN CADA ITERACION DEL BUCLE LA 2ª CIUDAD PASARÁ A SER LA PENULTIMA DESPLAZANDO A TODAS LAS DEMAS CIUDADES HACIA LA IZQUIERDA (0, 2, 3, 1, 0)
-# CON ESTA PERMUTACION SIMPLE CONSEGUIMOS EVITAR LAS RUTAS INVERSAS DE LAS QUE YA TENDRIAMOS RESULTADOS, OPTIMIZANDO EL PROGRAMA
-
-# CON UN IF AL PRINCIPIO DEL BUCLE COMPROBAMOS QUE EN LA ITERACION ACTUAL LA 2ª CIUDAD NO SEA LA MISMA QUE LA QUE APUNTAMOS ANTERIORMETE
-# EN CASO DE QUE LO SEA, PASAREMOS A MODIFICAR LA CIUDAD DE INICIO POR LA SIGUIENTE (EN ESTE CASO: 1) Y PONIENDO LA CIUDAD INICIAL ANTERIOR EN
-# PENULTIMA POSICIÓN (1, 2, 3, 0, 1) Y REPETIR EL PROCESO DE MEDICION DE DISTANCIAS
-# (0, 1, 2, 3, 0) - (1, 2, 3, 0, 1) - (2, 3, 0, 1, 2) - (3, 0, 1, 2, 3)
-
-# ¡¡¡¡EN EL CASO DE QUERER REALIZAR ESTE ALGORITMO CON 2 HILOS DE EJECUCIÓN, UNO QUE EMPIECE POR LA PRIMERA CIUDAD Y OTRO QUE EMPIECE POR LA ÚLTIMA!!!:
-# ***TAMBIÉN PODRÍA REALIZARSE CON UN HILO ACCEDIENDO A LAS CIUDADES INICALES PARES Y OTRO A LAS IMPARES... O LO QUE SE QUIERA***
-
-# SE CREARAN LOS 2 HILOS DE EJECUCION Y EL PRIMERO REALIZARÁ TODAS LAS INSTRUCCIONES ANTERIORES Y EL SEGUNDO HARÁ LO MISMO PERO EMPEZANDO POR LA ÚLTIMA
-# CIUDAD DISPONIBLE E IRÁ BAJANDO DE CIUDAD CUANDO COMPLETE TODAS LAS PERMUTACIONES
-
-#
-
-ciudades = ["a", "b", "c", "d", "e"]
-auxiliar = [[]]
-auxiliar2 = []
-
-auxiliar[0] = ciudades[:]
+ciudadesAlgoritmo[0] = ciudades[:]
 
 contador1 = 0
-contador2 = 0
-contador3 = 0
-#print(ciudades)
+
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
+#1>2 
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+ciudadesAlgoritmo.append(ciudades[:])
+
+#4 veces 
+for i in range(len(ciudades) - 1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    ciudadesAlgoritmo.append(ciudades[:])
+
+#1>2 
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+ciudadesAlgoritmo.append(ciudades[:])
+
+#4 veces 
+for i in range(len(ciudades) - 1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    ciudadesAlgoritmo.append(ciudades[:])
+
+#1>2 
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+ciudadesAlgoritmo.append(ciudades[:])
+
+#4 veces 
+for i in range(len(ciudades) - 1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
+#1>3 
+ciudades.insert(3, ciudades[0])
+ciudades.pop(0)
+ciudadesAlgoritmo.append(ciudades[:])
+
+#4 veces 
+for i in range(len(ciudades) - 1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
 #1>2
 ciudades.insert(2, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #1>2
-ciudades.insert(2, ciudades[0])
-ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
-#4 veces
-for i in range(len(ciudades) - 1):
-    ciudades.append(ciudades[0])
-    ciudades.pop(0)
-    auxiliar.append(ciudades[:])
+    ciudadesAlgoritmo.append(ciudades[:])
 
 #1>2
 ciudades.insert(2, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
-#1>3
-ciudades.insert(3, ciudades[0])
-ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#4 veces
-for i in range(len(ciudades) - 1):
-    ciudades.append(ciudades[0])
-    ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
+    ciudadesAlgoritmo.append(ciudades[:])
+
 #1>2
 ciudades.insert(2, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #1>2
-ciudades.insert(2, ciudades[0])
-ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
-#4 veces
-for i in range(len(ciudades) - 1):
-    ciudades.append(ciudades[0])
-    ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #1>2
-ciudades.insert(2, ciudades[0])
-ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#4 veces
-for i in range(len(ciudades) - 1):
-    ciudades.append(ciudades[0])
-    ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
 #1>4
 ciudades.insert(4, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
 #1>2
 ciudades.insert(2, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #1>2
-ciudades.insert(2, ciudades[0])
-ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
-#print("permutar")
-#4 veces
-for i in range(len(ciudades) - 1):
-    ciudades.append(ciudades[0])
-    ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(auxiliar)
-#print("tetest")
+    ciudadesAlgoritmo.append(ciudades[:])
+    
 #1>2
 ciudades.insert(2, ciudades[0])
 ciudades.pop(0)
-auxiliar.append(ciudades[:])
-#print("cambio")
-#print(ciudades)
+ciudadesAlgoritmo.append(ciudades[:])
+
 #4 veces
 for i in range(len(ciudades) - 1):
     ciudades.append(ciudades[0])
     ciudades.pop(0)
-    auxiliar.append(ciudades[:])
-    #print(ciudades)
-#print(auxiliar)
-#print(len(auxiliar))
-for i in auxiliar:
-    auxiliar2.append(auxiliar[contador1][:])
-    auxiliar2.append(auxiliar[contador1][::-1])
+    ciudadesAlgoritmo.append(ciudades[:])
+
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+ciudadesAlgoritmo.append(ciudades[:])
+
+#4 veces
+for i in range(len(ciudades) - 1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    ciudadesAlgoritmo.append(ciudades[:])
+    
+# FIIIIIIIIIIIIIIIIN ALGORITMO
+
+
+#GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
+for i in ciudadesAlgoritmo:
+    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[contador1][:])
+    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[contador1][::-1])
     contador1 = contador1 + 1
 
-#print("axu2")
-#print(auxiliar2)
-#print(len(auxiliar2))
-
+#OBTIENE TODAS LAS PERMUTACIONES DE LAS CIUDADES
 ciudadesPermu = []
 import itertools
 for p in itertools.permutations(ciudades):#obtiene todas las permutacion en forma de lista
@@ -239,14 +200,14 @@ print(ciudadesPermu)
 print("\n ")
 
 print("CIUDADES ALGORITMO:")
-print(len(auxiliar))
-print(auxiliar)
+print(len(ciudadesAlgoritmo))
+print(ciudadesAlgoritmo)
 
 print("\n ")
 
 print("CIUDADES ALGORITMO + INVERSOS:")
-print(len(auxiliar2))
-print(auxiliar2)
+print(len(ciudadesAlgoritConInversos))
+print(ciudadesAlgoritConInversos)
 
 print("-------------------------------------------------------------")
 #COMPROBAR
@@ -254,7 +215,7 @@ print("-------------------------------------------------------------")
 #y se borran de auxiliar2copia y de ciudadesPermuCopia las coincidencias y al final se comprueban la longitud y el contenido de auxiliar2copia y de ciudadesPermuCopia
 #tendrian que estar vacios, si queda alguno en ciudadesPermuCopia es que el algoritmo no ha sacado esa combinacion, si queda alguno en auxiliar2copia es que ha sacado
 #mas opciones de las que deberia o ha repetido alguna dejando alguna permutacion sin sacar (la cual se reflejara en ciudadesPermuCopia)
-auxiliar2copia = auxiliar2[:]
+auxiliar2copia = ciudadesAlgoritConInversos[:]
 ciudadesPermuCopia = ciudadesPermu[:]
 
 print("AUXILIAR2COPIA:")
@@ -267,10 +228,10 @@ print(ciudadesPermuCopia)
 
 print ("-------------------------------------------------")
 
-for i in range(len(auxiliar2)):
+for i in range(len(ciudadesAlgoritConInversos)):
     for j in range(len(ciudadesPermu)):
-        if auxiliar2[i] == ciudadesPermu[j]:
-            auxiliar2copia.remove(auxiliar2[i])
+        if ciudadesAlgoritConInversos[i] == ciudadesPermu[j]:
+            auxiliar2copia.remove(ciudadesAlgoritConInversos[i])
             ciudadesPermuCopia.remove(ciudadesPermu[j])
             #auxiliar2copia[i] = "Z"
             #ciudadesPermuCopia[j] = "Z"
