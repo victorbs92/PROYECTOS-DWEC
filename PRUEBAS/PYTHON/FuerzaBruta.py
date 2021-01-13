@@ -173,14 +173,13 @@ for i in range(len(ciudades) - 1):
     ciudades.pop(0)
     ciudadesAlgoritmo.append(ciudades[:])
     
-# FIIIIIIIIIIIIIIIIN ALGORITMO
+# FFFFFFFFFFFIIIIIIIIIIIIIIIINNNNNNNNNNNNNN ALGORITMO
 
 
 #GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
-for i in ciudadesAlgoritmo:
-    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[contador1][:])
-    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[contador1][::-1])
-    contador1 = contador1 + 1
+for i in range(len(ciudadesAlgoritmo)):
+    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[i][:])
+    ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[i][::-1])
 
 #OBTIENE TODAS LAS PERMUTACIONES DE LAS CIUDADES
 ciudadesPermu = []
@@ -189,7 +188,7 @@ for p in itertools.permutations(ciudades):#obtiene todas las permutacion en form
     x = []
     for i in range(len(p)):#convierte la lista en un array añadiendo los elemento 1 por 1 al array 
         x.append(p[i])
-    ciudadesPermu.append(x)#añade el array a ciudades (array de )
+    ciudadesPermu.append(x)#añade el array a ciudades (array de arrays)
 
 print("\n ")
 
@@ -209,7 +208,10 @@ print("CIUDADES ALGORITMO + INVERSOS:")
 print(len(ciudadesAlgoritConInversos))
 print(ciudadesAlgoritConInversos)
 
+print("\n ")
 print("-------------------------------------------------------------")
+print("\n ")
+
 #COMPROBAR
 #se copia auxiliar2 a otro array(auxiliar2copia) y ciudadesPermu a otro array (ciudadesPermuCopia) para recorrer auxiliar2 buscando coincidencias en ciudadesPermu
 #y se borran de auxiliar2copia y de ciudadesPermuCopia las coincidencias y al final se comprueban la longitud y el contenido de auxiliar2copia y de ciudadesPermuCopia
@@ -218,15 +220,21 @@ print("-------------------------------------------------------------")
 auxiliar2copia = ciudadesAlgoritConInversos[:]
 ciudadesPermuCopia = ciudadesPermu[:]
 
+print("\n ")
+
 print("AUXILIAR2COPIA:")
 print(len(auxiliar2copia))
 print(auxiliar2copia)
+
 print("\n")
+
 print("CIUDADESPERMUCOPIA:")
 print(len(ciudadesPermuCopia))
 print(ciudadesPermuCopia)
 
+print("\n ")
 print ("-------------------------------------------------")
+print("\n ")
 
 for i in range(len(ciudadesAlgoritConInversos)):
     for j in range(len(ciudadesPermu)):
@@ -235,7 +243,17 @@ for i in range(len(ciudadesAlgoritConInversos)):
             ciudadesPermuCopia.remove(ciudadesPermu[j])
             #auxiliar2copia[i] = "Z"
             #ciudadesPermuCopia[j] = "Z"
-     
 
+print("\n ")     
+
+print ("AUXILIAR2COPIA:")     
+print (len(auxiliar2copia))
 print (auxiliar2copia)
+
+print("\n ")
+
+print ("CIUDADESPERMUCOPIA:")
+print (len(ciudadesPermuCopia))
 print (ciudadesPermuCopia)
+
+print("\n ")
