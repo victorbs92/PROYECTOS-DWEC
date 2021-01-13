@@ -76,3 +76,165 @@ matriz = [
 # CIUDAD DISPONIBLE E IRÁ BAJANDO DE CIUDAD CUANDO COMPLETE TODAS LAS PERMUTACIONES
 
 #  
+
+
+ciudades = ["a","b","c","d","e"]
+auxiliar =[[]]
+auxiliar2 =[[]]
+
+auxiliar[0]  = ciudades
+auxiliar2[0]  = ciudades
+
+contador1 = 0
+contador2 = 0
+contador3 = 0 
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+#1>3
+ciudades.insert(3, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+#1>4
+ciudades.insert(4, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+print ("permutar")
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+print (auxiliar)
+print ("tetest")
+#1>2
+ciudades.insert(2, ciudades[0])
+ciudades.pop(0)
+auxiliar.append(ciudades)
+print ("cambio")
+print (ciudades)
+#4 veces
+for i in range(len(ciudades)-1):
+    ciudades.append(ciudades[0])
+    ciudades.pop(0)
+    auxiliar.append(ciudades)
+    print (ciudades)
+print  (auxiliar)
+print  (len(auxiliar))
+for i in auxiliar:
+    auxiliar2.append(auxiliar[contador1])
+    auxiliar2.append(auxiliar[contador1].reverse())
+    contador1 = contador1+1
+print  (auxiliar2)
+print  (len(auxiliar2))
