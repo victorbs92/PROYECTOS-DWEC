@@ -224,9 +224,11 @@ for i in auxiliar:
 
 ciudadesPermu = []
 import itertools
-
-for p in itertools.permutations(ciudades):
-    ciudadesPermu.append(p)
+for p in itertools.permutations(ciudades):#obtiene todas las permutacion en forma de lista
+    x = []
+    for i in range(len(p)):#convierte la lista en un array añadiendo los elemento 1 por 1 al array 
+        x.append(p[i])
+    ciudadesPermu.append(x)#añade el array a ciudades (array de )
 
 print("\n ")
 
@@ -253,9 +255,24 @@ print("-------------------------------------------------------------")
 #tendrian que estar vacios, si queda alguno en ciudadesPermuCopia es que el algoritmo no ha sacado esa combinacion, si queda alguno en auxiliar2copia es que ha sacado
 #mas opciones de las que deberia o ha repetido alguna dejando alguna permutacion sin sacar (la cual se reflejara en ciudadesPermuCopia)
 auxiliar2copia = auxiliar2[:]
-auxiliar2copia.append("PPPPPP")
+ciudadesPermuCopia = ciudadesPermu[:]
+
+print("AUXILIAR2COPIA:")
 print(len(auxiliar2copia))
 print(auxiliar2copia)
 print("\n")
-print(len(auxiliar2))
-print(auxiliar2)
+print("CIUDADESPERMUCOPIA:")
+print(len(ciudadesPermuCopia))
+print(ciudadesPermuCopia)
+
+for i in range(len(auxiliar2)):
+    for j in range(len(ciudadesPermu)):
+        if auxiliar2[i] == ciudadesPermu[j]:
+            auxiliar2copia.remove(auxiliar2[i])
+            ciudadesPermuCopia.remove(ciudadesPermu[j])
+            #auxiliar2copia[i] = "Z"
+            #ciudadesPermuCopia[j] = "Z"
+     
+
+print (auxiliar2copia)
+print (ciudadesPermuCopia)
