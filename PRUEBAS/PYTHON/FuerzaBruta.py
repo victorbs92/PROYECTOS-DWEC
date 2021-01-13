@@ -265,6 +265,8 @@ print("CIUDADESPERMUCOPIA:")
 print(len(ciudadesPermuCopia))
 print(ciudadesPermuCopia)
 
+print ("-------------------------------------------------")
+
 for i in range(len(auxiliar2)):
     for j in range(len(ciudadesPermu)):
         if auxiliar2[i] == ciudadesPermu[j]:
