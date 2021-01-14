@@ -85,7 +85,7 @@ while contador1 < mitadFactorial -1:
     
     contador1 = contador1 + 1
     
-
+'''
 #GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
 for i in range(len(ciudadesAlgoritmo)):
     ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[i][:])
@@ -121,7 +121,7 @@ print(len(ciudadesAlgoritConInversos))
 print("\n ")
 print("-------------------------------------------------------------")
 print("\n ")
-
+'''
 
 '''
 #COMPROBAR
