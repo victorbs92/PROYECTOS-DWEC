@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parrafos {
+
+            height: 500px;
+            border: solid black 2px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="colores"></div>
+    <div id="parrafos">
+        <p>fhhsdhjgsfghjsahgahjs</p>
+        <p>sghsgjghjjjjjjjjjjjjj</p>
+    </div>
+    <script>
+        function crearTabla(filaTab, columnaTab, clase) {
+            const tabla = document.createElement("table");
+            for (let fila = 0; fila < filaTab; fila++) {
+                let filaElement = document.createElement("tr")
+                for (let celda = 0; celda < columnaTab; celda++) {
+                    let celdaElement = document.createElement("td")
+                    if (clase === 2) {
+                        celdaElement.style.backgroundColor = "white"
+                    } else {
+                        celdaElement.style.backgroundColor = obtenerColor();
+                    }
+
+                    celdaElement.style.width = `100px`;
+                    celdaElement.style.height = `100px`;
+                    celdaElement.style.borderStyle = "solid";
+                    filaElement.appendChild(celdaElement)
+                }
+                tabla.appendChild(filaElement)
+                tabla.style.marginTop = '10px';
+                tabla.style.borderStyle = "solid";
+            }
+            return tabla
+        }
+
+        function obtenerColor() {
+            let rojo = Math.floor(Math.random() * 256);
+            let verde = Math.floor(Math.random() * 256);
+            let azul = Math.floor(Math.random() * 256);
+
+            rojo = rojo <= 15 ? `0${rojo.toString(16)}` : rojo.toString(16)
+            verde = verde <= 15 ? `0${verde.toString(16)}` : verde.toString(16)
+            azul = azul <= 15 ? `0${azul.toString(16)}` : azul.toString(16)
+
+            let color = `#${rojo}${verde}${azul}`;
+            return color;
+        }
+
+        function primerPlano(evento) {
+
+            if (evento.target.tagName === "TD") {
+
+                const celda = evento.target;
+                const capturaColor = celda.style.backgroundColor;
+                tabla3.querySelector("tr").firstElementChild.style.backgroundColor = capturaColor;
+                estilos.primerplano = `.primerplano{color:${capturaColor}}`;
+                document.querySelector("style").textContent =
+                    `${estilos.inicio}\n${estilos.primerplano}\n${estilos.segundoplano}`
+            }
+        }
+
+        function segundoPlano(evento) {
+
+            if (evento.target.tagName === "TD") {
+                let estilo = document.querySelector("style");
+                const celda = evento.target;
+                const capturaColor = celda.style.backgroundColor;
+                tabla3.querySelector("tr").lastElementChild.style.backgroundColor = capturaColor;
+                estilos.segundoplano = `.segundoplano{background-color:${capturaColor}}`;
+                document.querySelector("style").textContent =
+                    `${estilos.inicio}\n${estilos.primerplano}\n${estilos.segundoplano}`
+
+            }
+        }
+
+        function pintaParrafos(evento) {
+            if (evento.target.tagName === "P") {
+                evento.target.setAttribute("class", `primerplano segundoplano`)
+                document.querySelector("style").textContent =
+                    `${estilos.inicio}\n.parr${indice}${estilos.primerplano}\n.parr${indice}${estilos.segundoplano}`
+            }
+        }
+
+        let estilos = {
+            inicio: document.querySelector("style").textContent,
+            primerplano: "",
+            segundoplano: ""
+        }
+
+        const parrafos = document.getElementById("parrafos")
+        const paleta = document.getElementById("colores");
+        const paletaRoot = paleta.attachShadow({
+            mode: "open"
+        });
+
+        const tabla1 = crearTabla(2, 8, 1);
+        const tabla2 = crearTabla(2, 8, 1);
+        const tabla3 = crearTabla(1, 2, 2)
+        const tablas = document.createDocumentFragment();
+
+        tablas.appendChild(tabla1)
+        tablas.appendChild(tabla2)
+        tablas.appendChild(tabla3)
+        paletaRoot.appendChild(tablas)
+
+        tabla1.addEventListener("click", primerPlano)
+        tabla2.addEventListener("click", segundoPlano)
+        parrafos.addEventListener("click", pintaParrafos)
+    </script>
+</body>
+
+</html>

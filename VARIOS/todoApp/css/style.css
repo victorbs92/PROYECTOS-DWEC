@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap');
+@import url('https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css');
+
+/* GENERAL STYLES */
+body {
+    background-color: #e2ecf1;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+}
+
+label,
+button,
+input[type="radio"] {
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    color: #3f5e97;
+    font-weight: 600;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+button::after,
+button::before {
+    font-family: "Font Awesome 5 Pro";
+}
+
+/* Add ToDo button style */
+#add-todo {
+    color: white;
+    background-color: #5d86d1;
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 50px;
+}
+
+#add-todo::before {
+    content: '\f067';
+    margin-right: 10px;
+}
+
+/* ToDo cards style */
+#todo-container > div {
+    display: grid; gap: 5px;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    grid-template-areas: 
+              ". . up delete"
+      "radio label up delete"
+    "radio label down delete"
+            ". . down delete";
+    grid-template-columns: 50px 1fr 40px 40px;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+#todo-container > div > input[type="radio"] { grid-area: radio  }
+#todo-container > div > label               { grid-area: label  }
+#todo-container > div > .move-up            { grid-area: up     }
+#todo-container > div > .move-down          { grid-area: down   }
+#todo-container > div > .remove-todo        { grid-area: delete }
+
+#todo-container > div > .move-up::after { content: '\f357' }
+#todo-container > div > .move-down::after { content: '\f354' }
+#todo-container > div > .remove-todo::after { content: '\f05e' }
