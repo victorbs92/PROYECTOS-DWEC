@@ -15,6 +15,7 @@ function capturaControles() {
     }
     return Object.values(campos)
 }
+document.getElementById("tipos").addEventListener("click", [2,5].some)
 document.getElementById("tipos").addEventListener("blur", function () {
     const controles = capturaControles()
     if (!this.checkValidity()) {
