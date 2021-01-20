@@ -1,0 +1,24 @@
+<html>
+
+<body>
+    <h2> Usando el objeto XMLHttpRequest </h2> <button type="button" id="boton"> Cambia el contenido </button>
+    <p id="demo">
+    </p>
+    <script>
+        document.getElementById("boton").addEventListener("click", loadXMLDoc)
+
+        function loadXMLDoc() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+
+                }
+            });
+            xhttp.open("GET", "http://localhost/holamundo.txt");
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>
