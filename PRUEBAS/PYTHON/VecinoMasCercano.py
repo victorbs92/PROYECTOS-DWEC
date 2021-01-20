@@ -86,8 +86,10 @@ def calcularRuta(matriz, indice, cont):
 #implementar el if de la funcion para que escoja el mejor camino si hay distancias minimas repetidas durante la ejecucion de la funcion
 
 #comprobar si merece la pena implementar el algoritmo con "aumento de vision en 1 o 2" y si lo merece, implementarlo
+#encontrar la forma de que, una vez obtenido el mejor arrayCiudades, aprovechar el tiempo de ejecucion restante para mejorar ese resultado de una manera iterativa
 
 #implementar la obtencion de la matriz orginal desde el archivo csv y comprobar su funcionamiento
+
 
 
 calcularRuta(matriz5, 0, cont) #llamamos a la funcion pasandole la matriz, el indice con el que tiene que trabajar y un contador de ciclos que siempre será 0 de primeras

@@ -84,7 +84,15 @@ while contador1 < mitadFactorial -1:
         contador3 = contador3 + 1
     
     contador1 = contador1 + 1
-    
+
+
+##### COSAS QUE FALTAN #####
+
+#obtener y comprobar en cada iteracion la distancia total y mostrar los datos y el numero de iteraciones
+
+#implementar la obtencion de la matriz orginal desde el archivo csv y comprobar su funcionamiento
+
+
 
 #GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
 for i in range(len(ciudadesAlgoritmo)):

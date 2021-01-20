@@ -92,3 +92,10 @@ while True:
 
     if contador % 100000 == 0:
         mostrar(mensaje, mejorDistancia, contador)
+
+
+##### COSAS QUE FALTAN #####
+
+#implementar el algoritmo con numpy
+
+#implementar la obtencion de la matriz orginal desde el archivo csv y comprobar su funcionamiento
