@@ -79,8 +79,9 @@ def calcularRuta(matriz, indice, cont):
 #se crea la matriz aux y se copia de la original para que al pasarlesela como argumento a la funcion siempre le pase el "contenido original"
 #en cada iteracion del bucle hay que resetar la variable global cont a 0 para que pueda usarla la funcion
 
-#comprobar en cada iteracion del bucle la distancia total y si la obtenida en la ultima iteracion es mejor que la anterior, modificar el array ciudades con los datos
-#del arrayAuxiliar y mostrar los datos por pantalla
+#comprobar en cada iteracion del bucle, despues de obtener el array con la ruta, añadir a la ultima posicion de ese array la ciudad que este la primera (resultado ciclico),
+#y sumar a la variable distancia, la distancia de la ciudad recien añadida, despues comprobar la distancia total, que se habrá guardado en la variable distanciaAux, y si la 
+#obtenida al final es mejor que la almacenada en la variable distanciaTotal, modificar el array ciudades con los datos del arrayAuxiliar y mostrar los datos por pantalla
 
 #implementar el if de la funcion para que escoja el mejor camino si hay distancias minimas repetidas durante la ejecucion de la funcion
 

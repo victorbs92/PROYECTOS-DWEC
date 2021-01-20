@@ -1,5 +1,3 @@
-# dividir matriz entre 3 y utilizar hilos de ejecucion, ejecutar los hilos hasta llegar a 5millones de iteraciones (1min aprox)
-#5 millones se obtiene de calcular el factorial 
 import random
 
 matriz5 = [
