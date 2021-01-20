@@ -1,5 +1,6 @@
 let xx = document.getElementById("xx");
 let tamano = document.getElementsByName("tamano");
+console.log(tamano);
 
 let nombre = document.getElementById("name");
 
@@ -28,9 +29,10 @@ boton.onclick = function () {
     console.log(elementosForumlario.xyz.nombre.value);
 }
 */
-nombre.addEventListener("keypress", asd);
+nombre.addEventListener("keydown", asd);
 
 function asd(event) {
+    console.log(event.keyCode);
     console.log(event.key);
 }
 
@@ -46,6 +48,8 @@ boton.addEventListener("click", function (event) {
         event.preventDefault();
     } 
 })
+
+boton.removeEventListener("click", null);
 
 //boton.addEventListener("click", asd);
 /*

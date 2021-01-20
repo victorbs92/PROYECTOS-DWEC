@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <button type="button">Inicia Ajax</button>
+
+    <script>
+      document.querySelector("button").addEventListener("click", function () {
+        //instaciamos el objeto XMLHttpRequest
+        const ajax = new XMLHttpRequest();
+        //Controlar la respuesta
+        ajax.addEventListener("load", function () {
+          document.querySelector("div").textContent = ajax.responseText;
+        });
+        ajax.addEventListener("error", function () {
+          document.querySelector("div").textContent = "error";
+        });
+        //realizamos la peticion
+        ajax.open("GET", "datos.txt");
+        ajax.send();
+      });
+    </script>
+  </body>
+</html>
