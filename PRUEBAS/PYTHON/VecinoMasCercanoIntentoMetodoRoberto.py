@@ -41,15 +41,16 @@ matriz = [[0, 14, 46, 15, 42, 2, 34, 43, 9, 1, 5, 24, 34, 42, 2],
 matriz5 = np.array([[0, 15, 17, 15, 27],
                     [15, 0, 3, 14, 3],
                     [17, 3, 0, 7, 18],
-                    [15, 14, 7, 0, 2],
-                    [27, 3, 18, 2, 0]])
+                    [15, 14, 7, 0, 1],
+                    [27, 4, 18, 2, 0]])
 
 ciudadesAux = []
 ciudades = []
 distanciaAux = 0
 distancia = 0
 cont = 0
-indiceAux = 0
+indiceAux = []
+tst=[]
 
 
 def calcularRuta(matriz, indice, cont):
@@ -73,47 +74,40 @@ def calcularRuta(matriz, indice, cont):
 
         # comprobar si tiene mas de uno, si lo tiene habria que recorrer este array comprobando cada indice en la matriz para ver que camino es el mas eficiente y escogerlo
         if len(indicesConValorMinimo[0]) > 1:
-            cacularRep(matriz, indicesConValorMinimo[0], indiceAux)
+            test=cacularRep(matriz, indicesConValorMinimo[0], indiceAux)
+            test= indiceAux
 
         # llamamos a la funcion pasandole la matriz, el indice con el que tiene que trabajar y un contador de ciclos
         calcularRuta(matriz, indicesConValorMinimo[0][0], cont)
 
 
-matriz3 = np.array([[0, 15, 17, 15, 27],
-                    [0, 0, 3, 14, 3],
-                    [0, 3, 0, 7, 18],
-                    [0, 14, 7, 0, 17],
-                    [0, 3, 18, 17, 0]])
 
 
 def cacularRep(matriz, arrayMinValores, indiceAux):
     distanciaMin = 999999
     distanciaAux = 0
-    indiceCiudad = -1
-    
+    indiceCiudad = [-1]
+    indiceAux2 = []
 
     for i in range(len(arrayMinValores)):
-        num = i
-        print(num)
         distanciaAux = 0
-        ciudadMasCercana = np.min(
-            matriz[arrayMinValores[i]][np.nonzero(matriz[arrayMinValores[i]])])
+        ciudadMasCercana = np.min(matriz[arrayMinValores[i]][np.nonzero(matriz[arrayMinValores[i]])])
         distanciaAux = distanciaAux + ciudadMasCercana
 
         if distanciaAux < distanciaMin:
             distanciaMin = distanciaAux
-            indicesConValorMinimo = np.where(
-                matriz[arrayMinValores[i]] == ciudadMasCercana)
+            indicesConValorMinimo = np.where(matriz[arrayMinValores[i]] == ciudadMasCercana)
             indiceCiudad = arrayMinValores[i]
 
+
             if len(indicesConValorMinimo[0]) > 1:
-                print("XXXXXXXXXX")
-                indiceAux = indiceCiudad
+                indiceAux.append(arrayMinValores[i])
                 cacularRep(matriz, indicesConValorMinimo[0], indiceAux)
 
-    print("INDICE")
-    print(indiceCiudad)
-    return indiceCiudad
+    
+    indiceAux.append(indiceCiudad)
+    print (indiceAux)
+    return indiceAux
 
 
 ##### COSAS QUE FALTAN #####
