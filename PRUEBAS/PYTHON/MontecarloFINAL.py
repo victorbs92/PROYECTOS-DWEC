@@ -27,6 +27,7 @@ def mostrar(mensaje, mejorDistancia, contador):
     print(mensaje)
     print(f'Mejor distancia: {mejorDistancia} ')
     print(f'Iteración: {contador} ')
+    print("------------")
 
 
 while True:
