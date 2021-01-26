@@ -32,9 +32,8 @@ def mostrar(mensaje, mejorDistancia, contador):
 while True:
     contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
     np.random.shuffle(arrayRuta) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
-    #arrayRuta.append(arrayRuta[0]) #añade al final del array el mismo elemento que el primer elemento del array
+    arrayRuta.append(arrayRuta[0]) #añade al final del array el mismo elemento que el primer elemento del array
 
-    
     #recorremos el array y comprobamos el valor que tiene cada elemento buscandolo en la matriz y lo añadimos a la varaible distancia
     for i in range(0, len(arrayRuta)-1):
         distancia = distancia + matriz[arrayRuta[i]][arrayRuta[i+1]]
