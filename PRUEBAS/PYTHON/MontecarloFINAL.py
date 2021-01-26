@@ -13,7 +13,7 @@ mensaje = ""
 contadorIteraciones = 0
 
 #abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sample.csv"), "r")
+file = open(os.path.join(sys.path[0], "sampleSinCeros.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
 
