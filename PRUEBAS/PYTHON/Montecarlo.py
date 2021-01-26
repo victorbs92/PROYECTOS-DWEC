@@ -17,11 +17,13 @@ file = open(os.path.join(sys.path[0], "sample.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
 
+
 #cargamos arrayRuta con la primera ruta con la que vamos a trabajar
 for i in range(0, len(matriz)):
     #arrayRuta.insert(i, i)
+    print(arrayRuta)
     np.insert(arrayRuta, i, i)
-
+    #np.concatenate([arrayRuta, i])
 
 #metodo que muestra los resultados cuando es llamado
 def mostrar(mensaje, mejorDistancia, contador):
