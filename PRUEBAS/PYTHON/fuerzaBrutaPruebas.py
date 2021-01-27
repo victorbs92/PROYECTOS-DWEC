@@ -10,11 +10,6 @@ import sys
 file = open(os.path.join(sys.path[0], "sampleSinCeros.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
-matriz7 = np.array([[0, 15, 17, 15, 27],
-                    [15, 0, 3, 14, 3],
-                    [17, 3, 0, 7, 18],
-                    [15, 14, 7, 0, 1],
-                    [27, 4, 18, 2, 0]])
 
 #VARIABLES
 mitadFactorial = 0 #variable donde guardaremos el valor de la mitad del factorial
@@ -96,7 +91,6 @@ while contadorIteraciones < mitadFactorial -1:
     if contador2 < len(ciudades) - 2:
         ciudades.insert(2, ciudades[0])
         ciudades.pop(0)
-        #ciudades.append(ciudades[0]) 
         calcularDistancia()
         ciudades.pop(0)
         contador2 = contador2 + 1
@@ -105,7 +99,6 @@ while contadorIteraciones < mitadFactorial -1:
         contador2 = 0
         ciudades.insert(contador3, ciudades[0])
         ciudades.pop(0)
-        #ciudades.append(ciudades[0])
         calcularDistancia()
         ciudades.pop(0)
         contador3 = contador3 + 1
