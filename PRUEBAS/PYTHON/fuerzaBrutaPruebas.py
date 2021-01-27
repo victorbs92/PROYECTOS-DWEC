@@ -59,11 +59,13 @@ def calcularDistancia ():
 
     contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de vueltas del bucle, ya que este metodo es llamado 1 vez por cada vuelta de bucle podemos incrementarlo aqui
 
-
+  
 def mostrarInfo():
     print (f'Iteración: {contadorIteraciones}')
     print (f'Mejor distancia: {mejorDistanciaRuta}')
     print (f'Mejor ruta: {mensaje}')
+    print (f'Ruta actual: {mensajeAux}')
+    print (f'Distancia actual: {distanciaRutaCiudades}')
     print ("---------")
 
 
