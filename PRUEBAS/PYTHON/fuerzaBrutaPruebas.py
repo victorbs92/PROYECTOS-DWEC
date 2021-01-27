@@ -10,6 +10,11 @@ import sys
 file = open(os.path.join(sys.path[0], "sampleSinCeros.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
+matriz7 = np.array([[0, 15, 17, 15, 27],
+                    [15, 0, 3, 14, 3],
+                    [17, 3, 0, 7, 18],
+                    [15, 14, 7, 0, 1],
+                    [27, 4, 18, 2, 0]])
 
 #VARIABLES
 mitadFactorial = 0 #variable donde guardaremos el valor de la mitad del factorial
@@ -17,7 +22,7 @@ ciudades = [] #array que va a estar cambiando a lo largo de todo el programa, en
 mejorRutaCiudades = [] #donde guardaremos la mejor ruta obtenida hasta el momento
 distanciaRutaCiudades = 0 #variable donde se calcula en cada iteracion del algoritmo la distancia que se obtiene de recorrer el array ciudades y que se resetea en cada iteracion
 mejorDistanciaRuta = 0  #donde guardaremos la mejor distancia obtenida hasta el momento
-contadorIteraciones = 0 #vueltas de bucle
+contadorIteraciones = 1 #vueltas de bucle
 contador2 = 0 #instruccion2
 contador3 = 3 #instruccion3
 mensaje = "" #mensaje que mostrara la ruta de ciudades a recorrer
@@ -38,16 +43,14 @@ def calcularDistancia ():
     distanciaRutaCiudades = 0
     mensajeAux = ""
 
+    ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
+
     for i in range(0, len(ciudades)-1):
         #recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
         distanciaRutaCiudades = distanciaRutaCiudades + matriz[ciudades[i]][ciudades[i+1]]
-
-        if i < len(ciudades) - 2: #formateamos el mensaje que vamos a mostrar
-            mensajeAux += (f'Ciudad: {ciudades[i]} -> ')
-        else:
-            mensajeAux += (f'Ciudad: {ciudades[i]}')
-
-    ciudades.pop(0) #al entrar en este metodo el array ciudades cuenta en su ultima posicion con el mismo valor que en la primera para simular el circuito cerrado, asi que para evitar el mal funcionamiento del algoritmo, eliminamos el ultimo valor 
+        mensajeAux += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+            
+    mensajeAux += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
     
     #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
     if(distanciaRutaCiudades < mejorDistanciaRuta or mejorDistanciaRuta == 0):
@@ -75,24 +78,34 @@ mitadFactorial = math.factorial(len(matriz)) / 2 #calcula el factorial de ciudad
 for i in range(len(matriz)): #cargamos el array ciudades con la ruta inicial
     ciudades.append(i)
 
-ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
+#ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
 calcularDistancia() #llama a calcular distancia
-
+ciudades.pop(0)
 
 #EJECUCION DEL ALGORITMO
 while contadorIteraciones < mitadFactorial -1:
 
-    for i in range(len(ciudades) - 1): 
-        ciudades.append(ciudades[0])
+    for i in range(len(ciudades)-1): 
+        #ciudades.append(ciudades[0])
         calcularDistancia()
+        if (i<len(ciudades)-3): #en la ultima iteracion del bucle no borramos el primer elemento
+            ciudades.pop(0)
+        else: #en la ultima iteracion del bucle borramos el ultimo elemento del array
+            ciudades.pop(len(ciudades)-1)
 
     if contador2 < len(ciudades) - 2:
         ciudades.insert(2, ciudades[0])
+        ciudades.pop(0)
+        #ciudades.append(ciudades[0]) 
         calcularDistancia()
+        ciudades.pop(0)
         contador2 = contador2 + 1
 
     elif contador2 >= len(ciudades) - 2 and contadorIteraciones < mitadFactorial -1 :
         contador2 = 0
         ciudades.insert(contador3, ciudades[0])
+        ciudades.pop(0)
+        #ciudades.append(ciudades[0])
         calcularDistancia()
+        ciudades.pop(0)
         contador3 = contador3 + 1
