@@ -23,6 +23,7 @@ contador3 = 3 #instruccion3
 mensaje = "" #mensaje que mostrara la ruta de ciudades a recorrer
 mensajeAux = "" #mensaje donde ir guardando la ruta de ciudades que hay en cada iteracion del bucle
 
+
 #FUNCIONES Y METODOS
 def calcularDistancia ():
     #referencias a las variables globales
@@ -59,11 +60,13 @@ def calcularDistancia ():
 
     contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de vueltas del bucle, ya que este metodo es llamado 1 vez por cada vuelta de bucle podemos incrementarlo aqui
 
-
+  
 def mostrarInfo():
     print (f'Iteración: {contadorIteraciones}')
     print (f'Mejor distancia: {mejorDistanciaRuta}')
     print (f'Mejor ruta: {mensaje}')
+    print (f'Ruta actual: {mensajeAux}')
+    print (f'Distancia actual: {distanciaRutaCiudades}')
     print ("---------")
 
 
