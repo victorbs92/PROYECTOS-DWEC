@@ -4,7 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {},
+	"settings": {
+		"python.pythonPath": "PRUEBAS\\PYTHON\\hello_flask\\env\\Scripts\\python.exe"
+	},
 	"launch": {
 		"version": "0.2.0",
 		"configurations": [
