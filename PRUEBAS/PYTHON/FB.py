@@ -44,7 +44,31 @@ for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial
     ciudades.append(i)
 
 
-# ALGORITMO
+# ALGORITMO Steinhaus–Johnson–Trotter con aceleración de Even
+'''
+EXPLICACION ALGORITMO:
+Ejecutar el algoritmo en un bucle que itere de 1 en 1 hasta que las iteraciones igualen a la variable "mitadFactorial".
+Empezar obteniendo un array de tantos elementos como ciudades tenga la matriz, los valores del array serán números en orden ascendente 
+empezando desde el 0 y acabando en matriz.lenght (Ej para una matriz de 5 ciudades: [0, 1, 2, 3, 4]) 
+Este algoritmo funciona asigando "estados" a cada elemento del array, los estados pueden ser: izd, der o inmovil.
+Paso 1:
+Se asigna la dirección "izd" a todos el elementos del array.
+Paso 2:
+Se localiza el elemento con valor mas alto que no tenga estado inmovil, lo denominaremos "K".
+Paso 3:
+Se comprueba si el elemento al que apunta "K" es menor que "K", si es asi, se intercambian la posición (Ej: [<0 <1 <2] pasaría a ser [<0 <2 <1]),
+si el elemento al que apunta "K" no es menor, se considera a "K" en estado "inmovil" y "K" pasaría a ser el 2º elemento mas valor y asi sucesivamente
+hasta encontrar un valor que cumpla con las condiciones y pueda ser "K".
+*Si "K" tiene estado "izd" y está en la posicion 0 del array, se considerará que tiene estado "inmovil", al igual que si "K" tiene estado "der"
+y se encuentra en la última posicion del array.*
+**Cuando el Paso 3 no pueda cumplirse el algoritmo habrá acabado.**
+Paso 4:
+Despues de cada intercambio se verifica si existen elementos mayores que "K" aunque tengan estado "inmovil", si es así, se les cambia el
+estado a todos, asigandoles "izd" si tenian "der", "der" si tenian "izd" o si estan "inmoviles", asignandoles el opuesto del último estado 
+que tuvieron antes de volverse "inmoviles" 
+Paso 5:
+Se vuelve al Paso 2 y se repiten todos los pasos hasta que se acabe el algoritmo.
+'''
 
 
 
