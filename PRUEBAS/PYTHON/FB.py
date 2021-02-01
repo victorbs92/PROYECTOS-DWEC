@@ -65,7 +65,7 @@ for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial y
     ciudades.append(i)
     direcciones.append("izd")
 
-obtenerK(cont1) #obtenemos K por primera vez #########COMENTAR ESTA LINEA MIENTRAS SE DESARROLLA EL ALGORITMO PORQUE SE OBTIENE ABAJO
+obtenerK(cont1) #obtenemos K por primera vez
 
 print (1)
 print (ciudades)
@@ -96,12 +96,6 @@ que tuvieron antes de volverse "inmoviles"
 Paso 5:
 Se vuelve al Paso 2 y se repiten todos los pasos hasta que se acabe el algoritmo.
 '''
-##################################################################################
-# QUITAR ESTAS LINEAS AL ACABAR DE PROGRAMAR EL ALGORITMO, SON SOLO PARA PRUEBAS #
-#ciudades = [0, 1, 2, 3]                                                             #
-#direcciones = ["izd", "izd", "izd", "izd"]                                              #
-#obtenerK(cont1)                                                                  #
-##################################################################################
 
 for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tantas veces como valor tenga mitadFactorail -1
 
