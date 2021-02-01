@@ -62,7 +62,9 @@ for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial y
 
 obtenerK(cont1) #obtenemos K por primera vez
 
-print (1)
+contadorIteraciones = 1 #numero de veces que se ha ejecutado el algoritmo
+
+print (contadorIteraciones)
 print (ciudades)
 print (direcciones)
 
@@ -94,6 +96,8 @@ Se vuelve al Paso 2 y se repiten todos los pasos hasta que se acabe el algoritmo
 
 for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tantas veces como valor tenga mitadFactorail -1
 
+    #actualizacion de variables utilizadas en cada uteracion del bucle
+    contadorIteraciones = i
     kOK = False
     cont1 = 0
 
@@ -132,13 +136,14 @@ for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tant
 
         obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
 
-    print (i)
-    print (ciudades)
-    print (direcciones)
+        
+#FIN ALGORITMO
 
 
 
-
+print (contadorIteraciones)
+print (ciudades)
+print (direcciones)
 # PRUUUUUUUUUUEEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAS
 
 
