@@ -5,34 +5,29 @@ import math
 import numpy as np
 import os
 import sys
-
 from numpy.lib.financial import mirr
 
 
 # VARIABLES
-mitadFactorial = 0  # variable donde guardaremos el valor de la mitad del factorial
+mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial
 
-ciudades = []  # array que va a estar cambiando a lo largo de todo el programa, en cada iteracion del algoritmo será una ruta distinta
-# array donde se irán guardando las direcciones de cada elemento del array ciudades
-direcciones = []
+ciudades = [] # array que va a estar cambiando a lo largo de todo el programa, en cada iteracion del algoritmo será una ruta distinta
+direcciones = [] # array donde se irán guardando las direcciones de cada elemento del array ciudades
 
-# variable donde se calcula en cada iteracion del algoritmo la distancia que se obtiene de recorrer el array ciudades y que se resetea en cada iteracion
-distanciaRutaCiudadesActual = 0
-# mensaje donde ir guardando la ruta de ciudades que hay en cada iteracion del bucle
-mensajeRutaCiudadesActual = ""
+distanciaRutaCiudadesActual = 0 # variable donde se calcula en cada iteracion del algoritmo la distancia que se obtiene de recorrer el array ciudades y que se resetea en cada iteracion
+mensajeRutaCiudadesActual = "" # mensaje donde ir guardando la ruta de ciudades que hay en cada iteracion del bucle
 
 mejorRutaCiudades = []  # donde guardaremos la mejor ruta obtenida hasta el momento
 mejorDistanciaRuta = 0  # donde guardaremos la mejor distancia obtenida hasta el momento
-# mensaje que mostrara la mejor ruta de ciudades a recorrer
-mensajeMejorRutaCiudades = ""
+mensajeMejorRutaCiudades = "" # mensaje que mostrara la mejor ruta de ciudades a recorrer
+
+k = 0 #variable que guardará la ciudad con la que trabaja el algoritmo en cada vuelta de bucle
+kIndice = 0 #indice de K en el array ciudades
+kDireccion = "" #direccion que tiene K
+kOK = False # variable que determinará si K cumple con todos los requisitos para no se inmovil 
 
 contadorIteraciones = 0  # vueltas de bucle
-
-k = 0
-kIndice = 0
-kDireccion = ""
-kOK = False
-cont1 = 0
+cont1 = 0 #contador utilizado en el bucle
 
 
 # FUNCIONES Y METODOS
@@ -142,13 +137,16 @@ for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tant
     print (direcciones)
 
 
+
+
 # PRUUUUUUUUUUEEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAS
 
+
 ####################################################
+
+
 # OBTIENE TODAS LAS PERMUTACIONES DE LAS CIUDADES
 ciudadesPermu = []
-
-
 def obtenerTodasPermutaciones(ciudades, ciudadesPermu):
     for p in itertools.permutations(ciudades):
         x = []
@@ -170,8 +168,6 @@ def obtenerTodasPermutaciones(ciudades, ciudadesPermu):
 # variables para comprobacion (no necesarias cuando el algoritmo ya funcione)
 ciudadesAlgoritmo = [[]]
 ciudadesAlgoritConInversos = []
-
-
 def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInversos):
     ciudadesAlgoritmo[0] = ciudades[:]
     for i in range(len(ciudadesAlgoritmo)):
@@ -190,8 +186,6 @@ def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInve
 # COMPRUEBA SI EL ARRAY DE LA POSICION I DE LA VARIABLE ALGORITMOSCONINVERSOS EXISTE EN CIUDADESPERMU Y SI EXISTE LO ELIMINA DE LA COPIA DE AMBAS VARIABLES
 ciudadesAlgoritmosConInversosCOPIA = ciudadesAlgoritConInversos[:]
 ciudadesPermuCOPIA = ciudadesPermu[:]
-
-
 def TESTER():
     for i in range(len(ciudadesAlgoritConInversos)):
         for j in range(len(ciudadesPermu)):
