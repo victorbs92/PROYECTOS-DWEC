@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <title>Ejercicio CSV</title>
+    <style>
+        body{
+            background-color: #2F2C5F;
+        }
+        label{
+            color: white;
+        }
+        td,th{
+            color: #00BDFF;
+        }
+    </style>
+  </head>
+  <body>
+    <label for="url">Documento CSV</label>
+    <input  type="text" id="url" />
+    <select id="provincias">
+    </select>
+    <button type="submit" id="datosbtn" class="button button-primary">Mostrar Datos</button>
+    <div id="tablaContenido"></div>
+    <script src="ejercicioCSV.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <button type="button">Inicia AJAX</button>
+    <script>
+        document.querySelector("button").addEventListener("click",function(){
+            //Instanciamos el objeto XMLHTTPRequest
+            const objetoAJAX=new XMLHttpRequest();
+            //Controlar la respuesta
+           /* objetoAJAX.addEventListener("load",function(){
+                document.querySelector("div").textContent=objetoAJAX.responseText;
+            });*/
+            objetoAJAX.addEventListener("readystatechange",function(){
+                switch (objetoAJAX.readyState) {
+                        case 4: //es equivalente a usar objetoAJAX.DONE que es una propiedad del objeto
+                            if(objetoAJAX.status>=200 && objetoAJAX.status<300){
+                                document.querySelector("div").textContent=objetoAJAX.responseText;
+                            }
+                            if(objetoAJAX.status>=500 && objetoAJAX.status<600){
+                                document.querySelector("div").textContent=objetoAJAX.responseText;
+                            }
+                        break;
+            
+                }
+            });
+            /*objetoAJAX.addEventListener("error",function(){
+                document.querySelector("div").textContent="ERROR";
+            });*/
+
+            //Relizamos la peticion
+            objetoAJAX.open("GET","datoss.txt");
+            objetoAJAX.send();
+        });
+    </script>
+</body>
+</html>
