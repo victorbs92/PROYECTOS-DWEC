@@ -50,7 +50,7 @@ def obtenerK (cont1):
 
 # CARGA DE DATOS INICIAL
 # abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros7.csv"), "r")
+file = open(os.path.join(sys.path[0], "sampleSinCeros8.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
 # calcula el factorial de ciudades.length y lo divide entre 2 y lo guarda en una variable
@@ -63,6 +63,7 @@ for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial y
 obtenerK(cont1) #obtenemos K por primera vez
 
 contadorIteraciones = 1 #numero de veces que se ha ejecutado el algoritmo
+
 
 print (contadorIteraciones)
 print (ciudades)
@@ -136,14 +137,15 @@ for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tant
 
         obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
 
+   
         
 #FIN ALGORITMO
-
-
 
 print (contadorIteraciones)
 print (ciudades)
 print (direcciones)
+
+'''
 # PRUUUUUUUUUUEEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAS
 
 
@@ -171,7 +173,6 @@ def obtenerTodasPermutaciones(ciudades, ciudadesPermu):
 
 # GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
 # variables para comprobacion (no necesarias cuando el algoritmo ya funcione)
-ciudadesAlgoritmo = [[]]
 ciudadesAlgoritConInversos = []
 def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInversos):
     ciudadesAlgoritmo[0] = ciudades[:]
@@ -181,7 +182,7 @@ def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInve
 
     print("CIUDADES ALGORITMO + INVERSOS:")
     print(len(ciudadesAlgoritConInversos))
-    # print(ciudadesAlgoritConInversos)
+    #print(ciudadesAlgoritConInversos)
     print("-------------------------------------------------------------")
 
 
@@ -189,20 +190,21 @@ def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInve
 
 
 # COMPRUEBA SI EL ARRAY DE LA POSICION I DE LA VARIABLE ALGORITMOSCONINVERSOS EXISTE EN CIUDADESPERMU Y SI EXISTE LO ELIMINA DE LA COPIA DE AMBAS VARIABLES
-ciudadesAlgoritmosConInversosCOPIA = ciudadesAlgoritConInversos[:]
-ciudadesPermuCOPIA = ciudadesPermu[:]
 def TESTER():
+    ciudadesAlgoritmosConInversosCOPIA = ciudadesAlgoritConInversos[:]
+    ciudadesPermuCOPIA = ciudadesPermu[:]
+    #print ((ciudadesAlgoritmosConInversosCOPIA))
     for i in range(len(ciudadesAlgoritConInversos)):
         for j in range(len(ciudadesPermu)):
             if ciudadesAlgoritConInversos[i] == ciudadesPermu[j]:
                 ciudadesAlgoritmosConInversosCOPIA.remove(
                     ciudadesAlgoritConInversos[i])
                 #print (ciudadesPermu[j])
-                # ciudadesPermuCOPIA.remove(ciudadesPermu[j])
+                ciudadesPermuCOPIA.remove(ciudadesPermu[j])
                 #print (i)
                 #auxiliar2copia[i] = ("Z")
                 #ciudadesPermuCopia[i] = ("Z")
-
+    print (len(ciudadesPermuCOPIA))
 
 ####################################################
 
@@ -226,3 +228,8 @@ def comprobarRepetidos(ciudadesAlgoritmo):
     print(len(z))
     #print (z)
     print("-------------------------------------------------------------")
+
+
+####################################################
+
+'''
