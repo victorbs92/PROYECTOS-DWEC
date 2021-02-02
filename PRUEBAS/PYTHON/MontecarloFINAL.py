@@ -8,12 +8,12 @@ import sys
 arrayRuta = []
 distancia = 0
 mejorRuta = arrayRuta
-mejorDistancia = 99999999999
+mejorDistancia = 0
 mensaje = ""
 contadorIteraciones = 0
 
 #abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
+file = open(os.path.join(sys.path[0], "sample.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
 
@@ -40,7 +40,7 @@ while True:
         distancia = distancia + matriz[arrayRuta[i]][arrayRuta[i+1]]
 
     #comprobamos si la distancia obtenida en esta iteracion es mejor que la que ya habia guardada
-    if distancia < mejorDistancia:
+    if distancia < mejorDistancia or mejorDistancia == 0:
         mensaje = "Mejor ruta: "
         mejorDistancia = distancia
         mejorRuta = arrayRuta
@@ -58,5 +58,5 @@ while True:
     distancia = 0 #reseteamos la distancia para que vuelva a calcularla empezando de 0 en la siguiente iteracion del bucle
 
     #llamamos a la funcion que muestra los datos por cada 100000 iteraciones
-    if contadorIteraciones % 100000 == 0:
-        mostrar(mensaje, mejorDistancia, contadorIteraciones)
+    #if contadorIteraciones % 100000 == 0:
+    #    mostrar(mensaje, mejorDistancia, contadorIteraciones)
