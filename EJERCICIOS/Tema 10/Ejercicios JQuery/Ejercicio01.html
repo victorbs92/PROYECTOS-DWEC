@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <p>Ejemplos</p>
+    <div>
+        <div id="menu">
+            <p class="sel">Capítulo 1</p>
+            <div class="item">
+                <a href="#">Punto 1</a>
+                <a href="#">Punto 2</a>
+                <a href="#">Punto 3</a>
+            </div>
+            <p class="sel">Capítulo 2</p>
+            <div class="item">
+                <a href="#">Punto 1</a>
+                <a href="#">Punto 2</a>
+                <a href="#">Punto 3</a>
+            </div>
+            <p class="sel">Capítulo 3</p>
+            <div class="item">
+                <a href="#">Punto 1</a>
+                <a href="#">Punto 2</a>
+                <a href="#">Punto 3</a>
+            </div>
+        </div>
+    </div>
+    <form>
+        <span> <input type="checkbox" name="box" checked> Elección 1</span><br>
+        <span><input type="checkbox" name="box"> Elección 2 </span><br>
+        <span><input type="checkbox" name="box"> Elección 3 </span><br>
+        <span><input type="checkbox" name="box" checked> Elección 4 </span><br>
+        <span><input type="checkbox" name="box"> Elección 5</span><br>
+        <span><input type="radio">Radio1</span>
+        <span><input type="radio">Radio2</span>
+        <div>
+            <input type="button" id="test1" value="Test checkbox">
+            <input type="button" id="test2" value="cambiar clases">
+            <input type="button" id="test3" value="menguar tamaño">
+            <input type="button" id="test4" value="medrar tamaño">
+        </div>
+    </form>
+
+    <script>
+        $("#menu").css({
+            border: "solid 2px blue",
+            backgroundColor: "lightgreen",
+            color: "red"
+        });
+
+        $(".sel", "#menu").css({
+            fontSize: "200%",
+        });
+
+        $("a", "#menu").css({
+            color: "white",
+            backgroundColor: "black"
+        });
+
+        //Oculta los elementos de clase "item" que sean pares
+        //$(".item", "#menu").even().hide();
+
+        //* Oculta los elementos de clase "item" que sean impares
+        //$(".item", "#menu").odd().hide();
+    </script>
+
+</body>
+
+</html>
