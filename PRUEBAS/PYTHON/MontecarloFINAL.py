@@ -4,32 +4,35 @@ import numpy as np
 import os
 import sys
 
+
 #VARIABLES
-arrayRuta = []
-distancia = 0
+arrayRuta = [] #array donde guardaremos la ruta actual
+distancia = 0 #distancia
 mejorRuta = arrayRuta
 mejorDistancia = 0
 mensaje = ""
 contadorIteraciones = 0
 
-#abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sample.csv"), "r")
-matriz = np.loadtxt(file, delimiter=",")
 
-
-#cargamos arrayRuta con la primera ruta con la que vamos a trabajar
-for i in range(0, len(matriz)):
-    arrayRuta.insert(i, i)
-
-
-#metodo que muestra los resultados cuando es llamado
-def mostrar(mensaje, mejorDistancia, contador):
+# FUNCIONES Y METODOS
+def mostrar(mensaje, mejorDistancia, contador): #metodo que muestra los resultados cuando es llamado
     print(mensaje)
     print(f'Mejor distancia: {mejorDistancia} ')
     print(f'Iteración: {contador} ')
     print("------------")
 
 
+# CARGA DE DATOS INICIAL
+#abrimos el csv y cargamos la matriz con los datos del csv
+file = open(os.path.join(sys.path[0], "sample.csv"), "r")
+matriz = np.loadtxt(file, delimiter=",")
+
+#cargamos arrayRuta con la primera ruta con la que vamos a trabajar
+for i in range(0, len(matriz)):
+    arrayRuta.insert(i, i)
+
+
+#ALGORITMO
 while True:
     contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
     np.random.shuffle(arrayRuta) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
