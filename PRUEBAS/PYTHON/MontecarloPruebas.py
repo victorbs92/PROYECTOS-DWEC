@@ -18,7 +18,7 @@ contadorIteraciones = 0  # vueltas de bucle
 
 
 # FUNCIONES Y METODOS
-def obtenerYCompararResultados(ciudades): #obtiene la distancia de la ruta y la compara con la mejor que tenemos guardada
+def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ruta y la compara con la mejor que tenemos guardada
     #referencias a las variables globales
     global distanciaRutaCiudadesActual
     global mensajeRutaCiudadesActual
@@ -56,23 +56,28 @@ def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
     print("------------")
 
 
-# CARGA DE DATOS INICIAL
-#abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sample.csv"), "r")
-matriz = np.loadtxt(file, delimiter=",")
+def montecarlo():
+    #referencias a las variables globales
+    global distanciaRutaCiudadesActual
+    global contadorIteraciones
 
-#cargamos arrayRuta con la primera ruta con la que vamos a trabajar
-for i in range(0, len(matriz)):
-    ciudades.insert(i, i)
+    # CARGA DE DATOS INICIAL
+    #abrimos el csv y cargamos la matriz con los datos del csv
+    file = open(os.path.join(sys.path[0], "sample.csv"), "r")
+    matriz = np.loadtxt(file, delimiter=",")
+
+    #cargamos arrayRuta con la primera ruta con la que vamos a trabajar
+    for i in range(0, len(matriz)):
+        ciudades.insert(i, i)
 
 
-#ALGORITMO
-while True:
-    contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
-    np.random.shuffle(ciudades) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
+    #ALGORITMO
+    while True:
+        contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
+        np.random.shuffle(ciudades) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
 
-    #recorremos el array y comprobamos el valor que tiene cada elemento buscandolo en la matriz y lo añadimos a la varaible distancia
-    for i in range(0, len(ciudades)-1):
-        distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
+        #recorremos el array y comprobamos el valor que tiene cada elemento buscandolo en la matriz y lo añadimos a la varaible distancia
+        for i in range(0, len(ciudades)-1):
+            distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
 
-    obtenerYCompararResultados(ciudades) #llamamos a obtener resultados con el primer resultado
+        obtenerYCompararResultados(ciudades, matriz) #llamamos a obtener resultados con el primer resultado
