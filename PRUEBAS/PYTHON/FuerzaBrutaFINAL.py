@@ -169,6 +169,7 @@ def fuerzaBruta(matriz):
             obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
 
         obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
-
+        exit()
     #FIN ALGORITMO
 
+    
