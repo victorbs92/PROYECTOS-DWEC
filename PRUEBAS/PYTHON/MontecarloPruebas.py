@@ -56,16 +56,12 @@ def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
     print("------------")
 
 
-def montecarlo():
+def montecarlo(matriz):
     #referencias a las variables globales
     global distanciaRutaCiudadesActual
     global contadorIteraciones
 
     # CARGA DE DATOS INICIAL
-    #abrimos el csv y cargamos la matriz con los datos del csv
-    file = open(os.path.join(sys.path[0], "sample.csv"), "r")
-    matriz = np.loadtxt(file, delimiter=",")
-
     #cargamos arrayRuta con la primera ruta con la que vamos a trabajar
     for i in range(0, len(matriz)):
         ciudades.insert(i, i)

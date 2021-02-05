@@ -76,20 +76,15 @@ def mostrarInfo(): # muestra en pantalla la informacion de la ruta
     print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
     #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
     #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
+    print ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     print("---------")
 
 
-def fuerzaBruta():
+def fuerzaBruta(matriz):
     #referencias a las variables globales
     global kIndice
     global cont1
     global contadorIteraciones
-    
-
-    # CARGA DE DATOS INICIAL
-    # abrimos el csv y cargamos la matriz con los datos del csv
-    file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
-    matriz = np.loadtxt(file, delimiter=",")
 
     # calcula el factorial de ciudades.length y lo divide entre 2 y lo guarda en una variable
     mitadFactorial = math.factorial(len(matriz)) / 2
