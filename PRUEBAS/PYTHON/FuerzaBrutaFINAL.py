@@ -127,7 +127,7 @@ def fuerzaBruta(matriz):
     '''
 
     for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tantas veces como valor tenga mitadFactorail -1
-
+        
         #actualizacion de variables utilizadas en cada uteracion del bucle
         contadorIteraciones = i
         kOK = False
@@ -169,7 +169,8 @@ def fuerzaBruta(matriz):
             obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
 
         obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
-        exit()
+        
     #FIN ALGORITMO
 
+    sys.exit()
     

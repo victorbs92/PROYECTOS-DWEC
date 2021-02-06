@@ -14,63 +14,33 @@ import FuerzaBrutaFINAL
 import MontecarloFINAL
 #import VecinoMasCercanoFINAL
 
+
 #abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros5.csv"), "r")
+file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
+
 #creamos los hilos de ejecucion
-
-#llamamos por cada hilo a un algoritmo distinto
-
-
-
-#FuerzaBrutaFINAL.fuerzaBruta(matriz)
-#MontecarloFINAL.montecarlo(matriz)
-#VecinoMasCercanoFINAL.vecinoMasCercano(matriz)
-
-'''
-def chequear(nombre):
-    #Chequea tamaño de archivo
-    contador = 0
-    tam = 0
-    while contador<100:
-        contador+=1
-        if os.path.exists(nombre):
-            estado = os.stat(nombre)  
-            tam = estado.st_size
-        
-        print(threading.current_thread().getName(), 
-              contador, 
-              tam, 
-              'bytes')
-              
-        time.sleep(0.1)        
-
-def escribir(nombre):
-    #Escribe en archivo
-    contador = 1 
-    while contador<=10:
-        with open(nombre, 'a') as archivo:
-            archivo.write('1')            
-            print(threading.current_thread().getName(), 
-                  contador)
-            time.sleep(0.3)
-            contador+=1
-
-nombre = 'archivo.txt'
-if os.path.exists(nombre):
-    os.remove(nombre)
-'''
-
-
 hiloFuerzaBruta = threading.Thread(name='fuerzaBruta', 
                          target=FuerzaBrutaFINAL.fuerzaBruta,
-                         args=(matriz,))
+                         args=(matriz,),
+                         daemon=True)
                          
 hiloMontecarlo = threading.Thread(name='montecarlo',
                          target=MontecarloFINAL.montecarlo,
-                         args=(matriz,))
+                         args=(matriz,),
+                         daemon=True)
 
 
+#llamamos por cada hilo a un algoritmo distinto
 hiloFuerzaBruta.start()
 #hiloMontecarlo.start()
+
+
+#despues de decirle a los hilos que se ejecuten esperamos en el hilo principal el tiempo que el usuario haya indicado,
+#y despues de ese tiempo matamos el hilo principal, los otros hilos como son demonios que dependen del hilo principal
+#se moriran automaticamente
+time.sleep(60)
+print("KKKKKKKKKKKKKKKKKKK")
+#sys.exit()
+
