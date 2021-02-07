@@ -107,3 +107,84 @@ calcularRuta(matriz, 0, cont)
 
 print(matriz)
 print(ciudades)
+#####################################################################################################################
+
+
+'''
+#####################################################################################################################
+# IMPORTS
+import itertools
+import random
+import math
+import numpy as np
+import os
+import sys
+from numpy.lib.financial import mirr
+
+
+# VARIABLES
+mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial
+
+ciudades = [] # array que va a estar cambiando a lo largo de todo el programa, en cada iteracion del algoritmo será una ruta distinta
+direcciones = [] # array donde se irán guardando las direcciones de cada elemento del array ciudades
+
+distanciaRutaCiudadesActual = 0 # variable donde se calcula en cada iteracion del algoritmo la distancia que se obtiene de recorrer el array ciudades y que se resetea en cada iteracion
+mensajeRutaCiudadesActual = "" # mensaje donde ir guardando la ruta de ciudades que hay en cada iteracion del bucle
+
+mejorRutaCiudades = []  # donde guardaremos la mejor ruta obtenida hasta el momento
+mejorDistanciaRuta = 0  # donde guardaremos la mejor distancia obtenida hasta el momento
+mensajeMejorRutaCiudades = "" # mensaje que mostrara la mejor ruta de ciudades a recorrer
+
+contadorIteraciones = 0  # vueltas de bucle
+cont1 = 0 #contador utilizado en el bucle
+
+
+# FUNCIONES Y METODOS
+def obtenerK (cont1): #obtiene K
+    global k
+    global kIndice
+    global kDireccion 
+    k = max(ciudades) - cont1 # se obtiene el elemento mayor del array
+    kIndice = ciudades.index(k)  # se obtiene el indice que ocupa K en el array
+    kDireccion = direcciones[kIndice]  # se obtiene la direccion de K
+
+
+def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ruta y la compara con la mejor que tenemos guardada
+    #referencias a las variables globales
+    global distanciaRutaCiudadesActual
+    global mensajeRutaCiudadesActual
+    global mejorRutaCiudades
+    global mejorDistanciaRuta
+    global mensajeMejorRutaCiudades
+
+    #resetValores
+    distanciaRutaCiudadesActual = 0
+    mensajeRutaCiudadesActual = ""
+
+    #CALCULO DE DISTANCIA Y MENSAJE
+    ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
+
+    for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
+        distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
+        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+    mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
+    
+    #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
+    if(distanciaRutaCiudadesActual < mejorDistanciaRuta or mejorDistanciaRuta == 0):
+        mejorRutaCiudades = ciudades
+        mejorDistanciaRuta = distanciaRutaCiudadesActual
+        mensajeMejorRutaCiudades = mensajeRutaCiudadesActual
+        mostrarInfo()
+
+    ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
+
+
+def mostrarInfo(): # muestra en pantalla la informacion de la ruta
+    print(f'Iteración: {contadorIteraciones}')
+    print(f'Mejor distancia: {mejorDistanciaRuta}')
+    print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
+    #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
+    #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
+    print ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    print("---------")
+'''

@@ -7,6 +7,12 @@ import os
 import sys
 from numpy.lib.financial import mirr
 
+'''
+from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+'''
 
 # VARIABLES
 mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial
@@ -28,6 +34,7 @@ kOK = False # variable que determinará si K cumple con todos los requisitos par
 
 contadorIteraciones = 0  # vueltas de bucle
 cont1 = 0 #contador utilizado en el bucle
+
 
 
 # FUNCIONES Y METODOS
@@ -71,16 +78,19 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
 
 def mostrarInfo(): # muestra en pantalla la informacion de la ruta
-    print(f'Iteración: {contadorIteraciones}')
-    print(f'Mejor distancia: {mejorDistanciaRuta}')
-    print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
-    #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
-    #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
-    print ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-    print("---------")
+    f = open ('PRUEBAS/PYTHON/FuerzaBrutaResultados.txt', 'a')
+    f.write(f'Iteración: {contadorIteraciones} \n')
+    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
+    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
+    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
+    #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
+    #f.write ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n")
+    f.write("--------- \n")
+    f.close()
 
 
 def fuerzaBruta(matriz):
+    
     #referencias a las variables globales
     global kIndice
     global cont1
@@ -171,6 +181,6 @@ def fuerzaBruta(matriz):
         obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
         
     #FIN ALGORITMO
-
+    
     sys.exit()
     

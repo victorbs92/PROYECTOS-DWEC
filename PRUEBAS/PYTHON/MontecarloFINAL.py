@@ -48,13 +48,15 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
     ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
-    print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
-    print(f'Mejor distancia: {mejorDistanciaRuta}')
-    print(f'Iteración: {contadorIteraciones}')
-    #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
-    #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
-    print ("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-    print("------------")
+    f = open ('PRUEBAS/PYTHON/MontecarloResultados.txt', 'a')
+    f.write(f'Iteración: {contadorIteraciones} \n')
+    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
+    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
+    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
+    #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
+    #f.write ("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB \n")
+    f.write("--------- \n")
+    f.close()
 
 
 def montecarlo(matriz):
