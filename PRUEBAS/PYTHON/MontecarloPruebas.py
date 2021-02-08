@@ -4,62 +4,76 @@ import numpy as np
 import os
 import sys
 
+
 #VARIABLES
-arrayRuta = np.array([])
-distancia = 0
-mejorRuta = arrayRuta
-mejorDistancia = 99999999999
-mensaje = ""
-contadorIteraciones = 0
+ciudades = [] #array donde guardaremos la ruta actual
+distanciaRutaCiudadesActual = 0 # variable donde se calcula en cada iteracion del algoritmo la distancia que se obtiene de recorrer el array ciudades y que se resetea en cada iteracion
+mensajeRutaCiudadesActual = "" # mensaje donde ir guardando la ruta de ciudades que hay en cada iteracion del bucle
 
-#abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sample.csv"), "r")
-matriz = np.loadtxt(file, delimiter=",")
+mejorRutaCiudades = []  # donde guardaremos la mejor ruta obtenida hasta el momento
+mejorDistanciaRuta = 0 # donde guardaremos la mejor distancia obtenida hasta el momento
+mensajeMejorRutaCiudades = "" # mensaje que mostrara la mejor ruta de ciudades a recorrer
 
+contadorIteraciones = 0  # vueltas de bucle
 
 
-#cargamos arrayRuta con la primera ruta con la que vamos a trabajar
-for i in range(0, len(matriz)):
-    #arrayRuta.insert(i, i)
-    print(arrayRuta)
-    np.insert(arrayRuta, i, i)
-    #np.concatenate([arrayRuta, i])
+# FUNCIONES Y METODOS
+def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ruta y la compara con la mejor que tenemos guardada
+    #referencias a las variables globales
+    global distanciaRutaCiudadesActual
+    global mensajeRutaCiudadesActual
+    global mejorRutaCiudades
+    global mejorDistanciaRuta
+    global mensajeMejorRutaCiudades
 
-#metodo que muestra los resultados cuando es llamado
-def mostrar(mensaje, mejorDistancia, contador):
-    print(mensaje)
-    print(f'Mejor distancia: {mejorDistancia} ')
-    print(f'Iteración: {contador} ')
+    #resetValores
+    distanciaRutaCiudadesActual = 0
+    mensajeRutaCiudadesActual = ""
 
+    #CALCULO DE DISTANCIA Y MENSAJE
+    ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
 
-while True:
-    contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
-    np.random.shuffle(arrayRuta) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
-    #arrayRuta.append(arrayRuta[0]) #añade al final del array el mismo elemento que el primer elemento del array
-    np.append(arrayRuta, arrayRuta[0])
+    for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
+        distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
+        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+    mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
     
-    #recorremos el array y comprobamos el valor que tiene cada elemento buscandolo en la matriz y lo añadimos a la varaible distancia
-    for i in range(0, len(arrayRuta)-1):
-        distancia = distancia + matriz[arrayRuta[i]][arrayRuta[i+1]]
+    #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
+    if(distanciaRutaCiudadesActual < mejorDistanciaRuta or mejorDistanciaRuta == 0 ):
+        mejorRutaCiudades = ciudades
+        mejorDistanciaRuta = distanciaRutaCiudadesActual
+        mensajeMejorRutaCiudades = mensajeRutaCiudadesActual
+        mostrarInfo()
 
-    #comprobamos si la distancia obtenida en esta iteracion es mejor que la que ya habia guardada
-    if distancia < mejorDistancia:
-        mensaje = "Mejor ruta: "
-        mejorDistancia = distancia
-        mejorRuta = arrayRuta
+    ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
-        #cargamos el mensaje que mostrará la ruta de ciudades recorriendo el array y guardando la ciudad [i] en cada iteracion del bucle
-        for i in range(0, len(mejorRuta)):
-            if i < len(mejorRuta) - 1:
-                mensaje += (f'Ciudad: {mejorRuta[i]} -> ')
-            else:
-                mensaje += (f'Ciudad: {mejorRuta[i]}')
+def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
+    print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
+    print(f'Mejor distancia: {mejorDistanciaRuta}')
+    print(f'Iteración: {contadorIteraciones}')
+    #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
+    #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
+    print("------------")
 
-        mostrar(mensaje, mejorDistancia, contadorIteraciones) #llamamos a la funcion que muestra los datos
 
-    arrayRuta.pop(len(arrayRuta)-1) #quitamos el ultimo elemento del array para que cuando vuelva a entrar en el bucle y mezcle el array, lo haga sin repetidos
-    distancia = 0 #reseteamos la distancia para que vuelva a calcularla empezando de 0 en la siguiente iteracion del bucle
+def montecarlo(matriz):
+    #referencias a las variables globales
+    global distanciaRutaCiudadesActual
+    global contadorIteraciones
 
-    #llamamos a la funcion que muestra los datos por cada 100000 iteraciones
-    if contadorIteraciones % 100000 == 0:
-        mostrar(mensaje, mejorDistancia, contadorIteraciones)
+    # CARGA DE DATOS INICIAL
+    #cargamos arrayRuta con la primera ruta con la que vamos a trabajar
+    for i in range(0, len(matriz)):
+        ciudades.insert(i, i)
+
+
+    #ALGORITMO
+    while True:
+        contadorIteraciones = contadorIteraciones + 1 #incrementamos en 1 el contador de iteraciones
+        np.random.shuffle(ciudades) #mezclamos el arrayRuta que habiamos cargado anteriormente, en cada nueva iteracion mezcla el arrayRuta que habrá sido mezclado en la iteracion anterior 
+
+        #recorremos el array y comprobamos el valor que tiene cada elemento buscandolo en la matriz y lo añadimos a la varaible distancia
+        for i in range(0, len(ciudades)-1):
+            distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
+
+        obtenerYCompararResultados(ciudades, matriz) #llamamos a obtener resultados con el primer resultado

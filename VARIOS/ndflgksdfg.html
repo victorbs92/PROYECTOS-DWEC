@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var originalFunction = wrap()
+
+        function wrap(execute) {
+            try {
+                
+                var resultExec = wrap(function () {
+                    return "Result";
+                });
+            } catch (e) {
+                var errorExec = wrap(function () {
+                    throw new Error('Error');
+                });
+            }
+        }
+        console.log(typeof errorExec === "function" && errorExec()); // Should output null
+        console.log(typeof resultExec === "function" && resultExec()); // Should output "Result"
+
+        console.log(originalFunction);
+
+        /*function wrap (execute) {
+  // Return modified function
+}
+
+var errorExec = wrap(function () {
+  throw new Error('Error');
+});
+var resultExec = wrap(function () {
+  return "Result";
+});
+console.log(typeof errorExec === "function" && errorExec()); // Should output null
+console.log(typeof resultExec === "function" && resultExec()); // Should output "Result"*/
+    </script>
+</body>
+
+</html>
