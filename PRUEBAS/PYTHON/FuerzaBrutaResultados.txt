@@ -1,0 +1,208 @@
+Iteración: 1 
+Mejor distancia: 428.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 3 
+Mejor distancia: 427.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 0 
+--------- 
+Iteración: 8 
+Mejor distancia: 422.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 0 
+--------- 
+Iteración: 31 
+Mejor distancia: 417.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 13 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 46 
+Mejor distancia: 384.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 13 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 
+--------- 
+Iteración: 91 
+Mejor distancia: 379.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 13 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 106 
+Mejor distancia: 376.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 
+--------- 
+Iteración: 121 
+Mejor distancia: 368.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 256 
+Mejor distancia: 367.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 12 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 286 
+Mejor distancia: 353.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 12 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 541 
+Mejor distancia: 349.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 706 
+Mejor distancia: 337.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 3456 
+Mejor distancia: 332.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 12 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 3475 
+Mejor distancia: 324.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 12 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4326 
+Mejor distancia: 323.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4734 
+Mejor distancia: 316.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4747 
+Mejor distancia: 308.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16645 
+Mejor distancia: 300.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16705 
+Mejor distancia: 294.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16824 
+Mejor distancia: 290.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 13 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16896 
+Mejor distancia: 282.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 44215 
+Mejor distancia: 279.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 11 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 48565 
+Mejor distancia: 273.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 48625 
+Mejor distancia: 267.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 114147 
+Mejor distancia: 265.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 10 -> Ciudad: 7 -> Ciudad: 14 -> Ciudad: 12 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 175046 
+Mejor distancia: 251.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 11 -> Ciudad: 4 -> Ciudad: 10 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 1 
+Mejor distancia: 428.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 3 
+Mejor distancia: 427.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 0 
+--------- 
+Iteración: 8 
+Mejor distancia: 422.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 13 -> Ciudad: 0 
+--------- 
+Iteración: 31 
+Mejor distancia: 417.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 13 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 46 
+Mejor distancia: 384.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 13 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 
+--------- 
+Iteración: 91 
+Mejor distancia: 379.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 13 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 106 
+Mejor distancia: 376.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 
+--------- 
+Iteración: 121 
+Mejor distancia: 368.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 256 
+Mejor distancia: 367.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 12 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 286 
+Mejor distancia: 353.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 12 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 541 
+Mejor distancia: 349.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 -> Ciudad: 0 
+--------- 
+Iteración: 706 
+Mejor distancia: 337.0 
+Mejor ruta: Ciudad: 14 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 11 -> Ciudad: 14 
+--------- 
+Iteración: 3456 
+Mejor distancia: 332.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 12 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 3475 
+Mejor distancia: 324.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 12 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4326 
+Mejor distancia: 323.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4734 
+Mejor distancia: 316.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 4747 
+Mejor distancia: 308.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 11 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16645 
+Mejor distancia: 300.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16705 
+Mejor distancia: 294.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16824 
+Mejor distancia: 290.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 13 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 16896 
+Mejor distancia: 282.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 10 -> Ciudad: 0 
+--------- 
+Iteración: 44215 
+Mejor distancia: 279.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 11 -> Ciudad: 4 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 48565 
+Mejor distancia: 273.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 13 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 48625 
+Mejor distancia: 267.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 10 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 114147 
+Mejor distancia: 265.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 4 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 13 -> Ciudad: 6 -> Ciudad: 10 -> Ciudad: 7 -> Ciudad: 14 -> Ciudad: 12 -> Ciudad: 8 -> Ciudad: 9 -> Ciudad: 0 
+--------- 
+Iteración: 175046 
+Mejor distancia: 251.0 
+Mejor ruta: Ciudad: 0 -> Ciudad: 1 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 11 -> Ciudad: 4 -> Ciudad: 10 -> Ciudad: 13 -> Ciudad: 5 -> Ciudad: 6 -> Ciudad: 14 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 9 -> Ciudad: 0 
+--------- 

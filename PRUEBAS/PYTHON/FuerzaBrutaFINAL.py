@@ -76,7 +76,10 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
-
+#RESETEA EL TXT
+f = open ('PRUEBAS/PYTHON/FuerzaBrutaResultados.txt', 'w')
+f.write ("")
+f.close
 def mostrarInfo(): # muestra en pantalla la informacion de la ruta
     f = open ('PRUEBAS/PYTHON/FuerzaBrutaResultados.txt', 'a')
     f.write(f'Iteración: {contadorIteraciones} \n')

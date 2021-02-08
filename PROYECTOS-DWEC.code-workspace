@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "PRUEBAS\\PYTHON\\hello_flask\\env\\Scripts\\python.exe"
+		"python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe"
 	},
 	"launch": {
 		"version": "0.2.0",

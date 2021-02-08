@@ -112,7 +112,7 @@
                             {{ template2 }}
                             {% endblock %}  
                             </textarea>
-                           
+
                     </td>
                     <td rowspan="7" id="celdaImagen">
                         <img src="tenor.gif" alt="alt" />
@@ -129,7 +129,7 @@
                 <tr>
                     <td>
                         <textarea id="algoritmo3" name="name" rows="5" cols="10">
-                            
+
                         </textarea>
                     </td>
                     <td>
@@ -171,6 +171,43 @@
         let x = document.getElementById("boton");
         x.addEventListener("click", () => {
             console.log("AAAAAAAAAA");
+
+            let objeto = "";
+
+            //1º se crea el objeto
+            const ajax = new XMLHttpRequest();
+            //debugger;
+            //2º se asigna el evento al objeto
+            ajax.addEventListener("readystatechange", function () {
+                //debugger;
+                switch (ajax.readyState) {
+
+                    case 4:
+                        //debugger;
+                        if (ajax.status >= 200 && ajax.status < 300) {
+                            //AQUI RECOGEMOS TODO LO QUE SE HAYA IMPRIMIDO CON ECHO EN EL PHP
+                            let archivo = JSON.parse(ajax.responseText);
+                            //debugger;
+                            //document.getElementById("div").textContent = archivo;
+
+                            objeto = archivo
+                            console.log(archivo);
+
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+            });
+
+            //3º se configura la peticion
+            ajax.open("GET", "aaa.py");
+
+            //4º se envia la peticion
+            ajax.send();
+
         });
     </script>
 
