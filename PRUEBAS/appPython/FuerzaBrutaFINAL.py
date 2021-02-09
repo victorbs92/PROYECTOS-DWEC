@@ -7,6 +7,14 @@ import os
 import sys
 from numpy.lib.financial import mirr
 
+'''
+{% include 'header.html' %}
+
+from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+'''
 
 # VARIABLES
 mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial
@@ -30,8 +38,9 @@ contadorIteraciones = 0  # vueltas de bucle
 cont1 = 0 #contador utilizado en el bucle
 
 
+
 # FUNCIONES Y METODOS
-def obtenerK (cont1):
+def obtenerK (cont1): #obtiene K
     global k
     global kIndice
     global kDireccion 
@@ -40,7 +49,7 @@ def obtenerK (cont1):
     kDireccion = direcciones[kIndice]  # se obtiene la direccion de K
 
 
-def obtenerYCompararResultados(ciudades):
+def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ruta y la compara con la mejor que tenemos guardada
     #referencias a las variables globales
     global distanciaRutaCiudadesActual
     global mensajeRutaCiudadesActual
@@ -54,8 +63,8 @@ def obtenerYCompararResultados(ciudades):
 
     #CALCULO DE DISTANCIA Y MENSAJE
     ciudades.append(ciudades[0]) #añade al final del array ciudades una copia de la primera ciudad
-    for i in range(0, len(ciudades)-1):
-        #recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
+
+    for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
         distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
         mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
     mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
@@ -67,195 +76,119 @@ def obtenerYCompararResultados(ciudades):
         mensajeMejorRutaCiudades = mensajeRutaCiudadesActual
         mostrarInfo()
 
-    ciudades.pop(len(ciudades) - 1)
+    ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
+
+#RESETEA EL TXT
+
+f = open ('FuerzaBrutaResultados.txt', 'w')
+f.write ("")
+f.close
+
+def mostrarInfo(): # muestra en pantalla la informacion de la ruta
+    print ("AAAAAAAAAAAA")
+    f = open ('FuerzaBrutaResultados.txt', 'w')
+    f.write(f'Iteración: {contadorIteraciones} \n')
+    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
+    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
+    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
+    #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
+    #f.write ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n")
+    f.write("--------- \n")
+    f.close()
 
 
-def mostrarInfo():
-    print(f'Iteración: {contadorIteraciones}')
-    print(f'Mejor distancia: {mejorDistanciaRuta}')
-    print(f'Mejor ruta: {mensajeMejorRutaCiudades}')
-    #print(f'Ruta actual: {mensajeRutaCiudadesActual}')
-    #print(f'Distancia actual: {distanciaRutaCiudadesActual}')
-    print("---------")
-
-
-# CARGA DE DATOS INICIAL
-# abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
-matriz = np.loadtxt(file, delimiter=",")
-
-# calcula el factorial de ciudades.length y lo divide entre 2 y lo guarda en una variable
-mitadFactorial = math.factorial(len(matriz)) / 2
-
-for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial y el array direcciones con todas a la izd
-    ciudades.append(i)
-    direcciones.append("izd")
-
-obtenerK(cont1) #obtenemos K por primera vez
-
-contadorIteraciones = 1 #numero de veces que se ha ejecutado el algoritmo
-
-obtenerYCompararResultados(ciudades) #llamamos a obtener resultados con el primer resultado
-
-
-# ALGORITMO Steinhaus–Johnson–Trotter con aceleración de Even
-'''
-EXPLICACION ALGORITMO:
-Ejecutar el algoritmo en un bucle que itere de 1 en 1 hasta que las iteraciones igualen a la variable "mitadFactorial".
-Empezar obteniendo un array de tantos elementos como ciudades tenga la matriz, los valores del array serán números en orden ascendente 
-empezando desde el 0 y acabando en matriz.lenght (Ej para una matriz de 5 ciudades: [0, 1, 2, 3, 4]) 
-Este algoritmo funciona asigando "estados" a cada elemento del array, los estados pueden ser: izd, der o inmovil.
-Paso 1:
-Se asigna la dirección "izd" a todos el elementos del array.
-Paso 2:
-Se localiza el elemento con valor mas alto que no tenga estado inmovil, lo denominaremos "K".
-Paso 3:
-Se comprueba si el elemento al que apunta "K" es menor que "K", si es asi, se intercambian la posición (Ej: [<0 <1 <2] pasaría a ser [<0 <2 <1]),
-si el elemento al que apunta "K" no es menor, se considera a "K" en estado "inmovil" y "K" pasaría a ser el 2º elemento con mas valor y asi sucesivamente
-hasta encontrar un valor que cumpla con las condiciones y pueda ser "K".
-*Si "K" tiene estado "izd" y está en la posicion 0 del array, se considerará que tiene estado "inmovil", al igual que si "K" tiene estado "der"
-y se encuentra en la última posicion del array.*
-**Cuando el Paso 3 no pueda cumplirse el algoritmo habrá acabado.**
-Paso 4:
-Despues de cada intercambio se verifica si existen elementos mayores que "K" aunque tengan estado "inmovil", si es así, se les cambia el
-estado a todos, asigandoles "izd" si tenian "der", "der" si tenian "izd" o si estan "inmoviles", asignandoles el opuesto del último estado 
-que tuvieron antes de volverse "inmoviles" 
-Paso 5:
-Se vuelve al Paso 2 y se repiten todos los pasos hasta que se acabe el algoritmo.
-'''
-
-for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tantas veces como valor tenga mitadFactorail -1
-
-    #actualizacion de variables utilizadas en cada uteracion del bucle
-    contadorIteraciones = i
-    kOK = False
-    cont1 = 0
-
-    #OBTENEMOS K
-    while(kOK == False): 
-        
-        if((kDireccion == "izd" and kIndice == 0) or # si K apunta a la izd y esta en la posicion 0
-           (kDireccion == "der" and kIndice == len(ciudades)-1) or  # si K apunta a la der y esta en la ultima posicion
-           (kDireccion == "izd" and ciudades[kIndice - 1] > k) or # si K apunta a la izd y el numero a la izd de K es mayor que K
-           (kDireccion == "der" and ciudades[kIndice + 1] > k)): # si K apunta a la der y el numero a la der de K es mayor que K
-            cont1 = cont1 + 1
-            obtenerK(cont1)
-            
-        else:
-            kOK = True
-
-    #REALIZAMOS INTERCAMBIO
-    if(kDireccion == "izd"):
-        ciudades[kIndice], ciudades[kIndice - 1] = ciudades[kIndice - 1], ciudades[kIndice] #intercambia las ciudades
-        direcciones[kIndice], direcciones[kIndice - 1] = direcciones[kIndice - 1], direcciones[kIndice] #intercambia las direcciones
-        kIndice = ciudades.index(k) #actualizamos el indice de K
-    else:    
-        ciudades[kIndice], ciudades[kIndice + 1] = ciudades[kIndice + 1], ciudades[kIndice] #intercambia las ciudades
-        direcciones[kIndice], direcciones[kIndice + 1] = direcciones[kIndice + 1], direcciones[kIndice] #intercambia las direcciones
-        kIndice = ciudades.index(k) #actualizamos el indice de K
-
-    #COMPROBAMOS SI HAY NUMEROS MAYORES QUE K
-    if (k < max(ciudades)): #si los hay, cambiamos la direccion de todos los numeros mayores que K 
-
-        for j in range(len(ciudades)): #recorremos el array ciudades comprobando cada numero con K y al que sea mayor le cambiamos la direccion
-
-            if(ciudades[j] > k and direcciones[j] == "izd"):
-                direcciones[j] = "der"
-            elif(ciudades[j] > k and direcciones[j] == "der"):
-                direcciones[j] = "izd"
-
-        obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
+def fuerzaBruta(matriz):
     
-    obtenerYCompararResultados(ciudades) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
+    #referencias a las variables globales
+    global kIndice
+    global cont1
+    global contadorIteraciones
 
-#FIN ALGORITMO
+    # calcula el factorial de ciudades.length y lo divide entre 2 y lo guarda en una variable
+    mitadFactorial = math.factorial(len(matriz)) / 2
 
+    for i in range(len(matriz)):  # cargamos el array ciudades con la ruta inicial y el array direcciones con todas a la izd
+        ciudades.append(i)
+        direcciones.append("izd")
 
-'''
-# PRUUUUUUUUUUEEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAS
+    obtenerK(cont1) #obtenemos K por primera vez
 
+    contadorIteraciones = 1 #numero de veces que se ha ejecutado el algoritmo
 
-####################################################
-
-
-# OBTIENE TODAS LAS PERMUTACIONES DE LAS CIUDADES
-ciudadesPermu = []
-def obtenerTodasPermutaciones(ciudades, ciudadesPermu):
-    for p in itertools.permutations(ciudades):
-        x = []
-        # convierte la lista en un array añadiendo los elemento 1 por 1 al array
-        for i in range(len(p)):
-            x.append(p[i])
-        ciudadesPermu.append(x)  # añade el array a ciudades (array de arrays)
-
-    print("CIUDADES TOTAL:")
-    print(len(ciudadesPermu))
-    # print(ciudadesPermu)
-    print("-------------------------------------------------------------")
+    obtenerYCompararResultados(ciudades, matriz) #llamamos a obtener resultados con el primer resultado
 
 
-####################################################
+    # ALGORITMO Steinhaus–Johnson–Trotter con aceleración de Even
+    '''
+    EXPLICACION ALGORITMO:
+    Ejecutar el algoritmo en un bucle que itere de 1 en 1 hasta que las iteraciones igualen a la variable "mitadFactorial".
+    Empezar obteniendo un array de tantos elementos como ciudades tenga la matriz, los valores del array serán números en orden ascendente 
+    empezando desde el 0 y acabando en matriz.lenght (Ej para una matriz de 5 ciudades: [0, 1, 2, 3, 4]) 
+    Este algoritmo funciona asigando "estados" a cada elemento del array, los estados pueden ser: izd, der o inmovil.
+    Paso 1:
+    Se asigna la dirección "izd" a todos el elementos del array.
+    Paso 2:
+    Se localiza el elemento con valor mas alto que no tenga estado inmovil, lo denominaremos "K".
+    Paso 3:
+    Se comprueba si el elemento al que apunta "K" es menor que "K", si es asi, se intercambian la posición (Ej: [<0 <1 <2] pasaría a ser [<0 <2 <1]),
+    si el elemento al que apunta "K" no es menor, se considera a "K" en estado "inmovil" y "K" pasaría a ser el 2º elemento con mas valor y asi sucesivamente
+    hasta encontrar un valor que cumpla con las condiciones y pueda ser "K".
+    *Si "K" tiene estado "izd" y está en la posicion 0 del array, se considerará que tiene estado "inmovil", al igual que si "K" tiene estado "der"
+    y se encuentra en la última posicion del array.*
+    **Cuando el Paso 3 no pueda cumplirse el algoritmo habrá acabado.**
+    Paso 4:
+    Despues de cada intercambio se verifica si existen elementos mayores que "K" aunque tengan estado "inmovil", si es así, se les cambia el
+    estado a todos, asigandoles "izd" si tenian "der", "der" si tenian "izd" o si estan "inmoviles", asignandoles el opuesto del último estado 
+    que tuvieron antes de volverse "inmoviles" 
+    Paso 5:
+    Se vuelve al Paso 2 y se repiten todos los pasos hasta que se acabe el algoritmo.
+    '''
 
+    for i in range(2, int(mitadFactorial+1)):  # bucle que ejecuta el algoritmo tantas veces como valor tenga mitadFactorail -1
+        
+        #actualizacion de variables utilizadas en cada uteracion del bucle
+        contadorIteraciones = i
+        kOK = False
+        cont1 = 0
 
-# GUARDA EN CIUDADESALGORITMOCONINVERSOS TODAS LAS PERMUTACIONES CON SUS INVERSOS
-# variables para comprobacion (no necesarias cuando el algoritmo ya funcione)
-ciudadesAlgoritConInversos = []
-def obtenerTodasPermutacionConInversos(ciudadesAlgoritmo, ciudadesAlgoritConInversos):
-    ciudadesAlgoritmo[0] = ciudades[:]
-    for i in range(len(ciudadesAlgoritmo)):
-        ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[i][:])
-        ciudadesAlgoritConInversos.append(ciudadesAlgoritmo[i][::-1])
+        #OBTENEMOS K
+        while(kOK == False): 
 
-    print("CIUDADES ALGORITMO + INVERSOS:")
-    print(len(ciudadesAlgoritConInversos))
-    #print(ciudadesAlgoritConInversos)
-    print("-------------------------------------------------------------")
+            if((kDireccion == "izd" and kIndice == 0) or # si K apunta a la izd y esta en la posicion 0
+               (kDireccion == "der" and kIndice == len(ciudades)-1) or  # si K apunta a la der y esta en la ultima posicion
+               (kDireccion == "izd" and ciudades[kIndice - 1] > k) or # si K apunta a la izd y el numero a la izd de K es mayor que K
+               (kDireccion == "der" and ciudades[kIndice + 1] > k)): # si K apunta a la der y el numero a la der de K es mayor que K
+                cont1 = cont1 + 1
+                obtenerK(cont1)
 
+            else:
+                kOK = True
 
-####################################################
+        #REALIZAMOS INTERCAMBIO
+        if(kDireccion == "izd"):
+            ciudades[kIndice], ciudades[kIndice - 1] = ciudades[kIndice - 1], ciudades[kIndice] #intercambia las ciudades
+            direcciones[kIndice], direcciones[kIndice - 1] = direcciones[kIndice - 1], direcciones[kIndice] #intercambia las direcciones
+            kIndice = ciudades.index(k) #actualizamos el indice de K
+        else:    
+            ciudades[kIndice], ciudades[kIndice + 1] = ciudades[kIndice + 1], ciudades[kIndice] #intercambia las ciudades
+            direcciones[kIndice], direcciones[kIndice + 1] = direcciones[kIndice + 1], direcciones[kIndice] #intercambia las direcciones
+            kIndice = ciudades.index(k) #actualizamos el indice de K
 
+        #COMPROBAMOS SI HAY NUMEROS MAYORES QUE K
+        if (k < max(ciudades)): #si los hay, cambiamos la direccion de todos los numeros mayores que K 
 
-# COMPRUEBA SI EL ARRAY DE LA POSICION I DE LA VARIABLE ALGORITMOSCONINVERSOS EXISTE EN CIUDADESPERMU Y SI EXISTE LO ELIMINA DE LA COPIA DE AMBAS VARIABLES
-def TESTER():
-    ciudadesAlgoritmosConInversosCOPIA = ciudadesAlgoritConInversos[:]
-    ciudadesPermuCOPIA = ciudadesPermu[:]
-    #print ((ciudadesAlgoritmosConInversosCOPIA))
-    for i in range(len(ciudadesAlgoritConInversos)):
-        for j in range(len(ciudadesPermu)):
-            if ciudadesAlgoritConInversos[i] == ciudadesPermu[j]:
-                ciudadesAlgoritmosConInversosCOPIA.remove(
-                    ciudadesAlgoritConInversos[i])
-                #print (ciudadesPermu[j])
-                ciudadesPermuCOPIA.remove(ciudadesPermu[j])
-                #print (i)
-                #auxiliar2copia[i] = ("Z")
-                #ciudadesPermuCopia[i] = ("Z")
-    print (len(ciudadesPermuCOPIA))
+            for j in range(len(ciudades)): #recorremos el array ciudades comprobando cada numero con K y al que sea mayor le cambiamos la direccion
 
-####################################################
+                if(ciudades[j] > k and direcciones[j] == "izd"):
+                    direcciones[j] = "der"
+                elif(ciudades[j] > k and direcciones[j] == "der"):
+                    direcciones[j] = "izd"
 
+            obtenerK(0) #se obtiene K y todos sus atributos siendo K el valor mas alto del array ciudades
 
-# COMPRUEBA SI HAY REPETIDOS EN UN ARRAY
-def comprobarRepetidos(ciudadesAlgoritmo):
-    x = 0
-    y = 0
-    z = []
-    for i in range(len(ciudadesAlgoritmo)):
-        x = 0
-        for j in range(len(ciudadesAlgoritmo)):
-            if ciudadesAlgoritmo[i] == ciudadesAlgoritmo[j]:
-                x = x + 1
-        if(x > 1):
-            y = y + 1
-            z.append(ciudadesAlgoritmo[i][:])
-
-    print("Repetidos:")
-    print(y)  # si no hay repetidos "y" tiene que valer 0
-    print(len(z))
-    #print (z)
-    print("-------------------------------------------------------------")
-
-
-####################################################
-
-'''
+        obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
+        
+    #FIN ALGORITMO
+    
+    sys.exit()
+    
