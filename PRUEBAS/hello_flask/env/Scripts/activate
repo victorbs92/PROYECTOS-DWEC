@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\admin\Desktop\PROYECTOS-DWEC\PRUEBAS\PYTHON\hello_flask\env"
+VIRTUAL_ENV="D:\Documents\Victor Documentos\ESTUDIOS\GRADO SUPERIOR DAW 2020 (2 curso - presencial)\DWEC\PROYECTOS-DWEC\PRUEBAS\hello_flask\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

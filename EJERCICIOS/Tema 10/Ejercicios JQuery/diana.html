@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>celda11</td>
+            <td>celda12</td>
+            <td>celda13</td>
+            <td>celda14</td>
+            <td>celda15</td>
+        </tr>
+        <tr>
+            <td>celda21</td>
+            <td>celda22</td>
+            <td>celda23</td>
+            <td>celda24</td>
+            <td>celda25</td>
+        </tr>
+        <tr>
+            <td>celda31</td>
+            <td>celda32</td>
+            <td>celda33</td>
+            <td>celda34</td>
+            <td>celda35</td>
+        </tr>
+        <tr>
+            <td>celda41</td>
+            <td>celda42</td>
+            <td>celda43</td>
+            <td>celda44</td>
+            <td>celda45</td>
+        </tr>
+        <tr>
+            <td>celda51</td>
+            <td>celda52</td>
+            <td>celda53</td>
+            <td>celda54</td>
+            <td>celda55</td>
+        </tr>
+    </table>
+    <script>
+        //tabla = document.querySelector("table");
+        $("table").on("click", function (event) {
+            if (event.target.nodeName === "TD") {
+
+                resetearDiana(this);
+
+                event.target.style.backgroundColor = "greenyellow";
+
+                if (event.target.previousElementSibling !== null) {
+                    event.target.previousElementSibling.style.backgroundColor = "red";
+                };
+
+                if (event.target.nextElementSibling !== null) {
+                    event.target.nextElementSibling.style.backgroundColor = "red";
+                };
+
+                let padre = event.target.parentNode;
+                let seleccionado = [...padre.children].findIndex(celda => celda == event.target);
+
+                if (padre.previousElementSibling !== null) {
+                    padre.previousElementSibling.children[seleccionado].style.backgroundColor = "red";
+                };
+
+                if (padre.nextElementSibling !== null) {
+                    padre.nextElementSibling.children[seleccionado].style.backgroundColor = "red";
+                };
+
+            }
+        });
+
+
+
+        function resetearDiana(tabla) {
+
+            let celdas = tabla.querySelectorAll("td");
+
+            celdas.forEach(element => {
+                element.style.backgroundColor = "white";
+            });
+
+        }
+    </script>
+</body>
+
+</html>
