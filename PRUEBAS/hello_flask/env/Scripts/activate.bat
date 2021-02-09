@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\admin\Desktop\PROYECTOS-DWEC\PRUEBAS\PYTHON\hello_flask\env
+set VIRTUAL_ENV=D:\Documents\Victor Documentos\ESTUDIOS\GRADO SUPERIOR DAW 2020 (2 curso - presencial)\DWEC\PROYECTOS-DWEC\PRUEBAS\hello_flask\env
 
 if not defined PROMPT set PROMPT=$P$G
 

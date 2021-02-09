@@ -1,3 +1,5 @@
+#python -m flask run
+
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -5,12 +7,14 @@ import random
 import numpy as np
 import os
 import sys
+
 app = Flask(__name__)
 
 #https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    '''
     arrayRuta = []
     distancia = 0
     mejorRuta = arrayRuta
@@ -67,6 +71,14 @@ def index():
         #if contadorIteraciones % 100000 == 0:
         # mostrar(mensaje, mejorDistancia, contadorIteraciones)
     return render_template("index.html", template2=mejorRuta)
-
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='8080', debug=True)
+    
+    try:
+        minutos = request.args.get("minutosEjecucion")
+        if(minutos != ''):
+            return render_template("index.html", template2='minutos' + minutos)
+        else:
+            return render_template("index.html", template2="VVVVVVVVVV")
+    except:
+        return render_template("index.html", template2="AAAAAAA")
+'''
+    return render_template("index.html", template2="AAAAAAA")
