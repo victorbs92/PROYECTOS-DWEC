@@ -47,15 +47,10 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
-#RESETEA EL TXT
-
-f = open ('MontecarloResultados.txt', 'w')
-f.write ("")
-f.close
 
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
    print ("BBBBBBBBBBBB")
-   f = open ('MontecarloResultados.txt', 'a')
+   f = open ('MontecarloResultados.txt', 'w')
    f.write(f'Iteración: {contadorIteraciones} \n')
    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')

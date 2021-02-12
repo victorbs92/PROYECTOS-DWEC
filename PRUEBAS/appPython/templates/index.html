@@ -144,7 +144,8 @@
                     <td colspan="2">
                         <div class="crono_wrapper">
                             <h2 id='crono'>00:00:00</h2>
-                            <input class="boton" type="submit" value="COMENZAR" onclick="empezarDetener(this)">
+                            <input class="boton" type="submit" value="COMENZAR" id="comenzar">
+                            <input class="boton" type="submit" value="TERMINAR" id="terminar">
                         </div>
                     </td>
                 </tr>
@@ -164,81 +165,60 @@
 
 
     <script>
-        //Client-side Javascript code for handling random numbers
-        $(document).ready(function () {
-            //connect to the socket server.
-            var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
-            var numbers_received = [];
+        window.addEventListener("load", () => { //ACCIONES QUE SE REALIZAN AL CARGAR LA PG
 
-            //receive details from server
-            socket.on('newnumber', function (msg) {
-                console.log("Received number" + msg.number);
-                //maintain a list of ten numbers
-                if (numbers_received.length >= 10) {
-                    numbers_received.shift()
-                }
-                numbers_received.push(msg.number);
-                numbers_string = '';
-                for (var i = 0; i < numbers_received.length; i++) {
-                    numbers_string = numbers_string + '<p>' + numbers_received[i].toString() + '</p>';
-                }
-                $('#log').html(numbers_string);
-            });
+            let ls = window.localStorage; //accede al localStorage
+            let minutos = ls.getItem('minutos'); //guarda en una variable el valor de "time" del localStorage
 
-        });
-
-        window.addEventListener("load", () => {
-
-            let ls = window.localStorage;
-            let minu = ls.getItem('time');
-
-            console.log(minu);
-
-            if (minu !== null) {
-                let demo = document.getElementById("crono");
-
+            if (minutos !== null && minutos !== "0") { //si minu es distinto de null y de 0
+                let crono = document.getElementById("crono");
+                console.log(minutos);
                 // Set the date we're counting down to
-                var countDownDate = new Date().getTime() + minu * 1000 * 60;
+                let countDownDate = new Date().getTime() + minutos * 1000 * 60;
 
                 // Update the count down every 1 second
-                var x = setInterval(function () {
+                let intervalo = setInterval(function () {
 
                     // Get today's date and time
-                    var now = new Date().getTime();
+                    let now = new Date().getTime();
 
                     // Find the distance between now and the count down date
-                    var distance = countDownDate - now;
+                    let totalTime = countDownDate - now;
 
                     // Time calculations for days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    let days = Math.floor(totalTime / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((totalTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
 
                     // Output the result in an element with id="demo"
-                    demo.innerHTML = days + "d " + hours + "h " +
+                    crono.innerHTML = days + "d " + hours + "h " +
                         minutes + "m " + seconds + "s ";
 
                     // If the count down is over, write some text 
-                    if (distance < 0) {
-                        clearInterval(x);
-                        demo.innerHTML = "EXPIRED";
+                    if (totalTime < 0) {
+                        clearInterval(intervalo);
+                        crono.innerHTML = "EXPIRED";
                     }
                 }, 1000);
             }
         })
 
-        function empezarDetener(x) {
 
-            //console.log(minu);
-
-            let demo = document.getElementById("crono");
-            let minu = document.getElementById("minutosEjecucion").value;
+        let botonComenzar = document.getElementById("comenzar");
+        botonComenzar.addEventListener("click", () => {
+            let crono = document.getElementById("crono");
+            let minutos = document.getElementById("minutosEjecucion").value;
 
             let ls = window.localStorage;
-            ls.setItem('time', minu);
+            ls.setItem('minutos', minutos);
+        });
 
-        }
+        let botonTerminar = document.getElementById("terminar");
+        botonTerminar.addEventListener("click", () => {
+            let ls = window.localStorage;
+            ls.setItem('minutos', 0);
+        });
     </script>
 
 </body>
