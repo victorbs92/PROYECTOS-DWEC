@@ -6,14 +6,6 @@ import numpy as np
 import os
 import sys
 
-'''
-{% include 'header.html' %}
-
-from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-'''
 
 # VARIABLES
 mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial

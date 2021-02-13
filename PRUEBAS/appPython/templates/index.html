@@ -85,7 +85,7 @@
 </head>
 
 <body>
-    <form action="/" method="GET">
+    <form action="/" method="POST" enctype="multipart/form-data">
         <fieldset>
             <h1>Competición de algoritmos</h1>
             <br><br>
@@ -133,7 +133,7 @@
                     </td>
                     <td>
                         <input type="number" name="minutosEjecucion" id="minutosEjecucion" min="1">
-                        <input type="file" name="matriz" id="matriz" required>
+                        <input type="file" name="matriz" id="matriz">
                     </td>
                 <tr>
                     <td colspan="2">
@@ -171,7 +171,7 @@
 
             if (minutos !== null && minutos !== "0") { //si minu es distinto de null y de 0
                 let crono = document.getElementById("crono");
-                console.log(minutos);
+                
                 // Set the date we're counting down to
                 let countDownDate = new Date().getTime() + minutos * 1000 * 60;
 
@@ -190,7 +190,7 @@
                     let minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
                     let seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
 
-                    // Output the result in an element with id="demo"
+                    // Output the result in an element with id="crono"
                     crono.innerHTML = days + "d " + hours + "h " +
                         minutes + "m " + seconds + "s ";
 
@@ -202,15 +202,21 @@
                 }, 1000);
             }
         })
-
-
+        
+        let asd = document.getElementById("matriz");
+        asd.addEventListener("change", handleFiles, false); 
+        function handleFiles(){
+            let fileList = this.files;
+            console.log(fileList.value);
+        }
+        
         let botonComenzar = document.getElementById("comenzar");
         botonComenzar.addEventListener("click", () => {
             let crono = document.getElementById("crono");
-            let minutos = document.getElementById("minutosEjecucion").value;
-
+            let minutos = document.getElementById("minutosEjecucion");
+            //console.log(minutos.value)
             let ls = window.localStorage;
-            ls.setItem('minutos', minutos);
+            ls.setItem('minutos', minutos.value);
         });
 
         let botonTerminar = document.getElementById("terminar");
