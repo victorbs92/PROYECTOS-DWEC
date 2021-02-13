@@ -2,14 +2,16 @@
 
 # IMPORTS
 import itertools
+from multiprocessing.context import Process
 import random
 import math
+import psutil
 import os
 import sys
 import time 
 import threading
-from numpy.lib.financial import mirr
-import FuerzaBrutaFINAL
+import multiprocessing
+import FuerzaBrutaPruebas
 import MontecarloFINAL
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
@@ -18,47 +20,64 @@ import random
 import numpy as np
 
 
+
+
+
 #VARIABLES
-hiloFuerzaBruta = None
-hiloMontecarlo = None
 
 app = Flask(__name__)
+
+#abrimos el csv y cargamos la matriz con los datos del csv
+file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
+matriz = np.loadtxt(file, delimiter=",")
+
+
+hiloFuerzaBruta=None
+hiloMontecarlo=None
+
+#creamos los hilos de ejecucion
+
 
 
 #CABECERAS Y METODOS
 @app.route("/", methods=["GET", "POST"])
 def index():
 
+    
     try:
-        minutos = request.args.get("minutosEjecucion")
-        if(minutos != '' and minutos != None):
-            iniciarPrograma(hiloFuerzaBruta, hiloMontecarlo)
+
+        comenzar = request.args.get("botonComenzar")
+        terminar = request.args.get("botonTerminar")
+        print(f'comenzar: {comenzar}')
+        print(f'terminar: {terminar}')
+        
+        if(comenzar != None):
+            global hiloFuerzaBruta
+            hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
+                         target=FuerzaBrutaPruebas.fuerzaBruta,
+                         args=(matriz,),
+                         daemon=True)
+            global hiloMontecarlo
+            hiloMontecarlo = multiprocessing.Process(name='montecarlo',
+                        target=MontecarloFINAL.montecarlo,
+                        args=(matriz,),
+                        daemon=True)
+            iniciarPrograma()
+            minutos = request.args.get("minutosEjecucion")
+            
             return render_template("index.html", template2='minutos' + minutos)
-        else:
-            pararPrograma(hiloFuerzaBruta, hiloMontecarlo)
+        elif (terminar != None):
+            pararPrograma()
             return render_template("index.html", template2="VVVVVVVVVV")
+        else:
+            return render_template("index.html", template2="aaa" )
+            
     except:
-        return render_template("index.html", template2="aa" )   
+        return render_template("index.html", template2="bbb" )   
 
 
-def iniciarPrograma(hiloFuerzaBruta, hiloMontecarlo):
-    #abrimos el csv y cargamos la matriz con los datos del csv
-    file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
-    matriz = np.loadtxt(file, delimiter=",")
-
-
-    #creamos los hilos de ejecucion
-    hiloFuerzaBruta = threading.Thread(name='fuerzaBruta', 
-                             target=FuerzaBrutaFINAL.fuerzaBruta,
-                             args=(matriz,),
-                             daemon=True)
-
-    hiloMontecarlo = threading.Thread(name='montecarlo',
-                             target=MontecarloFINAL.montecarlo,
-                             args=(matriz,),
-                             daemon=True)
-
-
+def iniciarPrograma():
+    print("KKKKKKKKKKKKKKKKKKK")
     #llamamos por cada hilo a un algoritmo distinto
     hiloFuerzaBruta.start()
     hiloMontecarlo.start()
@@ -68,37 +87,52 @@ def iniciarPrograma(hiloFuerzaBruta, hiloMontecarlo):
     #y despues de ese tiempo matamos el hilo principal, los otros hilos como son demonios que dependen del hilo principal
     #se moriran automaticamente
     #time.sleep(10)
-    print("KKKKKKKKKKKKKKKKKKK")
-    #sys.exit()
-
-def pararPrograma(hiloFuerzaBruta, hiloMontecarlo):
     
-    # Obtiene hilo principal
-
-    hilo_ppal = threading.main_thread()
-
-    # Recorre hilos activos para controlar estado de su ejecución
-
+    #sys.exit()
+    
     for hilo in threading.enumerate():
-
-    # Si el hilo es hilo_ppal continua al siguiente hilo activo
-        hilo.exit()
-    '''
-        if hilo is hilo_ppal:
+        print("EEEEEEEEEEEE")
+        if hilo is threading.main_thread:
             continue
-
         print(hilo.getName(), 
           hilo.ident, 
           hilo.isDaemon(), 
           threading.active_count())
+    
 
-        if(hilo.getName() == "fuerzaBruta"):
-            print("GGGGGGGGGGG")
+def pararPrograma():
+    print("RRRRRRRRRRRRRRR")
+    hiloFuerzaBruta.terminate()
+    hiloMontecarlo.terminate()
+    
+    for hilo in threading.enumerate():
+        print("FFFFFFFFF")
+        if hilo.name == "MainThread":
+            print("LLLLLLLLLLLLLLLL")
+            print(hilo.getName(), 
+              hilo.ident, 
+              hilo.isDaemon(), 
+              threading.active_count())
+            sys.exit()
+        else:
+            print("ZZZZZZZZZZZZZ")
+            print(hilo.getName(), 
+              hilo.ident, 
+              hilo.isDaemon(), 
+              threading.active_count())
+                
             hilo.exit()
-
-    print("JJJJJJJJJJJJJ")
-    print(hilo.getName(), 
-          hilo.ident, 
-          hilo.isDaemon(), 
-          threading.active_count())
-          '''
+            hilo.close()
+            hilo.kill()
+            hilo.terminate()
+    '''
+    global hiloFuerzaBruta
+    
+    
+    print(hiloFuerzaBruta.name.__str__)
+    hiloFuerzaBruta.join()
+    hiloFuerzaBruta.close()
+    hiloFuerzaBruta.kill()
+    hiloFuerzaBruta.terminate()
+    print (hiloFuerzaBruta.is_alive())
+    '''

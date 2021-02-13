@@ -5,7 +5,6 @@ import math
 import numpy as np
 import os
 import sys
-from numpy.lib.financial import mirr
 
 '''
 {% include 'header.html' %}
