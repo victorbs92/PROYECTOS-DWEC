@@ -1,4 +1,4 @@
-Iteración: 6767 
-Mejor distancia: 189.0 
-Mejor ruta: Ciudad: 10 -> Ciudad: 7 -> Ciudad: 8 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 0 -> Ciudad: 11 -> Ciudad: 3 -> Ciudad: 5 -> Ciudad: 1 -> Ciudad: 6 -> Ciudad: 9 -> Ciudad: 13 -> Ciudad: 2 -> Ciudad: 4 -> Ciudad: 10 
+Iteración: 643318 
+Mejor distancia: 161.0 
+Mejor ruta: Ciudad: 7 -> Ciudad: 9 -> Ciudad: 3 -> Ciudad: 12 -> Ciudad: 14 -> Ciudad: 11 -> Ciudad: 5 -> Ciudad: 8 -> Ciudad: 0 -> Ciudad: 1 -> Ciudad: 6 -> Ciudad: 13 -> Ciudad: 2 -> Ciudad: 4 -> Ciudad: 10 -> Ciudad: 7 
 --------- 

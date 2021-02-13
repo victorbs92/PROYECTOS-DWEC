@@ -1,29 +1,29 @@
 #python -m flask run
 
 # IMPORTS
-import itertools
-from multiprocessing.context import Process
-import random
-import math
-import psutil
+import multiprocessing
 import os
 import sys
-import time 
-import threading
-import multiprocessing
+import numpy as np
 import FuerzaBrutaPruebas
 import MontecarloFINAL
+from multiprocessing.context import Process
 from flask import Flask, render_template, request
+'''
+import itertools
+import math
+import random
+import threading
+import time
+import psutil
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-import random
-import numpy as np
-
-
-
+'''
 
 
 #VARIABLES
+hiloFuerzaBruta=None
+hiloMontecarlo=None
 
 app = Flask(__name__)
 
@@ -31,27 +31,21 @@ app = Flask(__name__)
 file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
-
-hiloFuerzaBruta=None
-hiloMontecarlo=None
-
-#creamos los hilos de ejecucion
-
-
+print (file)
 
 #CABECERAS Y METODOS
 @app.route("/", methods=["GET", "POST"])
 def index():
-
     
     try:
 
         comenzar = request.args.get("botonComenzar")
         terminar = request.args.get("botonTerminar")
-        print(f'comenzar: {comenzar}')
-        print(f'terminar: {terminar}')
+        #print(f'comenzar: {comenzar}')
+        #print(f'terminar: {terminar}')
         
         if(comenzar != None):
+            #creamos los hilos de ejecucion
             global hiloFuerzaBruta
             hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
                          target=FuerzaBrutaPruebas.fuerzaBruta,
@@ -62,6 +56,7 @@ def index():
                         target=MontecarloFINAL.montecarlo,
                         args=(matriz,),
                         daemon=True)
+
             iniciarPrograma()
             minutos = request.args.get("minutosEjecucion")
             
@@ -83,13 +78,8 @@ def iniciarPrograma():
     hiloMontecarlo.start()
 
 
-    #despues de decirle a los hilos que se ejecuten esperamos en el hilo principal el tiempo que el usuario haya indicado,
-    #y despues de ese tiempo matamos el hilo principal, los otros hilos como son demonios que dependen del hilo principal
-    #se moriran automaticamente
-    #time.sleep(10)
-    
-    #sys.exit()
-    
+   
+    '''
     for hilo in threading.enumerate():
         print("EEEEEEEEEEEE")
         if hilo is threading.main_thread:
@@ -98,13 +88,14 @@ def iniciarPrograma():
           hilo.ident, 
           hilo.isDaemon(), 
           threading.active_count())
-    
+    '''
 
 def pararPrograma():
     print("RRRRRRRRRRRRRRR")
     hiloFuerzaBruta.terminate()
     hiloMontecarlo.terminate()
     
+    '''
     for hilo in threading.enumerate():
         print("FFFFFFFFF")
         if hilo.name == "MainThread":
@@ -113,26 +104,11 @@ def pararPrograma():
               hilo.ident, 
               hilo.isDaemon(), 
               threading.active_count())
-            sys.exit()
+            
         else:
             print("ZZZZZZZZZZZZZ")
             print(hilo.getName(), 
               hilo.ident, 
               hilo.isDaemon(), 
               threading.active_count())
-                
-            hilo.exit()
-            hilo.close()
-            hilo.kill()
-            hilo.terminate()
-    '''
-    global hiloFuerzaBruta
-    
-    
-    print(hiloFuerzaBruta.name.__str__)
-    hiloFuerzaBruta.join()
-    hiloFuerzaBruta.close()
-    hiloFuerzaBruta.kill()
-    hiloFuerzaBruta.terminate()
-    print (hiloFuerzaBruta.is_alive())
-    '''
+    '''            
