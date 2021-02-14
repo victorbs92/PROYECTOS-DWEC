@@ -7,6 +7,7 @@ import sys
 import numpy as np
 import FuerzaBrutaPruebas
 import MontecarloFINAL
+import time
 from multiprocessing.context import Process
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
@@ -16,7 +17,6 @@ import itertools
 import math
 import random
 import threading
-import time
 import psutil
 
 '''
@@ -70,19 +70,23 @@ def index():
             print ("AAAAAAAAAAA")
             #creamos los hilos de ejecucion
             global hiloFuerzaBruta
-           #hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
-           #             target=FuerzaBrutaPruebas.fuerzaBruta,
-           #             args=(matriz,),
-           #             daemon=True)
-           #global hiloMontecarlo
-           #hiloMontecarlo = multiprocessing.Process(name='montecarlo',
-           #            target=MontecarloFINAL.montecarlo,
-           #            args=(matriz,),
-           #            daemon=True)
+            hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
+                         target=FuerzaBrutaPruebas.fuerzaBruta,
+                         args=(matriz,),
+                         daemon=True)
+            global hiloMontecarlo
+            hiloMontecarlo = multiprocessing.Process(name='montecarlo',
+                        target=MontecarloFINAL.montecarlo,
+                        args=(matriz,),
+                        daemon=True)
+
+            minutos = request.form.get("minutosEjecucion")
+            print(f'comenzar: {minutos}')
+
+            #print(minutos)
 
             iniciarPrograma()
-            minutos = request.args.get("minutosEjecucion")
-            
+
             return render_template("index.html", template2='minutos' + minutos)
         elif (terminar != None):
             pararPrograma()
@@ -97,9 +101,19 @@ def index():
 def iniciarPrograma():
     print("KKKKKKKKKKKKKKKKKKK")
     #llamamos por cada hilo a un algoritmo distinto
-    #hiloFuerzaBruta.start()
-    #hiloMontecarlo.start()
-
+    hiloFuerzaBruta.start()
+    hiloMontecarlo.start()
+    print (hiloFuerzaBruta.exitcode())
+    minutos = request.form.get("minutosEjecucion")
+    
+    for x in range (minutos * 60):
+        time.sleep(1)
+        
+    
+    hiloFuerzaBruta.terminate()
+    hiloMontecarlo.terminate()
+    hiloFuerzaBruta.join()
+    hiloMontecarlo.join()
 
    
     '''
@@ -115,8 +129,13 @@ def iniciarPrograma():
 
 def pararPrograma():
     print("RRRRRRRRRRRRRRR")
+    global hiloFuerzaBruta
+    global hiloMontecarlo
     #hiloFuerzaBruta.terminate()
-    #hiloMontecarlo.terminate()
+    hiloMontecarlo.terminate()
+    #hiloFuerzaBruta.join()
+    hiloMontecarlo.join()
+
     
     '''
     for hilo in threading.enumerate():

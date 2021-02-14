@@ -5,6 +5,7 @@ import math
 import numpy as np
 import os
 import sys
+import app
 
 
 # VARIABLES
@@ -175,6 +176,7 @@ def fuerzaBruta(matriz):
         obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
         
     #FIN ALGORITMO
-    
-    sys.exit()
+    f = open ('FuerzaBrutaResultados.txt', 'a')
+    f.write("ALGORITMO TERMINADO. TODOS LOS RESULTADOS COMPROBADOS!!")
+    f.close()
     

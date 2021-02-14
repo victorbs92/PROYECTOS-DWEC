@@ -2,3 +2,4 @@ Iteración: 116
 Mejor distancia: 85.0 
 Mejor ruta: Ciudad: 0 -> Ciudad: 5 -> Ciudad: 1 -> Ciudad: 6 -> Ciudad: 4 -> Ciudad: 2 -> Ciudad: 3 -> Ciudad: 0 
 --------- 
+ALGORITMO TERMINADO. TODOS LOS RESULTADOS COMPROBADOS!!
