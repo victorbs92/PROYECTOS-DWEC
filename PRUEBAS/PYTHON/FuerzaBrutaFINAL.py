@@ -1,20 +1,6 @@
 # IMPORTS
-import itertools
-import random
 import math
-import numpy as np
-import os
-import sys
-from numpy.lib.financial import mirr
 
-'''
-{% include 'header.html' %}
-
-from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-'''
 
 # VARIABLES
 mitadFactorial = 0 # variable donde guardaremos el valor de la mitad del factorial
@@ -36,7 +22,6 @@ kOK = False # variable que determinará si K cumple con todos los requisitos par
 
 contadorIteraciones = 0  # vueltas de bucle
 cont1 = 0 #contador utilizado en el bucle
-
 
 
 # FUNCIONES Y METODOS
@@ -66,7 +51,7 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
         distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
-        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} => ') #formateamos el mensaje que vamos a mostrar
     mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
     
     #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
@@ -78,19 +63,14 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
-#RESETEA EL TXT
-f = open ('PRUEBAS/PYTHON/FuerzaBrutaResultados.txt', 'w')
-f.write ("")
-f.close
+
 def mostrarInfo(): # muestra en pantalla la informacion de la ruta
-    f = open ('PRUEBAS/PYTHON/FuerzaBrutaResultados.txt', 'a')
-    f.write(f'Iteración: {contadorIteraciones} \n')
+    f = open ('static/FuerzaBrutaResultados.txt', 'w')
+    f.write(f'Iteraciones: {contadorIteraciones} \n')
     f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
     f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
     #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
     #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
-    #f.write ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n")
-    f.write("--------- \n")
     f.close()
 
 
@@ -186,6 +166,7 @@ def fuerzaBruta(matriz):
         obtenerYCompararResultados(ciudades, matriz) #por cada vuelta del bucle llamamos a obtenerYCompararResultados
         
     #FIN ALGORITMO
-    
-    sys.exit()
+    #f = open ('static/FuerzaBrutaResultados.txt', 'a')
+    #f.write("ALGORITMO TERMINADO. TODOS LOS RESULTADOS COMPROBADOS.!!")
+    #f.close()
     

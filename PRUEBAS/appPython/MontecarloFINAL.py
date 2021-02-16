@@ -1,9 +1,5 @@
 # IMPORTS
-import random
 import numpy as np
-import os
-import sys
-
 
 #VARIABLES
 ciudades = [] #array donde guardaremos la ruta actual
@@ -49,15 +45,13 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
 
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
-   print ("BBBBBBBBBBBB")
    f = open ('static/MontecarloResultados.txt', 'w')
    f.write(f'Iteración: {contadorIteraciones} \n')
    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
    #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
-   #f.write ("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB \n")
-   f.write("--------- \n")
+   #f.write("--------- \n")
    f.close()
 
 

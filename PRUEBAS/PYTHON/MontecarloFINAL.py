@@ -1,9 +1,5 @@
 # IMPORTS
-import random
 import numpy as np
-import os
-import sys
-
 
 #VARIABLES
 ciudades = [] #array donde guardaremos la ruta actual
@@ -35,7 +31,7 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
         distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
-        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} => ') #formateamos el mensaje que vamos a mostrar
     mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
     
     #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
@@ -47,20 +43,16 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     ciudades.pop(len(ciudades) - 1)#borramos la ultima ciudad despues de calcular la distancia de la ruta
 
-#RESETEA EL TXT
-f = open ('PRUEBAS/PYTHON/MontecarloResultados.txt', 'w')
-f.write ("")
-f.close
+
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
-    f = open ('PRUEBAS/PYTHON/MontecarloResultados.txt', 'a')
-    f.write(f'Iteración: {contadorIteraciones} \n')
-    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
-    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
-    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
-    #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
-    #f.write ("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB \n")
-    f.write("--------- \n")
-    f.close()
+   f = open ('static/MontecarloResultados.txt', 'w')
+   f.write(f'Iteración: {contadorIteraciones} \n')
+   f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
+   f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
+   #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
+   #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
+   #f.write("--------- \n")
+   f.close()
 
 
 def montecarlo(matriz):

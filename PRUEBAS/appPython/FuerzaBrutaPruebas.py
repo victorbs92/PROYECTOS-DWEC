@@ -1,11 +1,5 @@
 # IMPORTS
-import itertools
-import random
 import math
-import numpy as np
-import os
-import sys
-import app
 
 
 # VARIABLES
@@ -28,7 +22,6 @@ kOK = False # variable que determinará si K cumple con todos los requisitos par
 
 contadorIteraciones = 0  # vueltas de bucle
 cont1 = 0 #contador utilizado en el bucle
-
 
 
 # FUNCIONES Y METODOS
@@ -72,15 +65,12 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
 
 def mostrarInfo(): # muestra en pantalla la informacion de la ruta
-    print ("AAAAAAAAAAAA")
     f = open ('static/FuerzaBrutaResultados.txt', 'w')
     f.write(f'Iteraciones: {contadorIteraciones} \n')
     f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
     f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
     #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')
     #f.write(f'Distancia actual: {distanciaRutaCiudadesActual} \n')
-    #f.write ("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n")
-    #f.write("--------- \n")
     f.close()
 
 
