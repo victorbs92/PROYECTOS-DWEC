@@ -35,7 +35,7 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
     for i in range(0, len(ciudades)-1):#recorremos el array ciudades buscando cada elemento del array en la matriz y añadiendo la distancia a la variable distanciaRutaCiudades
         distanciaRutaCiudadesActual = distanciaRutaCiudadesActual + matriz[ciudades[i]][ciudades[i+1]]
-        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} -> ') #formateamos el mensaje que vamos a mostrar
+        mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[i]} => ') #formateamos el mensaje que vamos a mostrar
     mensajeRutaCiudadesActual += (f'Ciudad: {ciudades[len(ciudades)-1]}')#añadimos la ultima ciudad al mensaje
     
     #comparamos la distancia de la ruta actual con la menor distancia obtenida hasta ahora y si es menor actualizamos los datos y los mostramos
@@ -50,7 +50,7 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
    print ("BBBBBBBBBBBB")
-   f = open ('MontecarloResultados.txt', 'w')
+   f = open ('static/MontecarloResultados.txt', 'w')
    f.write(f'Iteración: {contadorIteraciones} \n')
    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')

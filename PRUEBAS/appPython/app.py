@@ -8,6 +8,7 @@ import numpy as np
 import FuerzaBrutaPruebas
 import MontecarloFINAL
 import time
+import random
 from multiprocessing.context import Process
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
@@ -25,30 +26,37 @@ import psutil
 #VARIABLES
 hiloFuerzaBruta=None
 hiloMontecarlo=None
-
+hiloCronometro=None
 comenzar = None
 terminar = None
+pararProcesos = None
 
 
 app = Flask(__name__)
 
-#abrimos el csv y cargamos la matriz con los datos del csv
-
-#file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
-#matriz = np.loadtxt(file, delimiter=",")
-
 
 #CABECERAS Y METODOS
+@app.after_request #ESTE DE CORADOR SE EJECUTA CADA VEZ QUE SE REALIZA UNA PETICION AL SERVIDOR
+def add_header(r): #ESTA FUNCION AÑADE UNAS CABECERAS PARA QUE SE VACIE LA CACHE DEL SERVIDOR CADA VEZ QUE SE EJECUTA, sirve para que el programa no guarde la informacion del archivo txt leido anteriormente en la cache y pueda leer otro de nuevo
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     
     try:
         global comenzar
         global terminar
-        #file = request.args.get("matriz")
-        #print(file)
-        #matriz = np.loadtxt(file, delimiter=",")
-        #print(matriz)
+        global pararProcesos
+
         print (request.form)
         print (request.files)
         
@@ -58,9 +66,14 @@ def index():
         terminar = request.form.get("botonTerminar")
         #terminar = request.form['botonTerminar']
 
+        pararProcesos = request.form.get("pararProcesos")
+        #pararProcesos = request.form['pararProcesos']
+
         print(f'terminar: {terminar}')
         print(f'comenzar: {comenzar}')
+        print(f'parar: {pararProcesos}')
         
+        minutos = request.form.get("minutosEjecucion")
 
         if(comenzar != None):
             file = request.files['matriz'] #guarda en una variable el file recogido en el inputFile del html y que se pasa por el post 
@@ -68,6 +81,11 @@ def index():
             print(f'file: {file}')
             print(matriz)
             print ("AAAAAAAAAAA")
+            global hiloCronometro #Creamos el hilo hijo del hilo principal, que se encargará de llevar la cuenta del tiempo de ejecucion y de crear a su vez, hilos hijos para la ejecucuion de los algoritmos
+            hiloCronometro = multiprocessing.Process(name='hiloGestor',
+                    target=cronometro,
+                    args=(minutos, ),
+                    daemon=True)
             #creamos los hilos de ejecucion
             global hiloFuerzaBruta
             hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
@@ -89,8 +107,12 @@ def index():
 
             return render_template("index.html", template2='minutos' + minutos)
         elif (terminar != None):
-            pararPrograma()
+            finalizarProcesos()
             return render_template("index.html", template2="VVVVVVVVVV")
+        elif (pararProcesos == "si"):
+
+            finalizarProcesos()
+            return render_template("index.html", template2="JJJJJJJJ")
         else:
             return render_template("index.html", template2="aaa" )
             
@@ -100,44 +122,56 @@ def index():
 
 def iniciarPrograma():
     print("KKKKKKKKKKKKKKKKKKK")
+    
+    
     #llamamos por cada hilo a un algoritmo distinto
+    hiloCronometro.start()
     hiloFuerzaBruta.start()
     hiloMontecarlo.start()
-    print (hiloFuerzaBruta.exitcode())
-    minutos = request.form.get("minutosEjecucion")
     
-    for x in range (minutos * 60):
+    #print (minutos)
+    
+    '''
+    for x in range (int(minutos) * 60):
+        print (x)
         time.sleep(1)
-        
+    '''   
+    print ("MMMMMMMMMMMMMMM") 
     
+    #hiloFuerzaBruta.terminate()
+    #hiloMontecarlo.terminate()
+    #hiloFuerzaBruta.join()
+    #hiloMontecarlo.join()
+
+
+def cronometro(minutos):
+    for x in range (int(minutos) * 60):
+        print (x)
+        time.sleep(1)
+    #pararProgramaConTiempo() ###################NOOOOOOO LOOOOOOS PAAAAAARA
+
+
+def finalizarProcesos():
+    print("RRRRRRRRRRRRRRR")
+    global hiloCronometro
+    global hiloFuerzaBruta
+    global hiloMontecarlo
+    hiloFuerzaBruta.terminate()
+    hiloMontecarlo.terminate()
+    hiloCronometro.terminate()
+    hiloFuerzaBruta.join()
+    hiloMontecarlo.join()
+    hiloCronometro.join()
+'''
+def pararProgramaConTiempo():
+    global hiloFuerzaBruta
+    global hiloMontecarlo
     hiloFuerzaBruta.terminate()
     hiloMontecarlo.terminate()
     hiloFuerzaBruta.join()
     hiloMontecarlo.join()
-
-   
-    '''
-    for hilo in threading.enumerate():
-        print("EEEEEEEEEEEE")
-        if hilo is threading.main_thread:
-            continue
-        print(hilo.getName(), 
-          hilo.ident, 
-          hilo.isDaemon(), 
-          threading.active_count())
-    '''
-
-def pararPrograma():
-    print("RRRRRRRRRRRRRRR")
-    global hiloFuerzaBruta
-    global hiloMontecarlo
-    #hiloFuerzaBruta.terminate()
-    hiloMontecarlo.terminate()
-    #hiloFuerzaBruta.join()
-    hiloMontecarlo.join()
-
     
-    '''
+    
     for hilo in threading.enumerate():
         print("FFFFFFFFF")
         if hilo.name == "MainThread":
