@@ -7,6 +7,7 @@ botonComenzar.addEventListener("click", () => { //cuando se pulsa el boton comen
     let minutos = document.getElementById("minutosEjecucion");
     ls.setItem('minutos', minutos.value);
     ls.setItem('mostrarDatos', "no");
+    
 });
 
 let botonTerminar = document.getElementById("terminar");
@@ -19,7 +20,7 @@ function reloj(e) {
 
     let minutos = ls.getItem('minutos'); //guarda en una variable el valor de "minutos" del localStorage
 
-    if (minutos !== null && minutos !== "0" && minutos !== 0) { //si minutos es distinto de null y de 0 y de "0" se empieza la cuenta atras
+    if (minutos !== null && minutos !== "0" && minutos !== 0 && minutos !== "" && minutos !== undefined) { //si minutos es distinto de null y de 0 y de "0" se empieza la cuenta atras
         let crono = document.getElementById("crono");
 
         // Set the date we're counting down to
@@ -72,6 +73,17 @@ function reloj(e) {
         document.forms[0].submit(); //envia el formulario y recarga la pg
     }
 
+    /*
+    let min = document.getElementById("minutosEjecucion");
+    min.addEventListener("change", ()=>{
+        ls.setItem("minutos", min.value);
+        if(ls.getItem("minutos") > 0 && ls.getItem("csvValidoIntroducido") === true){
+            console.log("DISABLED");
+            botonComenzar.removeAttribute(disabled);
+        }
+    });*/
+
+
     document.getElementById('matriz').addEventListener('change', validarCSV, false); //cuando se produce algun cambio en el input file se llama a validarCSV que comprueba si es valido el archivo seleccionado por el usuario
 
     function validarCSV(evt) {
@@ -95,6 +107,7 @@ function reloj(e) {
         };
         // Leemos el contenido del archivo seleccionado
         reader.readAsBinaryString(file);
+        
     }
 
     function parseCSV(text) {
@@ -155,7 +168,7 @@ function reloj(e) {
                 arrayY.push(Math.floor(Math.random() * (max - min)) + min);
                 arrayX.push(i + 1);
             } else {
-                arrayY.push(Math.floor(Math.random() * (matrizCSV.length / 3 - 1)) + 1);
+                arrayY.push(Math.floor(Math.random() * (matrizCSV.length / 2 - 1)) + 1);
                 arrayX.push(i + 1);
             }
 

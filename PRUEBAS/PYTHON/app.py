@@ -6,7 +6,7 @@ import numpy as np
 import FuerzaBrutaFINAL
 import MontecarloFINAL
 import VecinoMasCercanoFINAL
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 
 
 #VARIABLES
@@ -105,7 +105,7 @@ def finalizarProcesos():
     hiloFuerzaBruta.terminate()
     hiloMontecarlo.terminate()
     #hiloVecinoMasCercano.terminate()
-    hiloFuerzaBruta.join()
-    hiloMontecarlo.join()
+    #hiloFuerzaBruta.join()
+    #hiloMontecarlo.join()
     #hiloVecinoMasCercano.join()
     
