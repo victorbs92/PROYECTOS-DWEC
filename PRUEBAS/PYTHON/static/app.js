@@ -49,7 +49,7 @@ function reloj(e) {
                 minutes + "m " + seconds + "s ";
 
             // If the count down is over, write some text 
-            if (totalTime < 0) { //si el tiempo se acaba se cierra el intervalo, se resetean los minutos del ls y mostrarDatos se pone en "si"
+            if (totalTime <= 0) { //si el tiempo se acaba se cierra el intervalo, se resetean los minutos del ls y mostrarDatos se pone en "si"
                 clearInterval(intervalo);
                 ls.setItem("minutos", 0);
                 ls.setItem('mostrarDatos', "si");
@@ -83,10 +83,10 @@ function reloj(e) {
             let lines = parseCSV(e.target.result);
             let matrizCSV = reverseMatrix(lines);
             if (matrizCSV === null) {
-                mensajeValidacion.style.color="red";
+                mensajeValidacion.style.color = "red";
                 mensajeValidacion.innerHTML = "ARCHIVO NO COMPATIBLE. SELECCIONE OTRO ARCHIVO";
             } else {
-                mensajeValidacion.style.color="green";
+                mensajeValidacion.style.color = "green";
                 mensajeValidacion.innerHTML = "ARCHIVO CSV VÁLIDO";
                 generarXY(matrizCSV); //si el archivo es válido llama a generarXY
             }
@@ -139,7 +139,7 @@ function reloj(e) {
         }
     }
 
-    function generarXY(matrizCSV) {
+    function generarXY(matrizCSV) { //se generan las variables con los datos que luego necesitará la funcion de mostrar resultados
         let arrayX = new Array();
         let arrayY = new Array();
         let ciudades = new Array();
@@ -168,9 +168,8 @@ function reloj(e) {
         ls.setItem('arrayYLS', arrayYLS);
         ls.setItem('ciudadesLS', ciudadesLS);
 
-    } ////////////////////////////////////////////////////////////////////////////////////////////
+    }
 
-    //let resultado = document.getElementById("resultado");
     function mostrarResultados() { //esta funcion muestra los resultados de los algoritmos
         let expresionRegular = /\s*=>\s*/; //expresion regular que elimina los espacios y se queda con "=>"
         ls.setItem('mostrarDatos', 'no');

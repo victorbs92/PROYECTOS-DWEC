@@ -2,31 +2,17 @@
 
 # IMPORTS
 import multiprocessing
-import os
-import sys
 import numpy as np
 import FuerzaBrutaFINAL
 import MontecarloFINAL
-import time
-import random
-from multiprocessing.context import Process
+import VecinoMasCercanoFINAL
 from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-'''
-import itertools
-import math
-import random
-import threading
-import psutil
-
-'''
 
 
 #VARIABLES
 hiloFuerzaBruta=None
 hiloMontecarlo=None
-hiloCronometro=None
+hiloVecinoMasCercano=None
 comenzar = None
 terminar = None
 pararProcesos = None
@@ -35,7 +21,7 @@ pararProcesos = None
 app = Flask(__name__)
 
 
-#CABECERAS Y METODOS
+#DECORADORES Y METODOS
 @app.after_request #ESTE DE CORADOR SE EJECUTA CADA VEZ QUE SE REALIZA UNA PETICION AL SERVIDOR
 def add_header(r): #ESTA FUNCION AÑADE UNAS CABECERAS PARA QUE SE VACIE LA CACHE DEL SERVIDOR CADA VEZ QUE SE EJECUTA, sirve para que el programa no guarde la informacion del archivo txt leido anteriormente en la cache y pueda leer otro de nuevo
     """
@@ -49,6 +35,16 @@ def add_header(r): #ESTA FUNCION AÑADE UNAS CABECERAS PARA QUE SE VACIE LA CACH
     return r
 
 
+@app.route("/instrucciones.html", methods=["GET", "POST"])
+def instrucciones():
+    print("INSTRUCCION")
+    return render_template("instrucciones.html")
+
+@app.route("/informacion.html", methods=["GET", "POST"])
+def informacion():
+    print("INFORMACION")
+    return render_template("informacion.html")
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     
@@ -56,36 +52,14 @@ def index():
         global comenzar
         global terminar
         global pararProcesos
-
-        print (request.form)
-        print (request.files)
-        
         comenzar = request.form.get("botonComenzar")
-        #comenzar = request.form['botonComenzar']
-        
         terminar = request.form.get("botonTerminar")
-        #terminar = request.form['botonTerminar']
-
         pararProcesos = request.form.get("pararProcesos")
-        #pararProcesos = request.form['pararProcesos']
-
-        print(f'terminar: {terminar}')
-        print(f'comenzar: {comenzar}')
-        print(f'parar: {pararProcesos}')
-        
-        minutos = request.form.get("minutosEjecucion")
 
         if(comenzar != None):
             file = request.files['matriz'] #guarda en una variable el file recogido en el inputFile del html y que se pasa por el post 
-            matriz = np.loadtxt(file, delimiter=",")
-            print(f'file: {file}')
-            print(matriz)
-            print ("AAAAAAAAAAA")
-            global hiloCronometro #Creamos el hilo hijo del hilo principal, que se encargará de llevar la cuenta del tiempo de ejecucion y de crear a su vez, hilos hijos para la ejecucuion de los algoritmos
-            hiloCronometro = multiprocessing.Process(name='hiloGestor',
-                    target=cronometro,
-                    args=(minutos, ),
-                    daemon=True)
+            matriz = np.loadtxt(file, delimiter=",") #guarda en la variable matriz los datos de file delimitados por ","
+
             #creamos los hilos de ejecucion
             global hiloFuerzaBruta
             hiloFuerzaBruta = multiprocessing.Process(name='fuerzaBruta', 
@@ -97,94 +71,41 @@ def index():
                         target=MontecarloFINAL.montecarlo,
                         args=(matriz,),
                         daemon=True)
-
-            minutos = request.form.get("minutosEjecucion")
-            print(f'comenzar: {minutos}')
-
-            #print(minutos)
+            global hiloVecinoMasCercano
+            '''hiloVecinoMasCercano = multiprocessing.Process(name='vecinoMasCercano',
+                        target=VecinoMasCercanoFINAL.vecinoMasCercano,
+                        args=(matriz,),
+                        daemon=True)'''
 
             iniciarPrograma()
 
-            return render_template("index.html", template2='minutos' + minutos)
-        elif (terminar != None):
-            finalizarProcesos()
-            return render_template("index.html", template2="VVVVVVVVVV")
-        elif (pararProcesos == "si"):
+            return render_template("index.html")
 
+        elif (terminar != None or pararProcesos == "si"):
             finalizarProcesos()
-            return render_template("index.html", template2="JJJJJJJJ")
+            return render_template("index.html")
+
         else:
-            return render_template("index.html", template2="aaa" )
+            return render_template("index.html")
             
     except:
-        return render_template("index.html", template2="bbb" )   
+        return render_template("index.html")   
 
 
 def iniciarPrograma():
-    print("KKKKKKKKKKKKKKKKKKK")
-    
-    
     #llamamos por cada hilo a un algoritmo distinto
-    hiloCronometro.start()
     hiloFuerzaBruta.start()
     hiloMontecarlo.start()
-    
-    #print (minutos)
-    
-    '''
-    for x in range (int(minutos) * 60):
-        print (x)
-        time.sleep(1)
-    '''   
-    print ("MMMMMMMMMMMMMMM") 
-    
-    #hiloFuerzaBruta.terminate()
-    #hiloMontecarlo.terminate()
-    #hiloFuerzaBruta.join()
-    #hiloMontecarlo.join()
-
-
-def cronometro(minutos):
-    for x in range (int(minutos) * 60):
-        print (x)
-        time.sleep(1)
-    #pararProgramaConTiempo() ###################NOOOOOOO LOOOOOOS PAAAAAARA
-
+    #hiloVecinoMasCercano.start()
 
 def finalizarProcesos():
-    print("RRRRRRRRRRRRRRR")
-    global hiloCronometro
     global hiloFuerzaBruta
     global hiloMontecarlo
+    global hiloVecinoMasCercano
     hiloFuerzaBruta.terminate()
     hiloMontecarlo.terminate()
-    hiloCronometro.terminate()
+    #hiloVecinoMasCercano.terminate()
     hiloFuerzaBruta.join()
     hiloMontecarlo.join()
-    hiloCronometro.join()
-'''
-def pararProgramaConTiempo():
-    global hiloFuerzaBruta
-    global hiloMontecarlo
-    hiloFuerzaBruta.terminate()
-    hiloMontecarlo.terminate()
-    hiloFuerzaBruta.join()
-    hiloMontecarlo.join()
+    #hiloVecinoMasCercano.join()
     
-    
-    for hilo in threading.enumerate():
-        print("FFFFFFFFF")
-        if hilo.name == "MainThread":
-            print("LLLLLLLLLLLLLLLL")
-            print(hilo.getName(), 
-              hilo.ident, 
-              hilo.isDaemon(), 
-              threading.active_count())
-            
-        else:
-            print("ZZZZZZZZZZZZZ")
-            print(hilo.getName(), 
-              hilo.ident, 
-              hilo.isDaemon(), 
-              threading.active_count())
-    '''            
