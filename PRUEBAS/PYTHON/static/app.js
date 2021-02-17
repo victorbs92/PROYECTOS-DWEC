@@ -1,16 +1,16 @@
 let ls = window.localStorage; //accede al localStorage
+let botonComenzar = document.getElementById("comenzar");
+let botonTerminar = document.getElementById("terminar");
+
 
 window.addEventListener("load", reloj(this.event)); //cuando se carga la pg se llama a la funcion reloj
 
-let botonComenzar = document.getElementById("comenzar");
 botonComenzar.addEventListener("click", () => { //cuando se pulsa el boton comenzar se obtienen los minutos del input y se guardan en el localstorage y se pone la variable mostrarDatos del localstorage en "no" y se recarga la pg
-    let minutos = document.getElementById("minutosEjecucion");
-    ls.setItem('minutos', minutos.value);
     ls.setItem('mostrarDatos', "no");
-    
+    ls.setItem("botonComenzar", "si");
 });
 
-let botonTerminar = document.getElementById("terminar");
+
 botonTerminar.addEventListener("click", () => { //cuando se pulsa el boton terminar se ponen los minutos del ls a 0 y mostrarDatos en "si" y se recarga la pg
     ls.setItem('minutos', 0);
     ls.setItem('mostrarDatos', "si");
@@ -18,9 +18,15 @@ botonTerminar.addEventListener("click", () => { //cuando se pulsa el boton termi
 
 function reloj(e) {
 
-    let minutos = ls.getItem('minutos'); //guarda en una variable el valor de "minutos" del localStorage
+    document.getElementById("minutosEjecucion").focus();
 
-    if (minutos !== null && minutos !== "0" && minutos !== 0 && minutos !== "" && minutos !== undefined) { //si minutos es distinto de null y de 0 y de "0" se empieza la cuenta atras
+    let minutos = ls.getItem('minutos'); //guarda en una variable el valor de "minutos" del localStorage
+    ls.setItem("csvValido", "no");
+
+    if (ls.getItem("botonComenzar") === "si" && ls.getItem("mostrarDatos") === "no") {
+
+        desactivarInputsActivarBotonTerminar();
+
         let crono = document.getElementById("crono");
 
         // Set the date we're counting down to
@@ -54,12 +60,14 @@ function reloj(e) {
                 clearInterval(intervalo);
                 ls.setItem("minutos", 0);
                 ls.setItem('mostrarDatos', "si");
+                ls.setItem("botonComenzar", "no");
                 cerrarProcesosServidor(); //se llama a la funcion que cierra todos los procesos abiertos en el servidor menos el hilo principal
             }
 
         }, 1000);
 
-    } else if (ls.getItem('mostrarDatos') == "si") { //si mostrarDatos es si se llama a mostrarResultados
+    } else if (ls.getItem('mostrarDatos') === "si") { //si mostrarDatos es si se llama a mostrarResultados
+        ls.setItem("botonComenzar", "no");
         mostrarResultados();
     }
 
@@ -73,15 +81,37 @@ function reloj(e) {
         document.forms[0].submit(); //envia el formulario y recarga la pg
     }
 
-    /*
-    let min = document.getElementById("minutosEjecucion");
-    min.addEventListener("change", ()=>{
-        ls.setItem("minutos", min.value);
-        if(ls.getItem("minutos") > 0 && ls.getItem("csvValidoIntroducido") === true){
-            console.log("DISABLED");
-            botonComenzar.removeAttribute(disabled);
+    function activarDesactivarBotonComenzar() {
+
+        let minutos = min.value;
+        ls.setItem("minutos", minutos);
+        console.log(minutos);
+        if (minutos !== null && minutos !== "0" && minutos !== 0 && minutos !== "" && minutos !== undefined && ls.getItem("csvValido") ==="si") {
+            botonComenzar.removeAttribute("disabled");
+            botonComenzar.classList.remove("desactivado");
+            botonComenzar.classList.add("activado");
+        } else {
+            botonComenzar.setAttribute("disabled", "true");
+            botonComenzar.classList.add("desactivado");
+            botonComenzar.classList.remove("activado");
         }
-    });*/
+
+    }
+
+    function desactivarInputsActivarBotonTerminar() {
+        let inputFile = document.getElementById("matriz");
+        let inputNumber = document.getElementById("minutosEjecucion");
+        inputFile.setAttribute("disabled", "true");
+        inputNumber.setAttribute("disabled", "true");
+        botonTerminar.removeAttribute("disabled");
+        botonTerminar.classList.remove("desactivado");
+        botonTerminar.classList.add("activado");
+    }
+
+    let min = document.getElementById("minutosEjecucion");
+    min.addEventListener("change", () => {
+        activarDesactivarBotonComenzar();
+    });
 
 
     document.getElementById('matriz').addEventListener('change', validarCSV, false); //cuando se produce algun cambio en el input file se llama a validarCSV que comprueba si es valido el archivo seleccionado por el usuario
@@ -98,16 +128,20 @@ function reloj(e) {
             if (matrizCSV === null) {
                 mensajeValidacion.style.color = "red";
                 mensajeValidacion.innerHTML = "ARCHIVO NO COMPATIBLE. SELECCIONE OTRO ARCHIVO";
+                ls.setItem("csvValido", "no");
+                activarDesactivarBotonComenzar();
             } else {
                 mensajeValidacion.style.color = "green";
                 mensajeValidacion.innerHTML = "ARCHIVO CSV VÁLIDO";
+                ls.setItem("csvValido", "si");
+                activarDesactivarBotonComenzar();
                 generarXY(matrizCSV); //si el archivo es válido llama a generarXY
             }
 
         };
         // Leemos el contenido del archivo seleccionado
         reader.readAsBinaryString(file);
-        
+
     }
 
     function parseCSV(text) {
