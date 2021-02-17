@@ -21,7 +21,7 @@ indiceAux = 0
 
 # CARGA DE DATOS INICIAL
 # abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
+file = open(os.path.join(sys.path[0], "m5.csv"), "r")
 matriz = np.loadtxt(file, delimiter=",")
 
 
