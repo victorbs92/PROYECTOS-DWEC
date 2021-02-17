@@ -46,7 +46,7 @@ def obtenerYCompararResultados(ciudades, matriz): #obtiene la distancia de la ru
 
 def mostrarInfo( ): #metodo que muestra los resultados cuando es llamado
    f = open ('static/MontecarloResultados.txt', 'w')
-   f.write(f'Iteración: {contadorIteraciones} \n')
+   f.write(f'Iteraciones: {contadorIteraciones} \n')
    f.write(f'Mejor distancia: {mejorDistanciaRuta} \n')
    f.write(f'Mejor ruta: {mensajeMejorRutaCiudades} \n')
    #f.write(f'Ruta actual: {mensajeRutaCiudadesActual} \n')

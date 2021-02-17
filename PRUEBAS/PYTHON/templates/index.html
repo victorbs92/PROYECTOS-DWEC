@@ -86,21 +86,18 @@
         let botonComenzar = document.getElementById("comenzar");
         botonComenzar.addEventListener("click", () => {
             let minutos = document.getElementById("minutosEjecucion");
-            let ls = window.localStorage;
             ls.setItem('minutos', minutos.value);
             ls.setItem('mostrarDatos', "no");
         });
 
         let botonTerminar = document.getElementById("terminar");
         botonTerminar.addEventListener("click", () => {
-            let ls = window.localStorage;
             ls.setItem('minutos', 0);
             ls.setItem('mostrarDatos', "si");
         });
 
         function reloj(e) {
 
-            let ls = window.localStorage; //accede al localStorage
             let minutos = ls.getItem('minutos'); //guarda en una variable el valor de "time" del localStorage
 
             if (minutos !== null && minutos !== "0" && minutos !== 0) { //si minu es distinto de null y de 0
@@ -232,7 +229,6 @@
             }
 
             function generarXY(matrizCSV){
-                let ls = window.localStorage; //accede al localStorage
                 let arrayX = new Array();
                 let arrayY = new Array();
                 let ciudades = new Array();
@@ -268,41 +264,60 @@
             }
 
             //let resultado = document.getElementById("resultado");
-            function mostrarResultados() {
-                
-                ls.setItem('mostrarDatos', 'no');
+            function mostrarResultados() { //esta funcion muestra los resultados de los algoritmos
+                let expresionRegular = /\s*=>\s*/; //expresion regular que elimina los espacios y se queda con "=>"
+                ls.setItem('mostrarDatos', 'no'); 
+                $.ajax({ //funcion ajax para recoger los datos del txt del servidor donde se han guardado los resultados del algoritmo
+                    url: "/static/MontecarloResultados.txt", 
+                    dataType: "text",
+                    success: function (data) {
+                        let ciudades = data.split(expresionRegular);
+                        ciudades.splice(0,1); //elimina el primer elemento
+                        ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                        ciudades.unshift(ciudades[ciudades.length-1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
+                        mostrarGrafica(ciudades, 1);
+                        let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
+                        $("#ite1").text(resultados[0]);
+                        $("#dis1").text(resultados[1]);
+                        $("#rut1").text(resultados[2]);
+                    }
+                });
                     
                 $.ajax({
                     url: "/static/FuerzaBrutaResultados.txt", 
                     dataType: "text",
                     success: function (data) {
-                        //console.log(data)
-                        let expresionRegular = /\s*=>\s*/;
                         let ciudades = data.split(expresionRegular);
-                        ciudades.splice(0,1);
-                        ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3)
-                        ciudades.unshift(ciudades[ciudades.length-1]);
-                        ls = window.localStorage; //accede al localStorage
-                        //let matrizLocalStorage = JSON.parse(ls.getItem("matriz"));
-                        //console.log(matrizLocalStorage);
-                        //console.log(ciudades)
-                        mostrarGrafica(ciudades);
-                        //se trabaja con matrizLocalStorage y ciudades
-                        $("#rut2").text(data);
+                        ciudades.splice(0,1); //elimina el primer elemento
+                        ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                        ciudades.unshift(ciudades[ciudades.length-1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
+                        mostrarGrafica(ciudades, 2);
+                        let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
+                        $("#ite2").text(resultados[0]);
+                        $("#dis2").text(resultados[1]);
+                        $("#rut2").text(resultados[2]);
                     }
-                });/*
+                });
+                /* DESCOMENTAR CUANDO ESTE LISTO ESTE ALGORITMO/////////////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 $.ajax({
-                    url: "/static/MontecarloResultados.txt", 
+                    url: "/static/VecinoMasCercanoResultados.txt", 
                     dataType: "text",
                     success: function (data) {
-                        console.log(data)
-                        $("#resultado2").text(data);
+                        let ciudades = data.split(expresionRegular);
+                        ciudades.splice(0,1); //elimina el primer elemento
+                        ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                        ciudades.unshift(ciudades[ciudades.length-1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
+                        mostrarGrafica(ciudades, 3);
+                        let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
+                        $("#ite3").text(resultados[0]);
+                        $("#dis3").text(resultados[1]);
+                        $("#rut3").text(resultados[2]);
                     }
-                });*/
-
+                });
+                */
             }
 
-            function mostrarGrafica(ruta){
+            function mostrarGrafica(ruta, algoritmo){
                 let arrayXLS = JSON.parse(ls.getItem('arrayXLS'));
                 let arrayYLS = JSON.parse(ls.getItem('arrayYLS'));
                 let ciudadesLS = JSON.parse(ls.getItem('ciudadesLS'));
@@ -315,7 +330,6 @@
                    arrayX.push(arrayXLS[aux]);
                    arrayY.push(arrayYLS[aux]);
                    ciudades.push(ciudadesLS[aux]);
-                   //console.log(aux);
                 }
 
                 arrayX.push(arrayX[0]);
@@ -331,13 +345,25 @@
                  };
                  
                  var data = [trace];
-                 /*
-                 var layout = {
-                   title: "Display the Edit Chart Link"
-                 };
-                 */
-                 //Plotly.newPlot("gra2", data, layout);
-                 Plotly.newPlot("gra2", data);
+                 
+                 switch(algoritmo){ //dependiendo de que algoritmo se le haya pasado a la funcion, pinta en un campo u otro
+                     case 1:{
+                        Plotly.newPlot("gra1", data);
+                        break;
+                     }
+                     case 2:{
+                        Plotly.newPlot("gra2", data);
+                        break;
+                     }
+                     case 3:{
+                        Plotly.newPlot("gra3", data);
+                        break;
+                     }
+                     default:{
+                         return null;
+                     }
+                 }
+                 
             }
 
         }
