@@ -145,21 +145,22 @@ function reloj(e) {
         let arrayX = new Array();
         let arrayY = new Array();
         let ciudades = new Array();
-        let suma = 0;
+        let max = matrizCSV.length + matrizCSV.length / 3;
+        let min = matrizCSV.length - matrizCSV.length / 3;
 
         for (i = 0; i < matrizCSV.length; i++) {
+
             ciudades.push("C." + i);
-            suma = 0;
-            for (j = 0; j < matrizCSV[i].length; j++) {
-                aux = parseInt(matrizCSV[i][j].trim());
-                suma += aux;
-                if (i === 0) {
-                    arrayY[j] = 0;
-                }
-                arrayY[j] += Math.round(aux / (j + 1));
+            if (i % 2 !== 0) {
+                arrayY.push(Math.floor(Math.random() * (max - min)) + min);
+                arrayX.push(i + 1);
+            } else {
+                arrayY.push(Math.floor(Math.random() * (matrizCSV.length / 3 - 1)) + 1);
+                arrayX.push(i + 1);
             }
-            arrayX.push(Math.round(suma * (i + 1)));
+
         }
+
         arrayX.push(arrayX[0]);
         arrayY.push(arrayY[0]);
 
