@@ -1,7 +1,5 @@
 # IMPORTS
 import itertools
-import numpy as np
-from numpy.lib.financial import mirr
 
 # PRUUUUUUUUUUEEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAS
 

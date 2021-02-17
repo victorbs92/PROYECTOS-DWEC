@@ -252,8 +252,6 @@
                 arrayX.push(arrayX[0]);
                 arrayY.push(arrayY[0]);
 
-                //console.log("ASDFASFGASFASFDASF");
-
                 let arrayXLS = JSON.stringify(arrayX);
                 let arrayYLS = JSON.stringify(arrayY);
                 let ciudadesLS = JSON.stringify(ciudades);
@@ -261,7 +259,7 @@
                 ls.setItem('arrayYLS', arrayYLS);
                 ls.setItem('ciudadesLS', ciudadesLS);
 
-            }
+            }////////////////////////////////////////////////////////////////////////////////////////////
 
             //let resultado = document.getElementById("resultado");
             function mostrarResultados() { //esta funcion muestra los resultados de los algoritmos
@@ -317,7 +315,8 @@
                 */
             }
 
-            function mostrarGrafica(ruta, algoritmo){
+            function mostrarGrafica(ruta, algoritmo){ //funcion que recibe la ruta que tiene que pintar y el algoritmo del que tiene que mostrar los datos
+                //creamos las variables necesarias, algunas con valores recogidos del localStorage
                 let arrayXLS = JSON.parse(ls.getItem('arrayXLS'));
                 let arrayYLS = JSON.parse(ls.getItem('arrayYLS'));
                 let ciudadesLS = JSON.parse(ls.getItem('ciudadesLS'));
@@ -325,17 +324,19 @@
                 let arrayY = new Array();
                 let ciudades = new Array();
                 let aux = 0;
-                for (i=0; i<ruta.length; i++){
+                for (i=0; i<ruta.length; i++){ //carga en las variables los datos necesarios para pintarlos, para ello, obtiene los datos de las variables del localStorage
                    aux = parseInt(ruta[i].substring(ruta[i].length - 2, ruta[i].length).trim());
                    arrayX.push(arrayXLS[aux]);
                    arrayY.push(arrayYLS[aux]);
                    ciudades.push(ciudadesLS[aux]);
                 }
 
+                //añade al final de cada array el primer elemento de cada array, se hace para conseguir la ruta "circular"
                 arrayX.push(arrayX[0]);
                 arrayY.push(arrayY[0]);
                 ciudades.push(ciudades[0]);
-                       
+                
+                //se crea el objeto con los datos que necesita la clase que pinta los resultados y guarda en el array 
                 var trace = {
                    x: arrayX,
                    y: arrayY,
