@@ -81,6 +81,7 @@ function reloj(e) {
         reader.onload = (e) => {
             // Cuando el archivo se terminó de cargar
             let lines = parseCSV(e.target.result);
+            console.log(e.target.result)
             let matrizCSV = reverseMatrix(lines);
             if (matrizCSV === null) {
                 mensajeValidacion.style.color = "red";
@@ -114,6 +115,7 @@ function reloj(e) {
         let flag = false;
         let contElementosPorColumna = 0 //para comprobar que haya el mismo numero de filas que de columnas
         // Por cada fila
+        console.log(matrix)
         matrix.forEach((values, row) => {
             contElementosPorColumna = 0;
             // Vemos los valores y su posicion
