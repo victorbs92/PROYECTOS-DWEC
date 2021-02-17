@@ -21,8 +21,8 @@ indiceAux = 0
 
 # CARGA DE DATOS INICIAL
 # abrimos el csv y cargamos la matriz con los datos del csv
-file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
-matriz = np.loadtxt(file, delimiter=",")
+#file = open(os.path.join(sys.path[0], "sampleSinCeros15.csv"), "r")
+#matriz = np.loadtxt(file, delimiter=",")
 
 
 def calcularRuta(matriz, indice, cont):
@@ -102,10 +102,10 @@ def cacularRep(matriz, arrayMinValores, indiceAux):
 
 
 # llamamos a la funcion pasandole la matriz, el indice con el que tiene que trabajar y un contador de ciclos que siempre será 0 de primeras
-calcularRuta(matriz, 0, cont)
+#calcularRuta(matriz, 0, cont)
 
 
-print(matriz)
+#print(matriz)
 print(ciudades)
 #####################################################################################################################
 

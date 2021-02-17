@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+    /*overflow: hidden;*/
+    font-family: "Bitstream Vera Sans Mono";
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+    min-width: 1000px;
+}
+
+nav {
+    padding-bottom: 1%;
+
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    text-shadow: 1px 1px #313131;
+    opacity: 0.6;
+}
+
+nav ul a {
+    font-size: 1em;
+    color: white;
+    padding: 1em;
+    display: block;
+}
+
+nav li {
+    text-align: center;
+    background-color: #009879;
+    border: 1px solid #0ffa71;
+    border-radius: 4px;
+}
+
+nav>ul:hover {
+    opacity: 1;
+}
