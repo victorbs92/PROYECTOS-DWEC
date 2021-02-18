@@ -278,6 +278,9 @@ function reloj(e) {
         let arrayXLS = JSON.parse(ls.getItem('arrayXLS'));
         let arrayYLS = JSON.parse(ls.getItem('arrayYLS'));
         let ciudadesLS = JSON.parse(ls.getItem('ciudadesLS'));
+        console.log(arrayXLS);
+        console.log(arrayYLS);
+        console.log(ciudadesLS);
         let arrayX = new Array();
         let arrayY = new Array();
         let ciudades = new Array();
@@ -293,6 +296,9 @@ function reloj(e) {
         arrayX.push(arrayX[0]);
         arrayY.push(arrayY[0]);
         ciudades.push(ciudades[0]);
+        console.log(arrayX);
+        console.log(arrayY);
+        console.log(ciudades);
 
         //se crea el objeto con los datos que necesita la clase que pinta los resultados y guarda en el array 
         var trace = {
