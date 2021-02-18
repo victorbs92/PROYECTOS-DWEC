@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <title>Carrera de algoritmos</title>
+
+    <link rel="stylesheet" href="../static/index.css">
+
+    <!-- Load plotly.js into the DOM -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+    <!-- Load JQuery and AJAX -->
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js "> </script>
+    
+</head>
+
+<body>
+    <nav>
+        <ul class="activado">
+            <li><a href="/">Principal</a></li>
+        </ul>
+    </nav>
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <h2 id='crono' class="border-gradient border-gradient-green">00:00</h2>
+            <br>
+            <h1>Calculo de rutas con algoritmos</h1>
+            <br>
+            <label for="minutosEjecucion">Introduce el tiempo de ejecución (minutos): </label>
+            <input type="number" name="minutosEjecucion" id="minutosEjecucion" min="1">
+            <br>
+            <label for="archivo">Seleccione la matrix (CSV): </label>
+            <input type="file" name="matriz" id="matriz" accept=".csv">
+            <br><br>
+            <p id="mensajeValidacion"></p>
+            <button class="boton border-gradient border-gradient-green desactivado" name="botonComenzar" type="submit"
+                value="COMENZAR" id="comenzar" disabled>Comenzar</button>
+            <button name="botonTerminar" type="submit" value="TERMINAR" id="terminar"
+                class="boton border-gradient border-gradient-green desactivado" disabled>Terminar</button>
+            <br><br>
+            <div id="resultados">
+                <ul id="contenedor1" class="grid">
+                    <li id="alg1" class="alg">
+                        <h3>Algoritmo de Monte Carlo</h3>
+                    </li>
+                    <li id="gra1" class="gra"></li>
+                    <li id="dis1" class="dis"></li>
+                    <li id="ite1" class="ite"></li>
+                    <li id="rut1" class="rut"></li>
+                </ul>
+                <ul id="contenedor2" class="grid">
+                    <li id="alg2" class="alg">
+                        <h3>Algoritmo de Fuerza Bruta</h3>
+                    </li>
+                    <li id="gra2" class="gra"></li>
+                    <li id="dis2" class="dis"></li>
+                    <li id="ite2" class="ite"></li>
+                    <li id="rut2" class="rut"></li>
+                </ul>
+                <ul id="contenedor3" class="grid">
+                    <li id="alg3" class="alg">
+                        <h3>Algoritmo del Vecino mas Cercano</h3>
+                    </li>
+                    <li id="gra3" class="gra"></li>
+                    <li id="dis3" class="dis"></li>
+                    <li id="ite3" class="ite"></li>
+                    <li id="rut3" class="rut"></li>
+                </ul>
+            </div>
+            <br><br>
+            <canvas id="q">
+                <div id="campoOculto"></div>
+        </form>
+    </div>
+
+    <script src="../static/fondo.js"></script>
+    <script type=text/javascript> $SCRIPT_ROOT={{ request.script_root|tojson|safe }}; </script>
+    <script src="../static/app.js"></script>
+
+</body>
+
+</html>
