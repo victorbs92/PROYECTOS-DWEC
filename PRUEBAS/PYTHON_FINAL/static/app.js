@@ -47,7 +47,7 @@ function reloj(e) {
             let minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
 
-            if (seconds % 2 == 0) { //cada 2 segundos se llama a mostrar resultados para que se actualicen los datos en la pantalla
+            if (seconds % 3 == 0) { //cada 2 segundos se llama a mostrar resultados para que se actualicen los datos en la pantalla
                 mostrarResultados();
             }
 

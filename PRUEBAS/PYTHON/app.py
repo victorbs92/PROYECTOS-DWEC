@@ -58,7 +58,9 @@ def index():
 
         if(comenzar != None):
             file = request.files['matriz'] #guarda en una variable el file recogido en el inputFile del html y que se pasa por el post 
+            print (file)
             matriz = np.loadtxt(file, delimiter=",") #guarda en la variable matriz los datos de file delimitados por ","
+            print (matriz)
 
             #creamos los hilos de ejecucion
             global hiloFuerzaBruta
