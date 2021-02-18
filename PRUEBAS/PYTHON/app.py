@@ -72,10 +72,10 @@ def index():
                         args=(matriz,),
                         daemon=True)
             global hiloVecinoMasCercano
-            '''hiloVecinoMasCercano = multiprocessing.Process(name='vecinoMasCercano',
+            hiloVecinoMasCercano = multiprocessing.Process(name='vecinoMasCercano',
                         target=VecinoMasCercanoFINAL.vecinoMasCercano,
                         args=(matriz,),
-                        daemon=True)'''
+                        daemon=True)
 
             iniciarPrograma()
 
@@ -96,7 +96,7 @@ def iniciarPrograma():
     #llamamos por cada hilo a un algoritmo distinto
     hiloFuerzaBruta.start()
     hiloMontecarlo.start()
-    #hiloVecinoMasCercano.start()
+    hiloVecinoMasCercano.start()
 
 def finalizarProcesos():
     global hiloFuerzaBruta
@@ -104,8 +104,6 @@ def finalizarProcesos():
     global hiloVecinoMasCercano
     hiloFuerzaBruta.terminate()
     hiloMontecarlo.terminate()
-    #hiloVecinoMasCercano.terminate()
-    #hiloFuerzaBruta.join()
-    #hiloMontecarlo.join()
-    #hiloVecinoMasCercano.join()
+    hiloVecinoMasCercano.terminate()
+    
     

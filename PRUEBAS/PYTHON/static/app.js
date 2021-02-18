@@ -254,7 +254,7 @@ function reloj(e) {
                 $("#rut2").text(resultados[2]);
             }
         });
-        /* DESCOMENTAR CUANDO ESTE LISTO ESTE ALGORITMO/////////////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         $.ajax({
             url: "/static/VecinoMasCercanoResultados.txt", 
             dataType: "text",
@@ -270,7 +270,7 @@ function reloj(e) {
                 $("#rut3").text(resultados[2]);
             }
         });
-        */
+        
     }
 
     function mostrarGrafica(ruta, algoritmo) { //funcion que recibe la ruta que tiene que pintar y el algoritmo del que tiene que mostrar los datos
