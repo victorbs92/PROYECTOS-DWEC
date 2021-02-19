@@ -228,9 +228,13 @@ function reloj(e) {
             dataType: "text",
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
+                console.log(ciudades);
                 ciudades.splice(0, 1); //elimina el primer elemento
-                ciudades[ciudades.length - 1] = ciudades[ciudades.length - 1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                console.log(ciudades);
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
+                console.log(ciudades);
                 ciudades.unshift(ciudades[ciudades.length - 1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
+                console.log(ciudades);
                 mostrarGrafica(ciudades, 1);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
                 $("#ite1").text(resultados[0]);
@@ -245,7 +249,7 @@ function reloj(e) {
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
                 ciudades.splice(0, 1); //elimina el primer elemento
-                ciudades[ciudades.length - 1] = ciudades[ciudades.length - 1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
                 ciudades.unshift(ciudades[ciudades.length - 1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
                 mostrarGrafica(ciudades, 2);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
@@ -261,7 +265,7 @@ function reloj(e) {
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
                 ciudades.splice(0,1); //elimina el primer elemento
-                ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
                 ciudades.unshift(ciudades[ciudades.length-1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
                 mostrarGrafica(ciudades, 3);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea

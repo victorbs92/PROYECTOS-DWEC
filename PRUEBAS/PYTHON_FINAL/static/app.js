@@ -85,7 +85,7 @@ function reloj(e) {
 
         let minutos = min.value;
         ls.setItem("minutos", minutos);
-        console.log(minutos);
+        
         if (minutos !== null && minutos !== "0" && minutos !== 0 && minutos !== "" && minutos !== undefined && ls.getItem("csvValido") ==="si") {
             botonComenzar.removeAttribute("disabled");
             botonComenzar.classList.remove("desactivado");
@@ -229,7 +229,7 @@ function reloj(e) {
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
                 ciudades.splice(0, 1); //elimina el primer elemento
-                ciudades[ciudades.length - 1] = ciudades[ciudades.length - 1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
                 ciudades.unshift(ciudades[ciudades.length - 1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
                 mostrarGrafica(ciudades, 1);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
@@ -245,7 +245,7 @@ function reloj(e) {
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
                 ciudades.splice(0, 1); //elimina el primer elemento
-                ciudades[ciudades.length - 1] = ciudades[ciudades.length - 1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
                 ciudades.unshift(ciudades[ciudades.length - 1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
                 mostrarGrafica(ciudades, 2);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
@@ -261,7 +261,7 @@ function reloj(e) {
             success: function (data) {
                 let ciudades = data.split(expresionRegular);
                 ciudades.splice(0,1); //elimina el primer elemento
-                ciudades[ciudades.length-1] = ciudades[ciudades.length-1].slice(0, -3) //elimina los espacios del final del ultimo elemento del array 
+                ciudades[ciudades.length - 1] = ciudades[ciudades.length-1].slice(0, -1).trim() //elimina los espacios del final del ultimo elemento del array 
                 ciudades.unshift(ciudades[ciudades.length-1]); //añade al principio del array el mismo elemento que hay al final del array, para conseguir que la ruta vuelva al lugar de origen
                 mostrarGrafica(ciudades, 3);
                 let resultados = data.split(/\n/); //se guarda en una variable el resultado de splitear los datos con un salto de linea
@@ -278,9 +278,11 @@ function reloj(e) {
         let arrayXLS = JSON.parse(ls.getItem('arrayXLS'));
         let arrayYLS = JSON.parse(ls.getItem('arrayYLS'));
         let ciudadesLS = JSON.parse(ls.getItem('ciudadesLS'));
-        console.log(arrayXLS);
-        console.log(arrayYLS);
-        console.log(ciudadesLS);
+        //console.log(arrayXLS);
+        //console.log(arrayYLS);
+        //console.log(ciudadesLS);
+        console.log(ruta);
+        //HASTA AQUI LLEGA BIEEEN
         let arrayX = new Array();
         let arrayY = new Array();
         let ciudades = new Array();
@@ -290,6 +292,10 @@ function reloj(e) {
             arrayX.push(arrayXLS[aux]);
             arrayY.push(arrayYLS[aux]);
             ciudades.push(ciudadesLS[aux]);
+            console.log(aux);
+            console.log(arrayX);
+            console.log(arrayY);
+            console.log(ciudades);
         }
 
         //añade al final de cada array el primer elemento de cada array, se hace para conseguir la ruta "circular"
