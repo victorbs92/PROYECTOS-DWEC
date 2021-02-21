@@ -16,6 +16,9 @@ header>h2{
     text-align: center;
     padding: 20px;
 }
+header>#buscar{
+    margin-left: 20px;
+}
 
 .loadGIF{
     display: flex;
