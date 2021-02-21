@@ -1,5 +1,81 @@
 * {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Bitstream Vera Sans Mono";
+}
 
-    background-color: white;
+header{
+    height: 100px;
+    background-color: lightgreen;
+}
+header>h2{
+    text-align: center;
+    padding: 20px;
+}
 
+.loadGIF{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.plantilla {
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: 8px;
+    border: solid 2px lightseagreen;
+    background-color: lightblue;
+    margin: 12px;
+    padding: 8px;
+    width: 50vw;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+.plantilla:hover{
+    width: 60vw;
+}
+.plantilla>h3 {
+    text-align: center;
+    padding: 8px;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+.plantilla>button{
+    margin: 12px;
+    align-self: center;
+    border-radius: 10px;
+    border: solid 2px lightseagreen;
+    padding: 4px;
+}
+.plantilla>input{
+    margin: 12px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: solid 2px lightseagreen;
+    padding: 4px;
+}
+.plantilla>*{
+    font-size: 18px;
+}
+span{
+    font-weight: bolder;
+}
+.divMap{
+    height: 450px;
+    width: 100%;
+}
+
+footer{
+    padding: 16px;
+    text-align: center;
+    background-color: lightgreen;
 }
